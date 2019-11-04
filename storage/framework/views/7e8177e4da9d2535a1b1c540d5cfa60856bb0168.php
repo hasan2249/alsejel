@@ -44,7 +44,7 @@
                                         <input type="checkbox" name="remember" <?php echo e(old('remember') ? 'checked' : ''); ?>> Remember Me
                                     </label>
                                 </div>
-                            </div>
+                            </div>       
                         </div>
 
                         <div class="form-group">
