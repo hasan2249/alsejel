@@ -24,6 +24,26 @@
                             </div>
                         </div>
 
+                        <!-- start rule -->
+                        <div class="form-group{{ $errors->has('rule') ? ' has-error' : '' }}">
+                            <label for="rule" class="col-md-4 control-label">Rule</label>
+
+                            <div class="col-md-6">
+                               
+                                        <select id="rule" name="rule" class="form-control" id="sel1" required>
+                                            <option value="1">Admin</option>
+                                            <option value="2">User</option>
+                                          </select>
+                                          
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('rule') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <!-- end rule -->
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
