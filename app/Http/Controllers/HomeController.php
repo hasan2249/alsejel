@@ -27,5 +27,20 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    
+    ////////////////////////////////////////////////////////
+    // Testing purposes
+    /////////////
 
+    // this function only for test the users page
+    public function users_page() {
+        return view('/users');
+    }
+
+    // this function only for test the tasks page
+    public function tasks_page() {
+        return view('/tasks');
+    }
+
+    /////////////////////////////////////////////////////////
 }
