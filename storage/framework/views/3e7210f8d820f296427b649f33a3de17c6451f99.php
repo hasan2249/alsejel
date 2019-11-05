@@ -10,7 +10,7 @@
                     <ul class="list-group list-group-flush">
                         <a href="users" class="list-group-item">Users</a>
                         <a href="tasks" class="list-group-item">Tasks</a>
-                        <a href="#" class="list-group-item">Disabled</a>
+                        <a href="#" class="list-group-item">Reports</a>
                         <a href="#" class="list-group-item">Disabled</a>
                         <a href="#" class="list-group-item">Disabled</a>
                         <a href="#" class="list-group-item">Disabled</a>
@@ -22,10 +22,9 @@
         
         <div class="col-md-9 ">
             <div class="panel panel-default">
-                <div class="panel-heading">Tasks</div>
+                <div class="panel-heading text-center">SCASE</div>
 
-                <div class="panel-body">
-                   Congratulation You are logged in!
+                <div class="panel-body"> 
                    <?php echo $__env->yieldContent('content2'); ?>
                 </div>
             </div>
