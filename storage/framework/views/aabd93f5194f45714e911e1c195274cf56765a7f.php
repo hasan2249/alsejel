@@ -11,7 +11,10 @@
     <title><?php echo e(config('app.name', 'Laravel')); ?></title>
 
     <!-- Styles -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -48,15 +51,15 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav  navbar-right list-inline">
                         <!-- Authentication Links -->
                         <?php if(Auth::guest()): ?>
-                            <li><a href="<?php echo e(url('/login')); ?>">Login</a></li>
-                            <li><a href="<?php echo e(url('/register')); ?>">Register</a></li>
+                            <li><a href="<?php echo e(url('/login')); ?>" class="list-inline-item">Login</a></li>
+                            <li><a href="<?php echo e(url('/register')); ?>" class="list-inline-item">Register</a></li>
                         <?php else: ?>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <?php echo e(Auth::user()->name); ?> <span class="caret"></span>
+                                    <?php echo e(Auth::user()->name); ?> 
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">

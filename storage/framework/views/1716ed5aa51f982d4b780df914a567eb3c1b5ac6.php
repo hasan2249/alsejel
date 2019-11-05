@@ -29,11 +29,11 @@
 
                             <div class="col-md-6">
                                
-                                        <select id="rule" name="rule" class="form-control" id="sel1" required>
-                                            <option value="1">Admin</option>
-                                            <option value="2">User</option>
-                                          </select>
-                                          
+                                    <select id="rule" name="rule" class="form-control" id="sel1" required>
+                                        <option value="1">Admin</option>
+                                        <option value="2">User</option>
+                                    </select>
+                                        
                                 <?php if($errors->has('name')): ?>
                                     <span class="help-block">
                                         <strong><?php echo e($errors->first('rule')); ?></strong>
@@ -41,6 +41,7 @@
                                 <?php endif; ?>
                             </div>
                         </div>
+
                         <!-- end rule -->
 
                         <div class="form-group<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
@@ -69,7 +70,8 @@
                                     </span>
                                 <?php endif; ?>
                             </div>
-                        </div>
+                        </div> 
+
 
                         <div class="form-group">
                             <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
