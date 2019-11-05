@@ -366,7 +366,7 @@ class ComposerStaticInit556cb41ed3f5460e89f7edb6b0386cce
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
-        'LogworkTracks' => __DIR__ . '/../..' . '/database/migrations/2019_11_04_104525_logwork_tracks.php',
+        'LogworkTraks' => __DIR__ . '/../..' . '/database/migrations/2019_11_04_104525_logwork_traks.php',
         'Logworks' => __DIR__ . '/../..' . '/database/migrations/2019_11_04_103910_logworks.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/AssertionFailedError.php',
@@ -829,10 +829,12 @@ class ComposerStaticInit556cb41ed3f5460e89f7edb6b0386cce
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'SebastianBergmann\\ResourceOperations\\ResourceOperations' => __DIR__ . '/..' . '/sebastian/resource-operations/src/ResourceOperations.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'TaskTableSeeder' => __DIR__ . '/../..' . '/database/seeds/TaskTableSeeder.php',
         'TaskUser' => __DIR__ . '/../..' . '/database/migrations/2019_11_04_105045_task_user.php',
         'Tasks' => __DIR__ . '/../..' . '/database/migrations/2019_11_04_101243_tasks.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UserTableSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

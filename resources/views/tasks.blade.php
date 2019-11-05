@@ -3,7 +3,7 @@
 @section('content2')
 <?php echo "....  Hi from <strong>tasks</strong> page"?>
 
-<table class="table">
+<table class="table table-hover">
   <thead class="thead-light">
     <tr>
       <th scope="col">Type</th>

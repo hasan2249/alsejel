@@ -3,7 +3,7 @@
 @section('content2')
 <?php echo "....  Hi from <strong>users</strong> page"?>
 
-<table class="table">
+<table class="table table-hover">
   <thead class="thead-light">
     <tr>
       <th scope="col">#</th>
@@ -15,7 +15,7 @@
   <tbody>
 
     @foreach ($users as $user)
-    <tr>
+      <tr>
         <th scope="row">{{$user->id}}</th>
         <td>{{$user->name}}</td>
         <td><?php if($user->rule == 1) {echo"Admin";} else {echo"User";}?></td>
