@@ -21,8 +21,13 @@ class userController extends Controller
     public function users_page() {
         $users = User::all();
         $user = Array("users" => $users);
-        return view('/users', $user);
+        return view('users', $user);
     }
 
+    public function user_page($id) {
+        $users = User::find($id);
+        $user = Array('user' => $users);
+        return view('pp', $user);
+    }
     /////////////////////////////////////////////////////////
 }

@@ -9,6 +9,7 @@
       <th scope="col">Type</th>
       <th scope="col">Title</th>
       <th scope="col">Created at</th>
+      {{-- <th scope="col">Description</th> --}}
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,7 @@
               <th scope="row">{{$task->type}}</th>
               <td>{{$task->name}}</td>
               <td>{{$task->created_at}}</td>
+              {{-- <td>{{$task->description}}</td> --}}
             </tr>
           @endforeach
       

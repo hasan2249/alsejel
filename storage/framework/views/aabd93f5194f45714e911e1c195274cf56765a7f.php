@@ -11,10 +11,10 @@
     <title><?php echo e(config('app.name', 'Agenda')); ?></title>
 
     <!-- Styles -->
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/app.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="<?php echo e(asset('css/font-awesome.min.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -87,6 +87,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/app.js"></script>
+    <script src=<?php echo e(asset('js/app.js')); ?>"></script>
 </body>
 </html>

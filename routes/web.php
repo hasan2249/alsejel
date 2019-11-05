@@ -27,8 +27,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-// this routes iare onmly for testing ---------------------
+// Controller: userController -----------
+Route::get('/user/{id}', 'userController@user_page');
+
 Route::get('/users', 'userController@users_page'); 
+//---------------------------------------
+
+// Controller: userController -----------
 
 Route::get('/tasks', 'TaskController@tasks_page'); 
-//---------------------------------------------------------
+//---------------------------------------
