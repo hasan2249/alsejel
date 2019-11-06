@@ -15,11 +15,11 @@
   <tbody>
 
     @foreach ($users as $user)
-      <tr>
-        <th scope="row">{{$user->id}}</th>
-        <td>{{$user->name}}</td>
-        <td><?php if($user->rule == 1) {echo"Admin";} else {echo"User";}?></td>
-        <td>{{$user->email}}</td>
+    <tr onclick="window.location='user/{{$user->id}}';">
+        <th scope="row" class="pointer">{{$user->id}}</th>
+        <td class="pointer">{{$user->name}}</td>
+        <td class="pointer"><?php if($user->rule == 1) {echo"Admin";} else {echo"User";}?></td>
+        <td class="pointer">{{$user->email}}</td>
       </tr>
     @endforeach
 
