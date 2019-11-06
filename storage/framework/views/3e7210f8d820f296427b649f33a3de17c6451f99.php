@@ -8,8 +8,8 @@
                 <div class="panel-body">
                     
                     <ul class="list-group list-group-flush">
-                        <a href="users" class="list-group-item">Users</a>
-                        <a href="tasks" class="list-group-item">Tasks</a>
+                        <a href="<?php echo e(url('/users')); ?>" class="list-group-item">Users</a>
+                        <a href="<?php echo e(url('/tasks')); ?>" class="list-group-item">Tasks</a>
                         <a href="#" class="list-group-item">Reports</a>
                         <a href="#" class="list-group-item">Disabled</a>
                         <a href="#" class="list-group-item">Disabled</a>

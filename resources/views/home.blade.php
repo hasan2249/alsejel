@@ -10,8 +10,8 @@
                 <div class="panel-body">
                     {{--start pages links --}}
                     <ul class="list-group list-group-flush">
-                        <a href="users" class="list-group-item">Users</a>
-                        <a href="tasks" class="list-group-item">Tasks</a>
+                        <a href="{{ url('/users') }}" class="list-group-item">Users</a>
+                        <a href="{{ url('/tasks') }}" class="list-group-item">Tasks</a>
                         <a href="#" class="list-group-item">Reports</a>
                         <a href="#" class="list-group-item">Disabled</a>
                         <a href="#" class="list-group-item">Disabled</a>
