@@ -22,4 +22,8 @@ class Task extends Model
     {
         return $this->hasMany('App\User','task_user');
     }
+    public function users()
+    {
+        return $this->belongsToMany('App\User','task_user','user_id','task_id')->withPivot('user_id')->withTimestamps();
+    }
 }

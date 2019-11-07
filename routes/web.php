@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -27,3 +28,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('importExport', 'ExcelController@importExport');
+Route::get('downloadExcel/{type}', 'ExcelController@downloadExcel');
