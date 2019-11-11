@@ -90,7 +90,7 @@
                                                                         </tr>
                                                                 @else
                                                                         <tr>
-                                                                                <td>{{$users->name}} updated the comment: {{$comment->description}}</td>
+                                                                                <td>{{$users->name}} updated the comment/loged: {{$comment->description}}</td>
                                                                         </tr>
                                                                 @endif
                                                         @endforeach
