@@ -27,7 +27,13 @@ class userController extends Controller
     public function user_page($id) {
         $users = User::find($id);
         $user = Array('user' => $users);
-        return view('user', $user);
+        //$tasks = $users->task()->name;//->simplePaginate(15);
+        $comments_logs=User::join('comments','users.id','=','comments.user_id')->join('logworks','users.id','=','logworks.user_id')
+            ->select('comments.description', 'logworks.work_duration', 'logworks.description')
+            ->orderby('comments.created_at')
+            ->orderby('logworks.created_at')
+            ->get();;
+        return view('user', compact('users','comments_logs'));
     }
     /////////////////////////////////////////////////////////
 }
