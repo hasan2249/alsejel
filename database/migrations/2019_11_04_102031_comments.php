@@ -16,7 +16,7 @@ class Comments extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description');
+            $table->longText('description');
             $table->integer('task_id')->unsigned();
             $table->foreign('task_id')->references('id')->on('tasks');
             $table->integer('user_id')->unsigned();

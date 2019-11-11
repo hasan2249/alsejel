@@ -15,8 +15,10 @@ class Logworks extends Migration
     {
         Schema::create('logworks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description');
-            $table->float('work_duration');
+            $table->longText('description');
+            $table->date('date');
+            $table->integer('houre');
+            $table->integer('minute');
             $table->integer('task_id')->unsigned();
             $table->foreign('task_id')->references('id')->on('tasks');
             $table->integer('user_id')->unsigned();

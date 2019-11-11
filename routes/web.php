@@ -33,7 +33,11 @@ Route::get('/user/{id}', 'userController@user_page');
 Route::get('/users', 'userController@users_page'); 
 //---------------------------------------
 
-// Controller: userController -----------
+// Controller: TaskController -----------
 
 Route::get('/tasks', 'TaskController@tasks_page'); 
+
+Route::get('/task/{id}', 'TaskController@task_page');
+
+Route::post('/task/{id}', 'TaskController@logwork');
 //---------------------------------------

@@ -15,7 +15,7 @@ class LogworkTraks extends Migration
     {
         Schema::create('logwork_tracks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description');
+            $table->longText('description');
             $table->float('work_duration');
             $table->integer('logwork_id')->unsigned();
             $table->foreign('logwork_id')->references('id')->on('logworks');

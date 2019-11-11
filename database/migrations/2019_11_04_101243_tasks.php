@@ -17,7 +17,7 @@ class Tasks extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('type');
-            $table->string('description');
+            $table->longText('description');
             $table->string('state');
             $table->timestamps();
         });
