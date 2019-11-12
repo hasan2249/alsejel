@@ -23,7 +23,6 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
-    <script src="<?php echo e(asset("js/functionalities.js")); ?>"></script>
 </head>
 <body>
     <div id="app">

@@ -8,22 +8,22 @@
                                 <!--Navigation bar-->
                                 <ul class="nav nav-tabs">
                                         <li class="nav-item">
-                                                <a href="" data-target="#Summery" data-toggle="tab" class="nav-link active" id="summery_tab">Summery</a>
+                                                <a href="" data-target="#Summery" data-toggle="tab" class="nav-link active" id="summery_tab" >Summery</a>
+                                        </li>
+                                        <li class="nav-item" >
+                                                <a  href="" data-target="#Tasks" data-toggle="tab" class="nav-link" onclick="removeActiveClass('summery_tab')" >Tasks</a>
                                         </li>
                                         <li class="nav-item">
-                                                <a href="" data-target="#Tasks" data-toggle="tab" class="nav-link" onclick="setElementAsActive('summery_tab','nav-link')" >Tasks</a>
+                                                <a href="" data-target="#Activities" data-toggle="tab" class="nav-link" onclick="removeActiveClass('summery_tab')" >Activities</a>
                                         </li>
                                         <li class="nav-item">
-                                                <a href="" data-target="#Activities" data-toggle="tab" class="nav-link" onclick="setElementAsActive('summery_tab','nav-link')">Activities</a>
-                                        </li>
-                                        <li class="nav-item">
-                                                <a href="" data-target="#edit" data-toggle="tab" class="nav-link" onclick="setElementAsActive('summery_tab','nav-link')">Edit</a>
+                                                <a href="" data-target="#edit" data-toggle="tab" class="nav-link" onclick="removeActiveClass('summery_tab')">Edit</a>
                                         </li>
                                 </ul>
 
                                 <!--Summery content-->
                                 <div class="tab-content py-4">
-                                        <div class="tab-pane" id="Summery" >
+                                        <div class="tab-pane active" id="Summery" >
                                                 <h5 class="mb-3">User Profile</h5>
                                                 <div class="row">
                                                         <div class="col-md-6">
@@ -55,7 +55,7 @@
                                         </div>
 
                                         <!--Tasks content-->
-                                        <div class="tab-pane" id="Tasks">
+                                        <div class="tab-pane" id="Tasks" onclick="removeActiveClass('Summery')" >
 
                                                 <div>
                                                         <table id="Tasks_table" class="table table-hover table-striped">
@@ -79,7 +79,7 @@
                                         </div>
 
                                         <!--Activities content-->
-                                        <div class="tab-pane" id="Activities">
+                                        <div class="tab-pane" id="Activities" onclick="removeActiveClass('Summery')">
                                                 <table class="table table-hover table-striped">
                                                         <tbody>
                                                         @foreach($user_comments as $comment)
@@ -95,44 +95,21 @@
                                                         @endforeach
                                                         </tbody>
                                                 </table>
-                                                {{ $user_comments->links() }}
-                                                <table class="table table-hover table-striped">
-                                                        <tbody>
-                                                        @foreach($user_logs as $log)
-                                                                @if ($log->created_at->eq($log->updated_at))
-                                                                        <tr>
-                                                                                <td>{{$users->name}} Added a new log: {{$log->description}}</td>
-                                                                        </tr>
-                                                                @else
-                                                                        <tr>
-                                                                                <td>{{$users->name}} updated the log: {{$log->description}}</td>
-                                                                        </tr>
-                                                                @endif
-                                                        @endforeach
-                                                        </tbody>
-                                                </table>
-                                                {{ $user_logs->links() }}
                                         </div>
 
                                         <!--edit content-->
-                                        <div class="tab-pane" id="edit">
+                                        <div class="tab-pane" id="edit" onclick="removeActiveClass('Summery')">
                                                 <form role="form">
-                                                        <div class="form-group row">
-                                                                <label class="col-lg-3 col-form-label form-control-label">Username</label>
-                                                                <div class="col-lg-9">
-                                                                        <input class="form-control" type="text" value="janeuser">
-                                                                </div>
-                                                        </div>
                                                         <div class="form-group row">
                                                                 <label class="col-lg-3 col-form-label form-control-label">Password</label>
                                                                 <div class="col-lg-9">
-                                                                        <input class="form-control" type="password" value="11111122333">
+                                                                        <input class="form-control" type="password" value="">
                                                                 </div>
                                                         </div>
                                                         <div class="form-group row">
                                                                 <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
                                                                 <div class="col-lg-9">
-                                                                        <input class="form-control" type="password" value="11111122333">
+                                                                        <input class="form-control" type="password" value="">
                                                                 </div>
                                                         </div>
                                                         <div class="form-group row">

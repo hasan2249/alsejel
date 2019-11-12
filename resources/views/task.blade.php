@@ -5,13 +5,19 @@
 <div>
     <?php echo "....  Hi from <strong>Task</strong> page"?>
     
-    <h1>Type of task: {{$task->type}}</h1>
+    <h3><b>Type of task:</b> {{$task->type}}</h3>
     <br/>
-    <h1>Title of task: {{$task->name}}</h1>
+    <h3><b>Title of task:</b> {{$task->name}}</h3>
     <br/>
-    <h1>Created at: {{$task->created_at}}</h1>
+    <h3><b>Created at:</b> {{$task->created_at}}</h3>
     <br/>
-    <h1>Description of task: {{$task->description}}</h1>
+    <h3><b>Description of task:</b> {{$task->description}}</h3>
+    <h3><b>Assigned to:</b></h3>
+    @foreach($task->user as $user)
+    <ul>
+    <li><h3> {{$user->name}}</h3></li>
+    </ul>
+    @endforeach
 </div>
 
 <button id="logwork" type="button" class="btn btn-outline-primary">Logwork</button>
@@ -53,25 +59,20 @@
           <button id="save" type="submit" class="btn btn-primary">Save</button>
     </form>
     <div>
-        {{-- users commented on the task --}}
-        @foreach ($users as $user)
-            {{$user->id}}<br/>
-            {{$user->name}}<br/>
-            {{$user->email}}<br/>
-            {{$user->created_at}}<br/>
-        @endforeach
-        {{-- -------------------------- --}}
-<br/><br/><br/><br/>
 
         {{-- logworks on the task --}}
         @foreach ($logworks as $logwork)
             logwork id: {{$logwork->id}}<br/>
             user id: {{$logwork->user_id}}<br/>
             description: {{$logwork->description}}<br/>
+            User id: <b>{{$logwork->user->id}}</b><br/>
+            User name: <b>{{$logwork->user->name}}</b><br/>
+            User email: <b>{{$logwork->user->email}}</b><br/>
+            User created_at: <b>{{$logwork->user->created_at}}</b><br/>
             houres: {{$logwork->houre}}<br/>
             minutes: {{$logwork->minute}}<br/>
             Date: {{$logwork->date}}<br/>
-            created_at: {{$logwork->created_at}}<br/><br/>
+            created_at: {{$logwork->created_at}}<br/><hr/>
         @endforeach
         {{-- -------------------------- --}}
     </div>

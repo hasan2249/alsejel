@@ -27,24 +27,16 @@ class userController extends Controller
 
     public function user_page($id) {
         $users = User::find($id);
-//        $user = Array('user' => $users);
-//        $tasks = $users->task()->name;//->simplePaginate(15);
-//        $comments_logs=User::join('comments','users.id','=','comments.user_id')->join('logworks','users.id','=','logworks.user_id')
-//            ->select('comments.description', 'logworks.work_duration', 'logworks.description')
-//            ->orderby('comments.created_at')
-//            ->orderby('logworks.created_at')
-//            ->get();
-//        $comments_logs =
-//            DB::table('users')
-//                ->join('comments', 'users.id', '=', 'comments.user_id')
-//                ->where('comments.user_id','=',$id)
-//                ->join('logworks', 'users.id', '=', 'logworks.user_id')
-//                ->where('logworks.user_id','=',$id)
-//                ->select('comments.description','logworks.work_duration')
-//                ->orderby('comments.created_at')
-//                ->get();
-        $user_comments = $users->comment()->orderBy('created_at','desc')->simplePaginate(6);
-        $user_logs = $users->logwork()->orderBy('created_at','desc')->simplePaginate(6);;
+
+        $user_comments = $users->comment()->orderBy('created_at','desc')->get();
+        $user_logs = $users->logwork()->orderBy('created_at','desc')->get();
+
+//        $user_comment = DB::table("comments")->where('id',$id)->orderBy('created_at','desc');
+//        $user_log = DB::table("logworks")->where('id',$id)->orderBy('created_at','desc');
+//        $user_activities = [$user_logs , $user_comments];
+
+
+
         return view('user', compact('users','user_comments', 'user_logs'));
     }
     /////////////////////////////////////////////////////////

@@ -10,3 +10,13 @@
 //     $("#logworks_shower").load("/logworks/",id);
 //   });
 // });
+
+// $(document).ready(function(){
+//     $("#q1").click(function(){
+//         $("#summery_tab").removeClass("active");
+//     });
+// });
+
+function removeActiveClass(id) {
+    document.getElementById(id).classList.remove('active');
+}
