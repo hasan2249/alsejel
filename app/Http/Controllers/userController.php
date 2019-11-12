@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class userController extends Controller
 {
@@ -26,14 +27,25 @@ class userController extends Controller
 
     public function user_page($id) {
         $users = User::find($id);
-        $user = Array('user' => $users);
-        //$tasks = $users->task()->name;//->simplePaginate(15);
-        $comments_logs=User::join('comments','users.id','=','comments.user_id')->join('logworks','users.id','=','logworks.user_id')
-            ->select('comments.description', 'logworks.work_duration', 'logworks.description')
-            ->orderby('comments.created_at')
-            ->orderby('logworks.created_at')
-            ->get();;
-        return view('user', compact('users','comments_logs'));
+//        $user = Array('user' => $users);
+//        $tasks = $users->task()->name;//->simplePaginate(15);
+//        $comments_logs=User::join('comments','users.id','=','comments.user_id')->join('logworks','users.id','=','logworks.user_id')
+//            ->select('comments.description', 'logworks.work_duration', 'logworks.description')
+//            ->orderby('comments.created_at')
+//            ->orderby('logworks.created_at')
+//            ->get();
+//        $comments_logs =
+//            DB::table('users')
+//                ->join('comments', 'users.id', '=', 'comments.user_id')
+//                ->where('comments.user_id','=',$id)
+//                ->join('logworks', 'users.id', '=', 'logworks.user_id')
+//                ->where('logworks.user_id','=',$id)
+//                ->select('comments.description','logworks.work_duration')
+//                ->orderby('comments.created_at')
+//                ->get();
+        $user_comments = $users->comment()->orderBy('created_at','desc')->simplePaginate(1);
+        $user_logs = $users->logwork()->orderBy('created_at','desc')->simplePaginate(1);
+        return view('user', compact('users','user_comments', 'user_logs'));
     }
     /////////////////////////////////////////////////////////
 }

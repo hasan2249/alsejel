@@ -37,11 +37,6 @@ class User extends Authenticatable
         return $this->hasMany('App\Logwork','user_id');
     }
 
-//    public function task()
-//    {
-//        return $this->hasMany('App\Task','task_user');
-//    }
-
     public function task()
     {
         return $this->hasMany('App\Task','task_user');

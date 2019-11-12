@@ -83,14 +83,29 @@
                                         <div class="tab-pane" id="Activities">
                                                 <table class="table table-hover table-striped">
                                                         <tbody>
-                                                        @foreach($users->comment as $comment)
+                                                        @foreach($user_comments as $comment)
                                                                 @if ($comment->created_at->eq($comment->updated_at))
                                                                         <tr>
-                                                                                 <td>{{$users->name}} Added a new comment: {{$comment->description}}</td>
+                                                                                <td>{{$users->name}} Added a new comment: {{$comment->description}}</td>
                                                                         </tr>
                                                                 @else
                                                                         <tr>
-                                                                                <td>{{$users->name}} updated the comment/loged: {{$comment->description}}</td>
+                                                                                <td>{{$users->name}} updated the comment: {{$comment->description}}</td>
+                                                                        </tr>
+                                                                @endif
+                                                        @endforeach
+                                                        </tbody>
+                                                </table>
+                                                <table class="table table-hover table-striped">
+                                                        <tbody>
+                                                        @foreach($user_logs as $log)
+                                                                @if ($log->created_at->eq($log->updated_at))
+                                                                        <tr>
+                                                                                <td>{{$users->name}} Added a new comment: {{$log->description}}</td>
+                                                                        </tr>
+                                                                @else
+                                                                        <tr>
+                                                                                <td>{{$users->name}} updated the comment: {{$log->description}}</td>
                                                                         </tr>
                                                                 @endif
                                                         @endforeach
