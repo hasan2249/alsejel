@@ -33,15 +33,8 @@ class TaskController extends Controller
     /////////////
     public function task_page($id) {
         $tasks = Task::find($id);
-        $logworks = Logwork::where('task_id', $id)->get();
-        $user = array();
-        $r = 0;
-        foreach ($logworks as $logwork)
-            {
-              $user[$r] = User::where('id', $logwork->user_id)->first();  
-              $r++;
-            }
-        $task = Array("task" => $tasks, "logworks" =>$logworks, "users"=> $user);
+        $logworks = Logwork::where('task_id', $id)->orderBy('date')->get();
+        $task = Array("task" => $tasks, "logworks" =>$logworks);
         return view('/task',$task);
     }
      //----------------------------------------------------

@@ -20,6 +20,6 @@ class Task extends Model
 
     public function user()
     {
-        return $this->hasMany('App\User','task_user');
+        return $this->belongsToMany('App\User','task_user');
     }
 }

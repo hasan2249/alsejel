@@ -548,6 +548,7 @@ return array(
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'TaskTableSeeder' => $baseDir . '/database/seeds/TaskTableSeeder.php',
     'TaskUser' => $baseDir . '/database/migrations/2019_11_04_105045_task_user.php',
+    'TaskUserTableSeeder' => $baseDir . '/database/seeds/TaskUserTableSeeder.php',
     'Tasks' => $baseDir . '/database/migrations/2019_11_04_101243_tasks.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
