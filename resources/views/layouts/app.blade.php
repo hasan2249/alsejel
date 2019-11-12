@@ -154,5 +154,6 @@
 
     <!-- Scripts -->
     <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('js/scase.js')}}"></script>
 </body>
 </html>

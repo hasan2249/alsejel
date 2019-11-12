@@ -156,5 +156,6 @@
 
     <!-- Scripts -->
     <script src="<?php echo e(asset('js/app.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/scase.js')); ?>"></script>
 </body>
 </html>

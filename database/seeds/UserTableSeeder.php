@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 
 class UserTableSeeder extends Seeder
 {
@@ -19,6 +20,8 @@ class UserTableSeeder extends Seeder
                 'email' => $faker->email,
                 'rule' => $faker->numberBetween(1,3),         
                 'password' => bcrypt('secret'),
+                'created_at' => $faker->date('Y-m-d H:i:s'),
             ]);
     }
+}
 }

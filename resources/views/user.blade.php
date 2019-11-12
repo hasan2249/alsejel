@@ -1,7 +1,6 @@
 @extends('home')
 
 @section('content2')
-
         <div class="container">
                 <div class="row my-2">
                         <div class="col-lg-12 order-lg-2">
@@ -146,19 +145,5 @@
                                 </div>
                         </div>
                 </div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 @endsection
 

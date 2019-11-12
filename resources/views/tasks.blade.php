@@ -17,10 +17,10 @@
       <tbody>
 
           @foreach ($tasks as $task)
-          <tr>
-              <th scope="row">{{$task->type}}</th>
-              <td>{{$task->name}}</td>
-              <td>{{$task->created_at}}</td>
+          <tr onclick="window.location='task/{{$task->id}}';">
+              <th scope="row" class="pointer">{{$task->type}}</th>
+              <td class="pointer"> {{$task->name}}</td>
+              <td class="pointer">{{$task->created_at}}</td>
               {{-- <td>{{$task->description}}</td> --}}
             </tr>
           @endforeach
