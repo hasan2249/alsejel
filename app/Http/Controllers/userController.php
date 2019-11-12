@@ -43,8 +43,8 @@ class userController extends Controller
 //                ->select('comments.description','logworks.work_duration')
 //                ->orderby('comments.created_at')
 //                ->get();
-        $user_comments = $users->comment()->orderBy('created_at','desc')->simplePaginate(1);
-        $user_logs = $users->logwork()->orderBy('created_at','desc')->simplePaginate(1);
+        $user_comments = $users->comment()->orderBy('created_at','desc')->simplePaginate(6);
+        $user_logs = $users->logwork()->orderBy('created_at','desc')->simplePaginate(6);;
         return view('user', compact('users','user_comments', 'user_logs'));
     }
     /////////////////////////////////////////////////////////

@@ -8,22 +8,22 @@
                                 <!--Navigation bar-->
                                 <ul class="nav nav-tabs">
                                         <li class="nav-item">
-                                                <a href="" data-target="#Summery" data-toggle="tab" class="nav-link active">Summery</a>
+                                                <a href="" data-target="#Summery" data-toggle="tab" class="nav-link active" id="summery_tab">Summery</a>
                                         </li>
                                         <li class="nav-item">
-                                                <a href="" data-target="#Tasks" data-toggle="tab" class="nav-link">Tasks</a>
+                                                <a href="" data-target="#Tasks" data-toggle="tab" class="nav-link" onclick="setElementAsActive('summery_tab','nav-link')" >Tasks</a>
                                         </li>
                                         <li class="nav-item">
-                                                <a href="" data-target="#Activities" data-toggle="tab" class="nav-link">Activities</a>
+                                                <a href="" data-target="#Activities" data-toggle="tab" class="nav-link" onclick="setElementAsActive('summery_tab','nav-link')">Activities</a>
                                         </li>
                                         <li class="nav-item">
-                                                <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
+                                                <a href="" data-target="#edit" data-toggle="tab" class="nav-link" onclick="setElementAsActive('summery_tab','nav-link')">Edit</a>
                                         </li>
                                 </ul>
 
                                 <!--Summery content-->
                                 <div class="tab-content py-4">
-                                        <div class="tab-pane active" id="Summery">
+                                        <div class="tab-pane" id="Summery" >
                                                 <h5 class="mb-3">User Profile</h5>
                                                 <div class="row">
                                                         <div class="col-md-6">
@@ -95,21 +95,23 @@
                                                         @endforeach
                                                         </tbody>
                                                 </table>
+                                                {{ $user_comments->links() }}
                                                 <table class="table table-hover table-striped">
                                                         <tbody>
                                                         @foreach($user_logs as $log)
                                                                 @if ($log->created_at->eq($log->updated_at))
                                                                         <tr>
-                                                                                <td>{{$users->name}} Added a new comment: {{$log->description}}</td>
+                                                                                <td>{{$users->name}} Added a new log: {{$log->description}}</td>
                                                                         </tr>
                                                                 @else
                                                                         <tr>
-                                                                                <td>{{$users->name}} updated the comment: {{$log->description}}</td>
+                                                                                <td>{{$users->name}} updated the log: {{$log->description}}</td>
                                                                         </tr>
                                                                 @endif
                                                         @endforeach
                                                         </tbody>
                                                 </table>
+                                                {{ $user_logs->links() }}
                                         </div>
 
                                         <!--edit content-->
