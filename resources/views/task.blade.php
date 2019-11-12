@@ -4,7 +4,7 @@
 @section('content2')
 <div>
     <?php echo "....  Hi from <strong>Task</strong> page"?>
-    
+    {{-- start logwork form --}}
     <h3><b>Type of task:</b> {{$task->type}}</h3>
     <br/>
     <h3><b>Title of task:</b> {{$task->name}}</h3>
@@ -18,6 +18,7 @@
     <li><h3> {{$user->name}}</h3></li>
     </ul>
     @endforeach
+    {{------------------------------}}
 </div>
 
 <button id="logwork" type="button" class="btn btn-outline-primary">Logwork</button>
@@ -59,11 +60,11 @@
           <button id="save" type="submit" class="btn btn-primary">Save</button>
     </form>
     <div>
-
+{{-----------------------------}}
+<i class="fa fa-trash-o"></i>-
         {{-- logworks on the task --}}
         @foreach ($logworks as $logwork)
             logwork id: {{$logwork->id}}<br/>
-            user id: {{$logwork->user_id}}<br/>
             description: {{$logwork->description}}<br/>
             User id: <b>{{$logwork->user->id}}</b><br/>
             User name: <b>{{$logwork->user->name}}</b><br/>
@@ -72,9 +73,11 @@
             houres: {{$logwork->houre}}<br/>
             minutes: {{$logwork->minute}}<br/>
             Date: {{$logwork->date}}<br/>
-            created_at: {{$logwork->created_at}}<br/><hr/>
+            created_at: {{$logwork->created_at}}<br/>
+            <hr/>
+            
         @endforeach
-        {{-- -------------------------- --}}
+        {{------------------------------}}
     </div>
 </div>
 

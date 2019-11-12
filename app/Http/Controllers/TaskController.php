@@ -33,7 +33,7 @@ class TaskController extends Controller
     /////////////
     public function task_page($id) {
         $tasks = Task::find($id);
-        $logworks = Logwork::where('task_id', $id)->orderBy('date')->get();
+        $logworks = Logwork::where('task_id', $id)->orderBy('date','desc')->get();
         $task = Array("task" => $tasks, "logworks" =>$logworks);
         return view('/task',$task);
     }
