@@ -12,12 +12,12 @@
     <title><?php echo e(config('app.name', 'Agenda')); ?></title>
 
     <!-- Styles -->
-    
+    <link href="<?php echo e(asset('css/font-awesome.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
-    
-    
+
+    <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
@@ -95,6 +95,5 @@
     <!-- Scripts -->
     <script src="<?php echo e(asset('js/app.js')); ?>"></script>
     <script src="<?php echo e(asset('js/scase.js')); ?>"></script>
-    
 </body>
 </html>

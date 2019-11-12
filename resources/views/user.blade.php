@@ -66,7 +66,7 @@
                                                                         <th>State</th>
                                                                 </tr>
                                                                 @foreach($users->tasks as $task)
-                                                                        <tr>
+                                                                        <tr class="pointer" onclick="window.location='/task/{{$task->id}}';">
                                                                                 <td>{{$task->name}}</td>
                                                                                 <td>{{$task->type}}</td>
                                                                                 <td>{{$task->description}}</td>
