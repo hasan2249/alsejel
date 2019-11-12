@@ -7,6 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title><?php echo e(config('app.name', 'Agenda')); ?></title>
 
@@ -63,6 +64,11 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="<?php echo e(url('/user/'.Auth::user()->id)); ?>">
+                                            Profile
+                                        </a>
+                                    </li>
                                     <li>
                                         <a href="<?php echo e(url('/logout')); ?>"
                                             onclick="event.preventDefault();

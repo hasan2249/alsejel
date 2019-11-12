@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class userController extends Controller
 {
@@ -26,8 +27,17 @@ class userController extends Controller
 
     public function user_page($id) {
         $users = User::find($id);
-        $user = Array('user' => $users);
-        return view('user', $user);
+
+        $user_comments = $users->comment()->orderBy('created_at','desc')->get();
+        $user_logs = $users->logwork()->orderBy('created_at','desc')->get();
+
+//        $user_comment = DB::table("comments")->where('id',$id)->orderBy('created_at','desc');
+//        $user_log = DB::table("logworks")->where('id',$id)->orderBy('created_at','desc');
+//        $user_activities = [$user_logs , $user_comments];
+
+
+
+        return view('user', compact('users','user_comments', 'user_logs'));
     }
     /////////////////////////////////////////////////////////
 }
