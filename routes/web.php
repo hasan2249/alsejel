@@ -41,3 +41,5 @@ Route::get('/task/{id}', 'TaskController@task_page');
 
 Route::post('/task/{id}', 'TaskController@logwork');
 //---------------------------------------
+// Controller: LoginController -----------
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

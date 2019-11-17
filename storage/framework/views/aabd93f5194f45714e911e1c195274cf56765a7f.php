@@ -15,7 +15,7 @@
     <link href="<?php echo e(asset('css/font-awesome.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
-    <link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('css/styleLR.css')); ?>" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
