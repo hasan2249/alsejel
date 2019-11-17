@@ -61,7 +61,6 @@
     </form>
     <div>
 {{-----------------------------}}
-<i class="fa fa-trash-o"></i>-
         {{-- logworks on the task --}}
         @foreach ($logworks as $logwork)
             logwork id: {{$logwork->id}}<br/>
