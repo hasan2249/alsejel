@@ -24,16 +24,14 @@
         ]); ?>
     </script>
 </head>
-<body>
 
-
-</body>
+<body  class="header-fixed">
     <!-- partial:partials/_header.html -->
-    <nav class="t-header" class="header-fixed" >
+    <nav class="t-header"  >
       <div class="t-header-brand-wrapper">
         <a href="{{ url('/home') }}">
-          <img class="logo" src="images/e209aff7-f9d5-414d-8a15-1a8a4b92072b_200x200.png" alt="">
-          <img class="logo-mini" src="images/e209aff7-f9d5-414d-8a15-1a8a4b92072b_200x200.png" alt="">
+          <img class="logo" src="/images/e209aff7-f9d5-414d-8a15-1a8a4b92072b_200x200.png" alt="">
+          <img class="logo-mini" src="/images/e209aff7-f9d5-414d-8a15-1a8a4b92072b_200x200.png" alt="">
         </a>
       </div>
       <div class="t-header-content-wrapper">
@@ -171,7 +169,7 @@
       <div class="sidebar">
         <div class="user-profile">
           <div class="display-avatar animated-avatar">
-            <img class="profile-img img-lg rounded-circle" src="images/profile/male/image_1.png" alt="profile image">
+            <img class="profile-img img-lg rounded-circle" src="/images/profile/male/image_1.png" alt="profile image">
           </div>
           <div class="info-wrapper">
             <p class="user-name"> {{ Auth::user()->name }} </p>
@@ -235,11 +233,12 @@
           <p class="text-gray">Upgrade to <b class="text-primary">PRO</b> for more exciting features</p>
           <a class="btn upgrade-btn" target="_blank" href="http://www.uxcandy.co/product/label-pro-admin-template/">Upgrade to PRO</a>
         </div>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
       </div>
     <!-- partial -->
+    <div class="page-content-wrapper">
         <div class="page-content-wrapper-inner">
           <div class="content-viewport">
-            <div class="row">
             @yield('content2')
             </div>
             </div>

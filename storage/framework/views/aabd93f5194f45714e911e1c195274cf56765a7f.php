@@ -55,8 +55,8 @@
                     <ul class="nav  navbar-right list-inline">
                         <!-- Authentication Links -->
                         <?php if(Auth::guest()): ?>
-                            <li><a href="<?php echo e(url('/login')); ?>" class="list-inline-item">Login</a></li>
-                            <li><a href="<?php echo e(url('/register')); ?>" class="list-inline-item">Register</a></li>
+                            <li><a href="<?php echo e(url('/login')); ?>" class="navbar-brand"  style = "color:blue ">Login</a></li>
+                            <li><a href="<?php echo e(url('/register')); ?>"  class="navbar-brand" style = "color:blue">Register</a></li>
                         <?php else: ?>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

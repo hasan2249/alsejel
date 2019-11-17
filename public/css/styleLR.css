@@ -16,7 +16,10 @@ select.form-control:not([size]):not([multiple]){
   {
     background-color: #e5ebef;
   }
-  
+
+  .navbar-default{
+    background-color  :#464a4c
+  }
   /* Start css for logwork form ------------------------------------------------ */
   /* #logwork_form{
     width: auto;

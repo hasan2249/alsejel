@@ -2,6 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+        <p style="text-align:center ; font-size:25px">Welcome to <span style="color:blue">Scace</span> company </p>
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">

@@ -1,15 +1,15 @@
 @extends('home')
 
 @section('content2')
-<?php echo "....  Hi from <strong>users</strong> page"?>
 
-<table class="table table-hover">
+<p style ="text-align:center"> <span style ="color:blue ; font-size: 50px ; letter-spacing: 5px">SCACE</span> <small style = "font-size: 25px ;letter-spacing: 3px">team</small></p>
+<table class="table table-hover" >
   <thead class="thead-light">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Rule</th>
-      <th scope="col">Email</th>
+      <th scope="col" style="color:blue ; font-size:20px">#</th>
+      <th scope="col" style="color:blue; font-size:20px">Name</th>
+      <th scope="col" style="color:blue; font-size:20px">Rule</th>
+      <th scope="col" style="color:blue; font-size:20px">Email</th>
     </tr>
   </thead>
   <tbody>
