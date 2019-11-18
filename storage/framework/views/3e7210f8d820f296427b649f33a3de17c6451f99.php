@@ -16,13 +16,14 @@
     <link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
-
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    
 </head>
 
 <body  class="header-fixed">
@@ -36,10 +37,13 @@
       </div>
       <div class="t-header-content-wrapper">
         <div class="t-header-content">
+        <button class="t-header-toggler t-header-mobile-toggler d-block d-lg-none">
+        <i class="fa fa-th-large"></i>
+          </button>
           <ul class="nav ml-auto">
             <li class="nav-item dropdown">
               <a class="nav-link" href="#" id="notificationDropdown" data-toggle="dropdown" aria-expanded="false">
-                <i class="glyphicon glyphicon-envelope"></i>
+              <i class="fa fa-user"></i>
               </a>
               <div class="dropdown-menu navbar-dropdown dropdown-menu-right" aria-labelledby="notificationDropdown">
                 <div class="dropdown-header">
@@ -82,7 +86,7 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link" href="#" id="messageDropdown" data-toggle="dropdown" aria-expanded="false">
-                <i class="glyphicon glyphicon-envelope"></i>
+              <i class="fa fa-pencil-square-o"></i>
                 <span class="notification-indicator notification-indicator-primary notification-indicator-ripple"></span>
               </a>
               <div class="dropdown-menu navbar-dropdown dropdown-menu-right" aria-labelledby="messageDropdown">
@@ -129,7 +133,7 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link" href="#" id="appsDropdown" data-toggle="dropdown" aria-expanded="false">
-                <i class="glyphicon glyphicon-envelope"></i>
+              <i class="fa fa-eye-slash"></i>
               </a>
               <div class="dropdown-menu navbar-dropdown dropdown-menu-right" aria-labelledby="appsDropdown">
                 <div class="dropdown-header">
@@ -195,38 +199,38 @@
           <li>
             <a href="<?php echo e(url('/tasks')); ?>">
               <span class="link-title">Tasks</span>
-              <i class="glyphicon glyphicon-envelope link-icon"></i>
+              <i class="fa fa-th-large link-icon"></i>
             </a>
           </li>
           <li>
             <a href="#">
               <span class="link-title">Reports</span>
-              <i class="glyphicon glyphicon-envelope link-icon"></i>
+              <i class="fa fa-flag link-icon "></i>
             </a>
           </li>
           <li>
             <a href="#">
               <span class="link-title">Dashboard</span>
-              <i class="glyphicon glyphicon-envelope link-icon"></i>
+              <i class="fa fa-cog link-icon"></i>
             </a>
           </li>
           <li>
             <a href="#">
               <span class="link-title">Disabled</span>
-              <i class="glyphicon glyphicon-envelope link-icon"></i>
+              <i class="fa fa-refresh link-icon"></i>
             </a>
           </li>
           <li>
             <a href="#">
               <span class="link-title">Disabled</span>
-              <i class="glyphicon glyphicon-envelope link-icon"></i>
+              <i class="fa fa-refresh link-icon"></i>
             </a>
           </li>
           <li class="nav-category-divider">DOCS</li>
           <li>
             <a href="../docs/docs.html">
               <span class="link-title">Documentation</span>
-              <i class="glyphicon glyphicon-envelope link-icon"></i>
+              <i class="fa fa-file-o link-icon"></i>
             </a>
           </li>
         </ul>
@@ -265,9 +269,12 @@
       <!-- page content ends -->
     </div>
 <!-- Scripts -->
-
+  <!-- Scripts for the template -->
     <script src="<?php echo e(asset('js/scase.js')); ?>"></script>
     <script src="<?php echo e(asset('js/core.js')); ?>"></script>
     <script src="<?php echo e(asset('js/app.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/template.js')); ?>"></script>
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         </body>
         </html>
