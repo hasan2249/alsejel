@@ -80,7 +80,7 @@
 
                                         <!--Activities content-->
                                         <div class="tab-pane" id="Activities" onclick="removeActiveClass('Summery')">
-                                                <table class="table table-hover table-striped">
+                                                {{-- <table class="table table-hover table-striped">
                                                         <tbody>
                                                         @foreach($user_comments as $comment)
                                                                 @if ($comment->created_at->eq($comment->updated_at))
@@ -94,7 +94,23 @@
                                                                 @endif
                                                         @endforeach
                                                         </tbody>
-                                                </table>
+                                                </table> --}}
+                                                <table class="table table-hover table-striped">
+                                                                <tbody>
+                                                                        @foreach($user_all as $comment)
+                                                                                {{-- @if ($comment->created_at == $comment->updated_at) --}}
+                                                                                                {{-- <td>{{$users->id}} Added a new comment: {{$comment->id}}</td>  --}}
+                                                                                                
+                                                                                
+                                                                                {{-- @else --}}
+                                                                                        <tr>
+                                                                                                <td><b>{{$users->name}}:</b>  updated the comment: {{$comment->description}}</td>
+                                                                                        </tr>
+                                                                                {{-- @endif --}}
+                                                                        @endforeach
+                                                                </tbody>
+                                                        </table>
+                                                        {{-- {{print_r($user_all)}} --}}
                                         </div>
 
                                         <!--edit content-->

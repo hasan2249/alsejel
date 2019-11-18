@@ -553,5 +553,6 @@ return array(
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
     'UserTableSeeder' => $baseDir . '/database/seeds/UserTableSeeder.php',
+    'commentsTableSeeder' => $baseDir . '/database/seeds/commentsTableSeeder.php',
     'logworks' => $baseDir . '/database/seeds/logworks.php',
 );

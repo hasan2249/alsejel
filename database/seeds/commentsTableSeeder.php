@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 
-class logworks extends Seeder
+class commentsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,15 +14,14 @@ class logworks extends Seeder
     {
         //
         $faker = Faker::create();
-        foreach (range(1,100) as $index) {
-            DB::table('logworks')->insert([
+        foreach (range(1,400) as $index) {
+            DB::table('comments')->insert([
                 'description' => $faker->paragraph,
-                'date' => $faker->date('Y-m-d H:i:s'),
-                'houre' => $faker->numberBetween(1,8),
-                'minute' => $faker->numberBetween(1,60),
+                'created_at' => $faker->date('Y-m-d H:i:s'),
+                'updated_at' => $faker->date('Y-m-d H:i:s'),
                 'task_id' => $faker->numberBetween(1,50),
                 'user_id' => $faker->numberBetween(1,10),   
             ]);
-        }
     }
+}
 }
