@@ -30,12 +30,12 @@ Route::get('/home', 'HomeController@index');
 // Controller: userController -----------
 Route::get('/user/{id}', 'userController@user_page');
 
-Route::get('/users', 'userController@users_page'); 
+Route::get('/users', 'userController@users_page');
 //---------------------------------------
 
 // Controller: TaskController -----------
 
-Route::get('/tasks', 'TaskController@tasks_page'); 
+Route::get('/tasks', 'TaskController@tasks_page');
 
 Route::get('/task/{id}', 'TaskController@task_page');
 

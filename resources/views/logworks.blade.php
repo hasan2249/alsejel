@@ -1,4 +1,4 @@
 @foreach($logworks as $logwork)
-<br/>
+<br />
 <h3>{{$logwork->id}}</h3>
 @endforeach
