@@ -40,6 +40,11 @@ Route::get('/tasks', 'TaskController@tasks_page');
 Route::get('/task/{id}', 'TaskController@task_page');
 
 Route::post('/task/{id}', 'TaskController@logwork');
+Route::get('/task/{id}/join', 'TaskController@join');
+Route::post('/task/{id}/join', 'TaskController@join');
+
+Route::get('/task/{id}/left', 'TaskController@left');
+Route::post('/task/{id}/left', 'TaskController@left');
 //---------------------------------------
 // Controller: LoginController -----------
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

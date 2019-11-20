@@ -8243,7 +8243,7 @@ table {
     height: 7px; }
 
 .text-black {
-  color: #101010; }
+  color: blue; }
 
 .notification-indicator {
   display: block;
@@ -9001,4 +9001,71 @@ footer {
 
 #myBtn:hover {
   background-color: #555; /* Add a dark-grey background on hover */
+}
+
+ /* Task Page design */
+.issuePanelContainer {
+  -moz-transition: opacity 0.2s;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+.issue-data-block {
+  border-bottom: 1px solid #c1c7d0;
+  padding: 10px;
+}
+.issue-data-block:before, .issue-data-block:after {
+  content: " ";
+  display: table;
+}
+.issue-data-block:after {
+  clear: both;
+}
+
+.action-links {
+  float: right;
+}
+
+.action-details {
+  line-height: 1.5;
+  text-align: left;
+}
+.action-body {
+  overflow: auto;
+  overflow-y: hidden;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.action-body .item-details {
+  margin-top: 0.5em;
+}
+.item-details {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.actionContainer ul.item-details dl dd {
+  width: 79%;
+}
+
+.issue-body-content .item-details dl>dd {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 2px 0 2px 5px;
+}
+
+.item-details dl>dd {
+  display: table-cell;
+  padding-left: 10px;
+}
+
+.item-details dl {
+  border-spacing: 0;
+  display: table;
+  table-layout: fixed;
+  margin: 0;
+  width: 100%;
 }

@@ -7,9 +7,10 @@ use Illuminate\Http\Request ;
 use App\Task;
 use App\Logwork;
 use App\User;
+use App\task_user;
 use Redirect;
 use Auth;
-
+use DB;
 class TaskController extends Controller
 {
     // this functions are only avilable for authenticated users.
@@ -34,7 +35,15 @@ class TaskController extends Controller
     public function task_page($id) {
         $tasks = Task::find($id);
         $logworks = Logwork::where('task_id', $id)->orderBy('date','desc')->get();
-        $task = Array("task" => $tasks, "logworks" =>$logworks);
+        $bool = false;
+        foreach ($tasks->user as $user)
+        {
+            if( Auth::user()->name  == $user->name)
+        {
+               $bool = true;
+        }
+        }
+        $task = Array("task" => $tasks, "logworks" =>$logworks , "bool" =>$bool)  ;
         return view('/task',$task);
     }
      //----------------------------------------------------
@@ -55,6 +64,21 @@ class TaskController extends Controller
         $logwork->user_id = Auth::user()->id;
         $logwork->save();
         return Redirect::back();
+    }
+
+    public function join(Request $req, $id)
+    {
+      $task_use = new task_user();
+      $task_use->user_id = Auth::user()->id;
+      $task_use->task_id = $id;
+      $task_use->save();
+      return Redirect::back();
+    }
+
+    public function left(Request $req, $id)
+    {
+        DB::table('task_user')->where('task_id', $id)->delete();
+      return Redirect::back();
     }
      //----------------------------------------------------
 }
