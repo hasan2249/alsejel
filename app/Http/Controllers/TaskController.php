@@ -41,6 +41,7 @@ class TaskController extends Controller
             if( Auth::user()->name  == $user->name)
         {
                $bool = true;
+               break;
         }
         }
         $task = Array("task" => $tasks, "logworks" =>$logworks , "bool" =>$bool)  ;
@@ -77,8 +78,15 @@ class TaskController extends Controller
 
     public function left(Request $req, $id)
     {
-        DB::table('task_user')->where('task_id', $id)->delete();
+        DB::table('task_user')->where([['task_id', $id],['user_id',Auth::user()->id]])->delete();
       return Redirect::back();
     }
      //----------------------------------------------------
+
+     public function deleteLogwork(Request $req, $id) {
+        $task = Logwork::find($id);
+        $task->delete();
+        return Redirect::back();
+     }
+
 }

@@ -17,20 +17,19 @@
              
 </div>
                 
-                <p class="text-gray">{{$task->type}} / {{$task->created_at}} </p>
-                <p class="text-black" style ="margin-top:20px;">Description</p>
-              </div>
-              <div class="col-3 py-1">
+    <p class="text-gray">{{$task->type}} / {{$task->created_at}} </p>
+    <p class="text-black" style ="margin-top:20px;">Description</p>
+</div>
+        <div class="col-3 py-1">
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Add logwork</button>
-              <div class="dropdown" style="margin-top:25px;">
-              <i class="fa fa-caret-down" aria-hidden="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> People</i>
-            <div class="dropdown-menu">
-            @foreach($task->user as $user)
-            <a class="dropdown-item" href="#">{{$user->name}}</a>
-                   @endforeach
-          </div>
-          
-           </div>
+              <div class="pointer dropdown" style="margin-top:25px;">
+                  <i class="fa fa-caret-down" aria-hidden="true" class="btn btn-primary dropdown-toggle " data-toggle="dropdown"> People</i>
+                  <div class="people_dropdown dropdown-menu">
+                    @foreach($task->user as $user)
+                        <a class="dropdown-item" href="/user/{{$user->id}}">{{$user->name}}</a>
+                    @endforeach
+                 </div>
+              </div>
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -48,16 +47,18 @@
           <input name="date" class="form-control" type="date" required>
         </div>
         <div class="form-group">
-                <label for="exampleFormControlSelect1" class="col-form-label">Date:</label>
-        </div>
-        <div class="form-group">
          <label for="exampleFormControlSelect1" class="col-form-label">Deuration of time:</label>
          <div class="row">  
         <div class="col-2">
             <input name="houres" type="number"  class="form-control" id="formGroupExampleInput" required>
         </div>
         <div class="col-2">
-                <label for="formGroupExampleInput" class="col-form-label" >hours</label>
+                <label for="formGroupExampleInput" class="col-form-label" >hours </label>
+            </div>
+            <div class="col-2">
+                    <div id="delta">
+                    
+                        </div>  
             </div>
         <div class="col-2">
             <input name="minutes" type="number"  class="form-control" id="formGroupExampleInput" value="0" required>
@@ -127,9 +128,11 @@
    <div id="worklog-142295" class="issue-data-block">
     <div class="actionContainer">
         <div class="action-links">
-        <a id="edit_worklog_142295" href="#" title="Edit" class="edit-worklog-trigger" style="margin:5px 5px 5px"><i class="fa fa-edit" aria-hidden="true"></i></span></a>
-        <a id="delete_worklog_142295" href="#" title="Delete" class="delete-worklog-trigger" style="margin:5px 5px 5px"><i class="fa fa-trash" aria-hidden="true"></i></span></a>
-                    </div>
+            <a id="edit_worklog_142295" href="#" title="Edit" class="edit-worklog-trigger" style="margin:5px 5px 5px"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                <form id="Delete_form" action="/delete/{{$logwork->id}}" method="GET">
+                    <a href="#" id="delete_worklog_142295"  title="Delete" class="delete-worklog-trigger" style="margin:5px 5px 5px"><i data-toggle="modal" data-target="#confirmDelete" class="fa fa-trash" aria-hidden="true"></i></a>
+            </form>
+        </div>
         <div class="action-details">    
     
     <a href="#">{{$logwork->user->name}}</a>
@@ -165,5 +168,27 @@
 
    </div>
 
-
+{{-- confirm form --}}
+{{-- <i name="pencil" class="fa fa-pencil"></i> --}}
+{{-- href="#test?x={{$logwork->id}}" --}}
+<div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLab" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLab">Delete Logwork</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          You are going to delete the log work, Are you sure?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Close</button>
+          <input  type="submit" form="Delete_form" value="Yes, Delete" class="btn btn-primary"/>     
+        </div>
+      </div>
+    </div>
+  </div>
+{{-- End confirm form --}}
 @endsection
