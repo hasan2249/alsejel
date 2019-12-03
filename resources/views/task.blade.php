@@ -39,6 +39,8 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+
+
       <div class="modal-body">
       <form action="/task/{{$task->id}}" method="POST">
       {{ csrf_field() }}
@@ -79,7 +81,6 @@
       </div>
         </form>
       </div>
-    
     </div>
   </div>
 </div>  
@@ -128,27 +129,81 @@
    <div id="worklog-142295" class="issue-data-block">
     <div class="actionContainer">
         <div class="action-links">
-            <a id="edit_worklog_142295" href="#" title="Edit" class="edit-worklog-trigger" style="margin:5px 5px 5px"><i class="fa fa-edit" aria-hidden="true"></i></a>
+
+{{--Edit logwork--}}
+        <a  href="#" data-toggle="modal" data-target="#EditModal{{$logwork->id}}" data-whatever="@getbootstrap" title="Edit" class="edit-worklog-trigger" style="margin:5px 5px 5px"><i class="fa fa-edit" aria-hidden="true"></i></a>
+        <div class="modal fade" id="EditModal{{$logwork->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit work log</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form action="/editLogwork/{{$logwork->id}}" method="POST">
+      {{ csrf_field() }}
+      <div class="form-group">
+          <label for="exampleFormControlSelect1" class="col-form-label" >Date:</label>
+          <input name="date" class="form-control" value="{{$logwork->date}}" type="date" required>
+        </div>
+        <div class="form-group">
+         <label for="exampleFormControlSelect1" class="col-form-label">Deuration of time:</label>
+         <div class="row">  
+        <div class="col-2">
+            <input name="houres" type="number"  value="{{$logwork->houre}}" class="form-control" id="formGroupExampleInput" required>
+        </div>
+        <div class="col-2">
+                <label for="formGroupExampleInput" class="col-form-label" >hours </label>
+            </div>
+            <div class="col-2">
+                    <div id="delta">
+                    </div>  
+            </div>
+        <div class="col-2">
+            <input name="minutes" type="number" value="{{$logwork->minute}}"  class="form-control" id="formGroupExampleInput" value="0" required>
+        </div>
+            <div class="col-2">
+            <label for="formGroupExampleInput" class="col-form-label">minutes</label>    
+        </div>
+        </div>
+    </div>
+    <label for="exampleFormControlTextarea1" class="col-form-label">Description:</label>
+        <div class="form-group">
+            
+            <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3" required>{{$logwork->description}}</textarea>
+          </div>
+          <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="save" type="submit" class="btn btn-primary">Save</button>
+      </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> 
+        {{--End edit logwork--}}
+
                 <form id="Delete_form" action="/delete/{{$logwork->id}}" method="GET">
                     <a href="#" id="delete_worklog_142295"  title="Delete" class="delete-worklog-trigger" style="margin:5px 5px 5px"><i data-toggle="modal" data-target="#confirmDelete" class="fa fa-trash" aria-hidden="true"></i></a>
-            </form>
+                </form>
         </div>
         <div class="action-details">    
     
     <a href="#">{{$logwork->user->name}}</a>
- logged work  - <span title="Created: {{$logwork->user->created_at}}" class="subText"><span class="date">{{$logwork->user->created_at}}</span></span>  </div>
+ logged work  - <span title="Created: {{$logwork->user->created_at}}" class="subText"><span class="date">{{$logwork->date}}</span></span>  </div>
         <div class="action-body">
             <ul id="worklog_details_142295" class="item-details">
                 <li>
                     <dl>
                         <dt>Time Spent:</dt>
-                        <dd id="wl-142295-d" class="worklog-duration">{{$logwork->houre}} / {{$logwork->minute}}</dd>
+                        <dd id="wl-142295-d" class="worklog-duration">{{$logwork->houre}} houres, {{$logwork->minute}} minutes</dd>
                     </dl>
                     <dl>
                         <dt>&nbsp;</dt>
                         <dd id="wl-142295-c" class="worklog-comment">
                                                             
-<p><a href="#" title="DSIA Project Initiation" class="issue-link" data-issue-key="AUZSDFIN-446">{{$task->name}}</a>:</p>
 
 <p>{{$logwork->description}} .</p>
              </dd>
@@ -169,8 +224,6 @@
    </div>
 
 {{-- confirm form --}}
-{{-- <i name="pencil" class="fa fa-pencil"></i> --}}
-{{-- href="#test?x={{$logwork->id}}" --}}
 <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLab" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

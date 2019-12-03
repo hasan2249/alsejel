@@ -42,6 +42,7 @@ Route::get('/task/{id}', 'TaskController@task_page');
 Route::get('/delete/{id}', 'TaskController@deleteLogwork');
 
 Route::post('/task/{id}', 'TaskController@logwork');
+Route::post('/editLogwork/{id}', 'TaskController@editLogwork');
 Route::get('/task/{id}/join', 'TaskController@join');
 Route::post('/task/{id}/join', 'TaskController@join');
 

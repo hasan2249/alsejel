@@ -67,6 +67,16 @@ class TaskController extends Controller
         return Redirect::back();
     }
 
+    public function editLogwork(Request $req, $id) {
+        $logwork = Logwork::find($id);
+        $logwork->description = $req['description']; // I can type $req->input('description');
+        $logwork->houre = $req['houres'];
+        $logwork->minute = $req['minutes'];
+        $logwork->date = $req['date'];
+        $logwork->save();
+        return Redirect::back();
+    }
+
     public function join(Request $req, $id)
     {
       $task_use = new task_user();
