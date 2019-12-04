@@ -55,3 +55,6 @@ Route::post('/task/{id}/left', 'TaskController@left');
 //---------------------------------------
 // Controller: LoginController -----------
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+//change password
+Route::get('change-password', 'userController@index');
+Route::post('change-password', 'userController@store')->name('change.password');

@@ -19,10 +19,12 @@
                     <a href="" data-target="#Activities" data-toggle="tab" class="nav-link"
                         onclick="removeActiveClass('summery_tab')">Activities</a>
                 </li>
+                @if(Auth::user()->id == $users->id)
                 <li class="nav-item">
                     <a href="" data-target="#edit" data-toggle="tab" class="nav-link"
                         onclick="removeActiveClass('summery_tab')">Edit</a>
                 </li>
+                @endif
             </ul>
 
             <!--Summery content-->
@@ -106,32 +108,58 @@
                     </table>
                     </div> -->
                 </div>
-
+                @if(Auth::user()->id == $users->id)
                 <!--edit content-->
                 <div class="tab-pane" id="edit" onclick="removeActiveClass('Summery')">
-                    <form role="form">
+                <form method="POST" action="{{ route('change.password') }}">
+                    {{ csrf_field() }}
+   
+                         @foreach ($errors->all() as $error)
+                            <p class="text-danger">{{ $error }}</p>
+                         @endforeach 
+  
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Password</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="password" value="">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Current Password</label>
+  
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="current_password" autocomplete="current-password">
                             </div>
                         </div>
+  
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="password" value="">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">New Password</label>
+  
+                            <div class="col-md-6">
+                                <input id="new_password" type="password" class="form-control" name="new_password" autocomplete="current-password">
                             </div>
                         </div>
+  
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label" />
-                            <div class="col-lg-9">
-                                <input type="reset" class="btn btn-secondary" value="Cancel">
-                                <input type="button" class="btn btn-primary" value="Save Changes">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">New Confirm Password</label>
+    
+                            <div class="col-md-6">
+                                <input id="new_confirm_password" type="password" class="form-control" name="new_confirm_password" autocomplete="current-password">
+                            </div>
+                        </div>
+   
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Update Password
+                                </button>
                             </div>
                         </div>
                     </form>
                 </div>
+               @endif
             </div>
         </div>
     </div>
+    <script>
+    var msg = '{{Session::get('alert')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+      alert(msg);
+    }
+  </script>
     @endsection
