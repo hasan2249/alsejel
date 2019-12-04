@@ -6,6 +6,7 @@ use Illuminate\Http\Request ;
 
 use App\Task;
 use App\Logwork;
+use App\Comment;
 use App\User;
 use App\task_user;
 use Redirect;
@@ -35,16 +36,17 @@ class TaskController extends Controller
     public function task_page($id) {
         $tasks = Task::find($id);
         $logworks = Logwork::where('task_id', $id)->orderBy('date','desc')->get();
+        $comments = Comment::where('task_id', $id)->orderBy('created_at','desc')->get();
         $bool = false;
         foreach ($tasks->user as $user)
         {
             if( Auth::user()->name  == $user->name)
-        {
-               $bool = true;
-               break;
+            {
+                $bool = true;
+                break;
+            }
         }
-        }
-        $task = Array("task" => $tasks, "logworks" =>$logworks , "bool" =>$bool)  ;
+        $task = Array("task" => $tasks, "logworks" =>$logworks ,"comments" =>$comments ,"bool" =>$bool)  ;
         return view('/task',$task);
     }
      //----------------------------------------------------
@@ -77,6 +79,13 @@ class TaskController extends Controller
         return Redirect::back();
     }
 
+    public function editComment(Request $req, $id) {
+        $logwork = Comment::find($id);
+        $logwork->description = $req['description']; // I can type $req->input('description');
+        $logwork->save();
+        return Redirect::back();
+    }
+
     public function join(Request $req, $id)
     {
       $task_use = new task_user();
@@ -95,6 +104,12 @@ class TaskController extends Controller
 
      public function deleteLogwork(Request $req, $id) {
         $task = Logwork::find($id);
+        $task->delete();
+        return Redirect::back();
+     }
+
+     public function deleteComment(Request $req, $id) {
+        $task = Comment::find($id);
         $task->delete();
         return Redirect::back();
      }
