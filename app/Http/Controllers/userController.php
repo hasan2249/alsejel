@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Logwork;
 use Illuminate\Support\Facades\DB;
+use Auth;
+use Hash;
 
 class userController extends Controller
 {
@@ -50,4 +52,21 @@ class userController extends Controller
         return view('user', compact('users','user_comments', 'user_all'));
     }
     /////////////////////////////////////////////////////////
+    public function index()
+    {
+        return view('changePassword');
+    } 
+   
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function store(Request $request)
+    {
+        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
+        return redirect()->back() ->with('alert', 'Password change successfully.');
+    }
+
 }
+

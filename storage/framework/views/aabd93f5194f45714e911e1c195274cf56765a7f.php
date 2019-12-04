@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,10 +21,11 @@
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
+                                'csrfToken' => csrf_token(),
+                            ]); ?>
     </script>
 </head>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
@@ -55,34 +57,34 @@
                     <ul class="nav  navbar-right list-inline">
                         <!-- Authentication Links -->
                         <?php if(Auth::guest()): ?>
-                            <li><a href="<?php echo e(url('/login')); ?>" class="navbar-brand"  style = "color:blue ">Login</a></li>
-                            <li><a href="<?php echo e(url('/register')); ?>"  class="navbar-brand" style = "color:blue">Register</a></li>
+                        <li><a href="<?php echo e(url('/login')); ?>" class="navbar-brand" style="color:blue ">Login</a></li>
+                        <li><a href="<?php echo e(url('/register')); ?>" class="navbar-brand" style="color:blue">Register</a></li>
                         <?php else: ?>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <?php echo e(Auth::user()->name); ?> 
-                                </a>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <?php echo e(Auth::user()->name); ?>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="<?php echo e(url('/user/'.Auth::user()->id)); ?>">
-                                            Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo e(url('/logout')); ?>"
-                                            onclick="event.preventDefault();
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="<?php echo e(url('/user/'.Auth::user()->id)); ?>">
+                                        Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo e(url('/logout')); ?>" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
+                                        Logout
+                                    </a>
 
-                                        <form id="logout-form" action="<?php echo e(url('/logout')); ?>" method="POST" style="display: none;">
-                                            <?php echo e(csrf_field()); ?>
+                                    <form id="logout-form" action="<?php echo e(url('/logout')); ?>" method="POST" style="display: none;">
+                                        <?php echo e(csrf_field()); ?>
 
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
                         <?php endif; ?>
                     </ul>
                 </div>
@@ -96,4 +98,5 @@
     <script src="<?php echo e(asset('js/app.js')); ?>"></script>
     <script src="<?php echo e(asset('js/scase.js')); ?>"></script>
 </body>
+
 </html>
