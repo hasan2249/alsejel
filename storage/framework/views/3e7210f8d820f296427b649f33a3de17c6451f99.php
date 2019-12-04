@@ -186,7 +186,7 @@
                         alt="profile image">
                 </div>
                 <div class="info-wrapper">
-                    <p class="user-name"> <?php echo e(Auth::user()->name); ?> </p>
+                    <p class="user-name"><a href="/user/<?php echo e(Auth::user()->id); ?>"> <?php echo e(Auth::user()->name); ?> </a></p>
                     <h6 class="display-income"><?php echo e(Auth::user()->email); ?></h6>
                     <form id="logout-form" action="<?php echo e(url('/logout')); ?>" method="POST">
                         <?php echo e(csrf_field()); ?>
@@ -239,16 +239,11 @@
                 <li class="nav-category-divider">DOCS</li>
                 <li>
                     <a href="../docs/docs.html">
-                        <span class="link-title">Documentation</span>
+                        <span class="link-title">Documentation - Disabled</span>
                         <i class="fa fa-file-o link-icon"></i>
                     </a>
                 </li>
             </ul>
-            <div class="sidebar-upgrade-banner">
-                <p class="text-gray">Upgrade to <b class="text-primary">PRO</b> for more exciting features</p>
-                <a class="btn upgrade-btn" target="_blank"
-                    href="http://www.uxcandy.co/product/label-pro-admin-template/">Upgrade to PRO</a>
-            </div>
             <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
         </div>
         <!-- partial -->
@@ -266,16 +261,9 @@
                 <div class="col-sm-2">
 
                 </div>
-                <div class="col-sm-5 text-center text-sm-right order-sm-1">
-                    <ul class="text-gray">
-                        <li><a href="#">Terms of use</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
+
                 <div class="col-sm-5 text-center text-sm-left mt-3 mt-sm-0">
-                    <small class="text-muted d-block">Copyright © 2019 <a href="http://www.uxcandy.co"
-                            target="_blank">UXCANDY</a>. All rights reserved</small>
-                    <small class="text-gray mt-2">Handcrafted With <i class="mdi mdi-heart text-danger"></i></small>
+                    <small class="text-muted d-block">Copyright © 2019 - <?php echo e(date("Y")); ?>  . All rights reserved for <b>SCASE</b> institution</small>
                 </div>
             </div>
         </footer>

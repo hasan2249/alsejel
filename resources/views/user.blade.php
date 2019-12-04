@@ -2,7 +2,7 @@
 
 @section('content2')
 <div class="container">
-    <div class="row my-2">
+    <div class="row">
         <div class="col-lg-12 order-lg-2">
 
             <!--Navigation bar-->
@@ -61,20 +61,24 @@
                 <!--Tasks content-->
                 <div class="tab-pane" id="Tasks" onclick="removeActiveClass('Summery')">
 
-                    <div>
-                        <table id="Tasks_table" class="table table-hover table-striped">
+                <div class="table-responsive">
+
+                        <table id="Tasks_table" class="table table-hover">
                             <tr>
                                 <th>Task Name</th>
                                 <th>Task Type</th>
-                                <th>Description</th>
                                 <th>State</th>
+                                <th>Description</th>   
                             </tr>
                             @foreach($users->tasks as $task)
                             <tr class="pointer" onclick="window.location='/task/{{$task->id}}';">
                                 <td>{{$task->name}}</td>
                                 <td>{{$task->type}}</td>
-                                <td>{{$task->description}}</td>
                                 <td>{{$task->state}}</td>
+                                <td><div style="white-space: nowrap; width:300px;
+                                  overflow: hidden;
+                                text-overflow: ellipsis;">
+                                {{$task->description}}</div></td>
                             </tr>
                             @endforeach
                         </table>
@@ -84,38 +88,23 @@
 
                 <!--Activities content-->
                 <div class="tab-pane" id="Activities" onclick="removeActiveClass('Summery')">
-                    {{-- <table class="table table-hover table-striped">
-                                                        <tbody>
-                                                        @foreach($user_comments as $comment)
-                                                                @if ($comment->created_at->eq($comment->updated_at))
-                                                                        <tr>
-                                                                                <td>{{$users->name}} Added a new
-                    comment: {{$comment->description}}</td>
-                    </tr>
-                    @else
-                    <tr>
-                        <td>{{$users->name}} updated the comment: {{$comment->description}}</td>
-                    </tr>
-                    @endif
-                    @endforeach
-                    </tbody>
-                    </table> --}}
-                    <table class="table table-hover table-striped">
+                <!-- <div class="table-responsive">
+                    <table class="table table-hover">
                         <tbody>
                             @foreach($user_all as $comment)
-                            {{-- @if ($comment->created_at == $comment->updated_at) --}}
-                            {{-- <td>{{$users->id}} Added a new comment: {{$comment->id}}</td> --}}
-
-
-                            {{-- @else --}}
                             <tr>
-                                <td><b>{{$users->name}}:</b> updated the comment: {{$comment->description}}</td>
+                                <td>
+                                <div style="width:100%;
+                                  overflow: hidden;
+                                text-overflow: ellipsis;height=90px;">
+                                <b>{{$users->name}}:</b> updated the comment: {{$comment->description}}</td>
+                                </div>
                             </tr>
-                            {{-- @endif --}}
+
                             @endforeach
                         </tbody>
                     </table>
-                    {{-- {{print_r($user_all)}} --}}
+                    </div> -->
                 </div>
 
                 <!--edit content-->
