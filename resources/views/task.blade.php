@@ -30,7 +30,8 @@
                     @endforeach
                  </div>
               </div>
-              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -39,8 +40,6 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
-
       <div class="modal-body">
       <form action="/task/{{$task->id}}" method="POST">
       {{ csrf_field() }}
@@ -126,7 +125,10 @@
           <div class="actionContainer">
               <div class="action-links">
 {{--Edit Comments--}}
+
+@if(Auth::user()->id == $comment->user->id)
         <a  href="#" data-toggle="modal" data-target="#CommentModal{{$comment->id}}" data-whatever="@getbootstrap" title="Edit" class="edit-worklog-trigger" style="margin:5px 5px 5px"><i class="fa fa-edit" aria-hidden="true"></i></a>
+@endif
         <div class="modal fade" id="CommentModal{{$comment->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -155,9 +157,13 @@
   </div>
 </div> 
 {{--End edit Comments--}} 
+
+@if(Auth::user()->id == $comment->user->id)
                 <form id="Delete_comment_form" action="/deleteComment/{{$comment->id}}" method="GET">
                     <a href="#" id="delete_worklog_142295"  title="Delete" class="delete-worklog-trigger" style="margin:5px 5px 5px"><i data-toggle="modal" data-target="#confirmCommentDelete" class="fa fa-trash" aria-hidden="true"></i></a>
                 </form>
+@endif
+          
         </div>
         <div class="action-details">    
     <a href="#">{{$comment->user->name}}</a> -
@@ -197,7 +203,9 @@
               <div class="action-links">
 
 {{--Edit logwork--}}
+@if(Auth::user()->id == $logwork->user->id)
         <a  href="#" data-toggle="modal" data-target="#EditModal{{$logwork->id}}" data-whatever="@getbootstrap" title="Edit" class="edit-worklog-trigger" style="margin:5px 5px 5px"><i class="fa fa-edit" aria-hidden="true"></i></a>
+@endif
         <div class="modal fade" id="EditModal{{$logwork->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -250,10 +258,11 @@
   </div>
 </div> 
         {{--End edit logwork--}}
-
+        @if(Auth::user()->id == $logwork->user->id)
                 <form id="Delete_logwork_form" action="/delete/{{$logwork->id}}" method="GET">
                     <a href="#" id="delete_worklog_142295"  title="Delete" class="delete-worklog-trigger" style="margin:5px 5px 5px"><i data-toggle="modal" data-target="#confirmLogworkDelete" class="fa fa-trash" aria-hidden="true"></i></a>
                 </form>
+        @endif
         </div>
         <div class="action-details">    
     <a href="#">{{$logwork->user->name}}</a>
