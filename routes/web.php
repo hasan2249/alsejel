@@ -30,3 +30,5 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('importExport', 'ExcelController@importExport');
 Route::get('downloadExcel/{type}', 'ExcelController@downloadExcel');
+Route::get('allToExcel/{a}/{type}', 'ExcelController@allToExcel');
+Route::get('display', 'ExcelController@display');
