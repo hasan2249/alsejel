@@ -79,12 +79,11 @@ class TaskController extends Controller
         return Redirect::back();
     }
 
-    public function editComment(Request $req, $id) {
-        $logwork = Comment::find($id);
-        $logwork->description = $req['description']; // I can type $req->input('description');
-        $logwork->save();
+    public function deleteLogwork(Request $req, $id) {
+        $task = Logwork::find($id);
+        $task->delete();
         return Redirect::back();
-    }
+     }
 
     public function join(Request $req, $id)
     {
@@ -102,11 +101,12 @@ class TaskController extends Controller
     }
      //----------------------------------------------------
 
-     public function deleteLogwork(Request $req, $id) {
-        $task = Logwork::find($id);
-        $task->delete();
+     public function editComment(Request $req, $id) {
+        $logwork = Comment::find($id);
+        $logwork->description = $req['description']; // I can type $req->input('description');
+        $logwork->save();
         return Redirect::back();
-     }
+    }
 
      public function deleteComment(Request $req, $id) {
         $task = Comment::find($id);
@@ -114,4 +114,12 @@ class TaskController extends Controller
         return Redirect::back();
      }
 
+     public function addComment(Request $req, $id) {
+        $logwork = new Comment();
+        $logwork->description = $req['description']; // I can type $req->input('description');
+        $logwork->task_id = $id;
+        $logwork->user_id = Auth::user()->id;
+        $logwork->save();
+        return Redirect::back();
+    }
 }

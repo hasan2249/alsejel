@@ -42,19 +42,23 @@ Route::get('/tasks', 'TaskController@tasks_page');
 Route::get('/task/{id}', 'TaskController@task_page');
 
 Route::get('/delete/{id}', 'TaskController@deleteLogwork');
-Route::get('/deleteComment/{id}', 'TaskController@deleteComment');
 
 Route::post('/task/{id}', 'TaskController@logwork');
 
 Route::post('/editLogwork/{id}', 'TaskController@editLogwork');
-Route::post('/editComment/{id}', 'TaskController@editComment');
 
 Route::get('/task/{id}/join', 'TaskController@join');
 Route::post('/task/{id}/join', 'TaskController@join');
 
 Route::get('/task/{id}/left', 'TaskController@left');
 Route::post('/task/{id}/left', 'TaskController@left');
+
+// Task -> Comment routing
+Route::post('/AddComment/{id}', 'TaskController@AddComment');
+Route::post('/editComment/{id}', 'TaskController@editComment');
+Route::get('/deleteComment/{id}', 'TaskController@deleteComment');
 //---------------------------------------
+
 // Controller: LoginController -----------
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //change password

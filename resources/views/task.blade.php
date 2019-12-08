@@ -22,6 +22,8 @@
 </div>
         <div class="col-3 py-1">
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Add logwork</button>
+              <br>
+              <button type="button" class="add-comment-btn btn-success" data-toggle="modal" data-target="#AddComment" data-whatever="@getbootstrap">Add Comment</button>
               <div class="pointer dropdown" style="margin-top:25px;">
                   <i class="fa fa-caret-down" aria-hidden="true" class="btn btn-primary dropdown-toggle " data-toggle="dropdown"> People</i>
                   <div class="people_dropdown dropdown-menu">
@@ -30,7 +32,6 @@
                     @endforeach
                  </div>
               </div>
-
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -299,7 +300,7 @@
 <!--End activities content-->
 
 
-<!--Start confirm the delate form-->
+<!--Start confirm the delete logwork form-->
 <div class="modal fade" id="confirmLogworkDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLab" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -319,9 +320,9 @@
       </div>
     </div>
   </div>
-<!--End confirm the delate form-->
+<!--End confirm the delete form-->
 
-<!--Start confirm the delate form-->
+<!--Start confirm the delete comment form-->
 <div class="modal fade" id="confirmCommentDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLab" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -341,5 +342,32 @@
       </div>
     </div>
   </div>
-<!--End confirm the delate form-->
+<!--End confirm the delete form-->
+
+<!--Start add comment form-->
+<div class="modal fade" id="AddComment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add comment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form action="/AddComment/{{$task->id}}" method="POST">
+      {{ csrf_field() }}
+        <div class="form-group">   
+            <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+          </div>
+          <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="save" type="submit" class="btn btn-primary">Add</button>
+      </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> 
+<!--End add comment form-->
 @endsection
