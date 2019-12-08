@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -26,6 +27,7 @@ Route::get('/home', 'HomeController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
 
 // Controller: userController -----------
 Route::get('/user/{id}', 'userController@user_page');
@@ -58,3 +60,9 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //change password
 Route::get('change-password', 'userController@index');
 Route::post('change-password', 'userController@store')->name('change.password');
+
+Route::get('importExport', 'ExcelController@importExport');
+Route::get('downloadExcel/{type}', 'ExcelController@downloadExcel');
+Route::get('allToExcel/{a}/{type}', 'ExcelController@allToExcel');
+Route::get('display', 'ExcelController@display');
+

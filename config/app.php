@@ -14,6 +14,14 @@ return [
 
     'name' => 'Al-sejel',
 
+    /* for excel 
+    'providers' => [
+         .... 
+    Maatwebsite\Excel\ExcelServiceProvider::class,
+   ], 
+   'aliases' => [ 
+       .... 'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+     ],*/
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -166,16 +174,20 @@ return [
         /*
          * Package Service Providers...
          */
+
         //
 
         /*
          * Application Service Providers...
          */
+        
+        App\Providers\RouteServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        //for excel
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -224,11 +236,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-         /*
-     * Packages aliases...
-     */
-    'Form' => Collective\Html\FormFacade::class,
-    'Html' => Collective\Html\HtmlFacade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+
     ],
 
 ];
