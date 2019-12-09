@@ -38,10 +38,27 @@ class ExcelController extends Controller
 			$excel->sheet('mySheet', function($sheet) use ($a)
 	        {
                 $cols = count($a[0]);
-                if($cols==4){
-                $sheet->cell('A1', function($cell) {$cell->setValue('Emplyee Name');   });
+                if($cols==5){
+                $sheet->cell('A1', function($cell) {$cell->setValue('Employee Name');   });
                 $sheet->cell('B1', function($cell) {$cell->setValue('Task Name');   });
-                $sheet->cell('C1', function($cell) {$cell->setValue('Duration');   });
+                $sheet->cell('C1', function($cell) {$cell->setValue('Duration (hours)');   });
+                $sheet->cell('D1', function($cell) {$cell->setValue('Duration (minutes)');   });
+                $sheet->cell('E1', function($cell) {$cell->setValue('Description');   });
+                if (!empty($a)) {
+                    foreach ($a as $key => $value) {
+                        $i= $key+2;
+                        $sheet->cell('A'.$i, $value[0]); 
+                        $sheet->cell('B'.$i, $value[1]); 
+                        $sheet->cell('C'.$i, $value[2]); 
+                        $sheet->cell('D'.$i, $value[3]); 
+                        $sheet->cell('E'.$i, $value[4]); 
+                    }
+                }
+            }
+            else{
+                $sheet->cell('A1', function($cell) {$cell->setValue('Emplyee Name');   });
+                $sheet->cell('B1', function($cell) {$cell->setValue('Duration (hours)');   });
+                $sheet->cell('C1', function($cell) {$cell->setValue('Duration (minutes)');   });
                 $sheet->cell('D1', function($cell) {$cell->setValue('Description');   });
                 if (!empty($a)) {
                     foreach ($a as $key => $value) {
@@ -50,19 +67,6 @@ class ExcelController extends Controller
                         $sheet->cell('B'.$i, $value[1]); 
                         $sheet->cell('C'.$i, $value[2]); 
                         $sheet->cell('D'.$i, $value[3]); 
-                    }
-                }
-            }
-            else{
-                $sheet->cell('A1', function($cell) {$cell->setValue('Emplyee Name');   });
-                $sheet->cell('B1', function($cell) {$cell->setValue('Duration');   });
-                $sheet->cell('C1', function($cell) {$cell->setValue('Description');   });
-                if (!empty($a)) {
-                    foreach ($a as $key => $value) {
-                        $i= $key+2;
-                        $sheet->cell('A'.$i, $value[0]); 
-                        $sheet->cell('B'.$i, $value[1]); 
-                        $sheet->cell('C'.$i, $value[2]); 
                     }
                 }
             }
@@ -80,21 +84,23 @@ class ExcelController extends Controller
         $username=$data->name;
             if(!$request->get('task'))
             {
-                $user_logs = DB::table('logworks')->where('user_id', $selected_id)->whereBetween('created_at', [$start_date, $end_date])->get();
+                $user_logs = DB::table('logworks')->where('user_id', $selected_id)->whereBetween('date', [$start_date, $end_date])->get();
             }
             else{
-                $user_logs = DB::table('logworks')->where('user_id', $selected_id)->where('task_id',$request->get('task'))->whereBetween('created_at', [$start_date, $end_date])->get();
+                $user_logs = DB::table('logworks')->where('user_id', $selected_id)->where('task_id',$request->get('task'))->whereBetween('date', [$start_date, $end_date])->get();
             }
         foreach ($user_logs as $log){  
         if($request->get('task'))
         {
             $ts = Task::find($request->get('task'));
             $task_name = $ts->name;
-            $duration = $log->houre + floor($log->minute / 60);
+            $hours_duration = $log->houre;
+            $minutes_duration = $log->minute;
             $description= $log->description;
         }
         else{
-            $duration = $log->work_duration;
+            $hours_duration = $log->houre;
+            $minutes_duration = $log->minute;
             $description= $log->description;
         }
         $d=array();      
@@ -103,7 +109,8 @@ class ExcelController extends Controller
         {
         array_push($d,$task_name);
         }
-        array_push($d,$duration);
+        array_push($d,$hours_duration);
+        array_push($d,$minutes_duration);
         array_push($d,$description);
         $a[]=$d;
         unset($d);

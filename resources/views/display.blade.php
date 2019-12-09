@@ -21,36 +21,40 @@
                 </div>
             </nav>
        <table class="table table-striped">
-            @if(sizeof($a[0])==4)
+            @if(sizeof($a[0])==5)
             <thead class="thead-dark">
             <tr>
                     <th scope="col">Emplyee Name</th>
                     <th scope="col">Task Name</th>
-                    <th scope="col">Duration</th>
+                    <th scope="col">Duration(hours)</th>
+                    <th scope="col">Duration(minutes)</th>
                     <th scope="col">Description</th>
             </tr>
             @else  
             <tr>
                     <th scope="col">Emplyee Name</th>
-                    <th scope="col">Duration</th>
+                    <th scope="col">Duration(hours)</th>
+                    <th scope="col">Duration(minutes)</th>
                     <th scope="col">Description</th>
              </tr>
             @endif
             </thead>
             <tbody>   
        @foreach ($a as $row)
-       @if(sizeof($row)==4)
+       @if(sizeof($row)==5)
        <tr>
            <td>{{ $row[0] }}</td>
            <td>{{ $row[1]}}</td>
            <td>{{ $row[2] }}</td>
            <td>{{ $row[3] }}</td>
+           <td>{{ $row[4] }}</td>
        </tr>
        @else  
        <tr>
             <td>{{ $row[0] }}</td>
             <td>{{ $row[1]}}</td>
             <td>{{ $row[2] }}</td>
+            <td>{{ $row[3] }}</td>
         </tr>
        @endif   
        @endforeach
