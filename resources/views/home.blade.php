@@ -32,8 +32,8 @@
     <nav class="t-header">
         <div class="t-header-brand-wrapper">
             <a href="{{ url('/home') }}">
-                <img class="logo" src="/images/e209aff7-f9d5-414d-8a15-1a8a4b92072b_200x200.png" alt="">
-                <img class="logo-mini" src="/images/e209aff7-f9d5-414d-8a15-1a8a4b92072b_200x200.png" alt="">
+                <img class="logo" src="{{asset('/images/e209aff7-f9d5-414d-8a15-1a8a4b92072b_200x200.png')}}" alt="">
+                <img class="logo-mini" src="{{asset('/images/e209aff7-f9d5-414d-8a15-1a8a4b92072b_200x200.png')}}" alt="">
             </a>
         </div>
         <div class="t-header-content-wrapper">
@@ -103,7 +103,7 @@
                             <div class="dropdown-body">
                                 <div class="dropdown-list">
                                     <div class="image-wrapper">
-                                        <img class="profile-img" src="images/profile/male/image_1.png"
+                                        <img class="profile-img" src="{{asset('images/profile/male/image_1.png')}}"
                                             alt="profile image">
                                         <div class="status-indicator rounded-indicator bg-success"></div>
                                     </div>
@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="dropdown-list">
                                     <div class="image-wrapper">
-                                        <img class="profile-img" src="images/profile/female/image_2.png"
+                                        <img class="profile-img" src="{{asset('images/profile/female/image_2.png')}}"
                                             alt="profile image">
                                         <div class="status-indicator rounded-indicator bg-success"></div>
                                     </div>
@@ -125,7 +125,7 @@
                                 </div>
                                 <div class="dropdown-list">
                                     <div class="image-wrapper">
-                                        <img class="profile-img" src="images/profile/male/image_3.png"
+                                        <img class="profile-img" src="{{asset('images/profile/male/image_3.png')}}"
                                             alt="profile image">
                                         <div class="status-indicator rounded-indicator bg-warning"></div>
                                     </div>
@@ -182,7 +182,7 @@
         <div class="sidebar">
             <div class="user-profile">
                 <div class="display-avatar animated-avatar">
-                    <img class="profile-img img-lg rounded-circle" src="/images/profile/male/image_1.png"
+                    <img class="profile-img img-lg rounded-circle" src="{{asset('/images/profile/male/image_1.png')}}"
                         alt="profile image">
                 </div>
                 <div class="info-wrapper">
