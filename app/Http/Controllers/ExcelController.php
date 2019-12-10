@@ -76,6 +76,9 @@ class ExcelController extends Controller
     }
 	public function downloadExcel(Request $request,$type)
 	{
+        $input=$this->validate($request,['user' => 'required',
+    'start' => 'required','end' => 'required'],['user.required' => 'Employee name is required!',
+    'start->required'=> 'start date is required ','end->required'=> 'end date is required ']);
         $selected_id=$request->get('user');
         $start_date = $request->input("start","");
         $end_date = $request->input("end","");

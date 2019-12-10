@@ -39,6 +39,11 @@
                      <option value="{{ $user->id}}">{{ $user->name}}</option>
                     @endforeach
                 </select>
+                @if ($errors->has('user'))
+
+                	<span class="text-danger">{{ $errors->first('user') }}</span>
+
+            	@endif
                 <select class="btn btn-primary tsk" name="task">
                         <option value="" selected disabled hidden><span class="grey_color">Select task name..</span></option>
                     @foreach($tasks as $task)
@@ -49,9 +54,19 @@
             <div class="input-group">
             <div class="col-xs-4 ">
                 <input class="date form-control " type="text" id="StartDate" name="start">
+                @if ($errors->has('start'))
+
+                	<span class="text-danger">{{ $errors->first('start') }}</span>
+
+            	@endif
             </div>
             <div class="col-xs-4 ">
                     <input class="date form-control" type="text" id="EndDate" name="end">
+                    @if ($errors->has('end'))
+
+                	<span class="text-danger">{{ $errors->first('end') }}</span>
+
+            	@endif
                 </div>
                 <script type="text/javascript">
                     $('.date').datepicker({  
