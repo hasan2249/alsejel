@@ -2,15 +2,15 @@
 
 @section('content2')
 
-<p style="text-align:center"> <span style="color:blue ; font-size: 50px ; letter-spacing: 5px">SCACE</span> <small
+<p style="text-align:center"> <span style="color:blue ; font-size: 50px ; letter-spacing: 5px;font-family: Times New Roman">SCACE</span> <small
         style="font-size: 25px ;letter-spacing: 3px">team</small></p>
 <table class="table table-hover">
     <thead class="thead-light">
         <tr>
-            <th scope="col" style="color:blue ; font-size:20px">#</th>
-            <th scope="col" style="color:blue; font-size:20px">Name</th>
-            <th scope="col" style="color:blue; font-size:20px">Rule</th>
-            <th scope="col" style="color:blue; font-size:20px">Email</th>
+            <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman"></th>
+            <th scope="col" style="color:blue; font-size:20px;font-family: Times New Roman">Name</th>
+            <th scope="col" style="color:blue; font-size:20px;font-family: Times New Roman">Rule</th>
+            <th scope="col" style="color:blue; font-size:20px;font-family: Times New Roman">Email</th>
         </tr>
     </thead>
     <tbody>

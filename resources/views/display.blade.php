@@ -1,38 +1,31 @@
-<html lang="en">
-<head>
-	<title>Import - Export Laravel 5</title>
-    <link rel="stylesheet" href="select2.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-</head>
-<body>
-    	<nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <div class="navbar-brand" >
-                                <div class="col-md-12">
-                                    RESULTS
-                                </div>
+@extends('home')
+
+@section('content2')
+<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<div class="navbar-brand" >
+                        <div class="col-md-12" style=" font-family: Times New Roman">
+                            Results
                         </div>
-                    </div>
                 </div>
-            </nav>
-       <table class="table table-striped">
+			</div>
+		</div>
+    </nav>
+            <div class="row">
+       <table class="table table-hover">
             @if(sizeof($a[0])==5)
-            <thead class="thead-dark">
+            <thead class="thead-light">
             <tr>
-                    <th scope="col">Emplyee Name</th>
-                    <th scope="col">Task Name</th>
-                    <th scope="col">Duration(hours)</th>
-                    <th scope="col">Duration(minutes)</th>
-                    <th scope="col">Description</th>
+                    <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman">Employee Name</th>
+                    <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman">Task Name</th>
+                    <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman">Duration(hours)</th>
+                    <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman">Duration(minutes)</th>
+                    <th scope="col" style="color:blue ; font-size:20px;sfont-family: Times New Roman">Description</th>
             </tr>
             @else  
             <tr>
-                    <th scope="col">Emplyee Name</th>
+                    <th scope="col">Employee Name</th>
                     <th scope="col">Duration(hours)</th>
                     <th scope="col">Duration(minutes)</th>
                     <th scope="col">Description</th>
@@ -60,9 +53,11 @@
        @endforeach
             </tbody>
     </table> 
- 
-    <button type="button" onclick="window.location='{{ URL::to('allToExcel/'.serialize($a).'/xlsx') }}'">save file</button>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
-</html>
+</div>
+<div class="row">
+    <div class="col-md-6 offset-md-4">
+                <button  onclick="window.location='{{ URL::to('allToExcel/'.serialize($a).'/xlsx') }}'" class="btn btn-primary" style="margin-top:50px; width:100x;font-family: Times New Roman">Save File</button>
+     </div>
+  </div>
+
+    @endsection

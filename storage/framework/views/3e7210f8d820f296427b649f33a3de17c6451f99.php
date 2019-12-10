@@ -201,7 +201,7 @@
                 <li class="nav-category-divider">MAIN</li>
                 <li>
                     <a href="<?php echo e(url('/users')); ?>">
-                        <span class="link-title">Users</span>
+                        <span class="link-title" style="text-decoration : none">Users</span>
                         <i class="glyphicon glyphicon-envelope link-icon"></i>
                     </a>
                 </li>
@@ -213,7 +213,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="<?php echo e(url('/importExport')); ?>">
                         <span class="link-title">Reports</span>
                         <i class="fa fa-flag link-icon "></i>
                     </a>
