@@ -1,13 +1,7 @@
 @extends('home')
 
 @section('content2')
-	<title>Import - Export Laravel 5</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css" rel="stylesheet"/>
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.js"></script>
+    
 <style>
   a:hover {
     text-decoration : none;
@@ -36,7 +30,7 @@
     </div>
 @endif
 	<div class="container">
-            <form method="GET" action="{{ URL::to('downloadExcel/xlsx') }}" >
+            <form autocomplete="off" method="GET" action="{{ URL::to('downloadExcel/xlsx') }}" >
              
             <div class="input-group">
             <div class = "row">  
@@ -65,13 +59,15 @@
                 <div class="col-md-2">
                 <label>From</label> 
                 </div>
-                <div class="col-md-10">   
-                 <input class="date form-control " type="text" id="StartDate" name="start">
+                <div class="col-md-10">  
+
+                 <input class="form-control" type="text"  id="StartDate" name="start">
+                 
                  @if ($errors->has('start'))
 
                 	<span class="text-danger">{{ $errors->first('start') }}</span>
 
-            	@endif
+                @endif
                  </div>
                 </div>
             </div>
@@ -81,63 +77,26 @@
                 <label >To</label> 
                 </div>
                 <div class="col-md-10">   
-                <input class="date form-control" type="text" id="EndDate" name="end">
+                <input class="form-control" type="text" id="EndDate" name="end">
                 @if ($errors->has('end'))
 
                 	<span class="text-danger">{{ $errors->first('end') }}</span>
 
             	@endif
                  </div>
+
                 </div>
                 </div>
 </div>
 </div>
-                <script type="text/javascript">
-                    $('.date').datepicker({  
-                       format: 'yyyy-mm-dd'
-                     });  
-                </script>
-                <script>
-                    $("#StartDate").datepicker().datepicker("setDate", new Date());
-                    $("#EndDate").datepicker().datepicker("setDate", new Date());
-                </script>
+
                 </div>
                 <div class="row">
                 <div class="col-md-6 offset-md-4">
-                <button class="btn btn-success" style="margin-top:100px;">Show & Download Excel xlsx</button>
+                <button class=" add-comment-btn btn-success" style="margin-top:100px;">Show & Download Excel xlsx</button>
                 </div>
                    </div>
             </div>
             </form>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.js"></script>
-<script>
-    $(document).ready(function(){
-$(".tsk").select2({ 
-    templateResult: formatSingleResult
-})
-$(".usr").select2({ 
-    templateResult: formatSingleResult2
-})
-        });
-
-function formatSingleResult(result) {
-    var term =$(".tsk").data("select2").dropdown.$search.val();
-    var reg = new RegExp(term, 'gi');
-    var optionText = result.text;
-    var boldTermText = optionText.replace(reg, function(optionText) {return `<b>${optionText}</b>`});
-    var $item = $(`<span> ${boldTermText}  </span>`);
-    return $item;
-}
-function formatSingleResult2(result) {
-    var term =$(".usr").data("select2").dropdown.$search.val();
-    var reg = new RegExp(term, 'gi');
-    var optionText = result.text;
-    var boldTermText = optionText.replace(reg, function(optionText) {return `<b>${optionText}</b>`});
-    var $item = $(`<span> ${boldTermText}  </span>`);
-    return $item;
-}
-</script>
 @endsection
