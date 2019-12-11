@@ -64,6 +64,7 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //change password
 Route::get('change-password', 'userController@index');
 Route::post('change-password', 'userController@store')->name('change.password');
+Route::post('change-image', 'userController@updateProfile')->name('change.image');
 
 Route::get('importExport', 'ExcelController@importExport');
 Route::get('downloadExcel/{type}', 'ExcelController@downloadExcel');

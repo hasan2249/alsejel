@@ -150,11 +150,48 @@
                             </div>
                         </div>
                     </form>
+                    <hr size="pixels" style="height:30px" />
+                    <form method="POST" action="{{ route('change.image') }}" enctype="multipart/form-data" id="update-image">
+                    {{ csrf_field() }}
+                        <div class="form-group row">
+                            <label for="exampleFormControlFile1" class="col-md-4 col-form-label text-md-right" >New Profile Picture</label>
+    
+                            <div class="col-md-6">
+                            <input type="file" class="form-control-file"  name="image">
+                            </div>
+                            @if ($errors->has('image'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('image') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
+   
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Update Profile picture
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                @endif
             </div>
         </div>
     </div>
+    <script>
+ 
+    $(document).ready(function () {
+ 
+    $('#update-image').validate({ // initialize the plugin
+        rules: {
+            image: {
+                required: true
+            }
+        }
+    });
+});
+</script>
     <script>
     var msg = '{{Session::get('alert')}}';
     var exist = '{{Session::has('alert')}}';

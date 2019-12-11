@@ -182,8 +182,13 @@
         <div class="sidebar">
             <div class="user-profile">
                 <div class="display-avatar animated-avatar">
-                    <img class="profile-img img-lg rounded-circle" src="{{asset('/images/profile/male/image_1.png')}}"
+                @if ( Auth::user()->image == "null")
+                    <img class="profile-img img-lg rounded-circle" src="{{asset('/images/person-icon-male-user-profile-avatar-vector-18833568.jpg')}}"
                         alt="profile image">
+                @else
+                <img class="profile-img img-lg rounded-circle" src="/images/{{Auth::user()->image}}"
+                        alt="profile image">
+                @endif
                 </div>
                 <div class="info-wrapper">
                     <p class="user-name"><a href="/user/{{Auth::user()->id}}"> {{ Auth::user()->name }} </a></p>

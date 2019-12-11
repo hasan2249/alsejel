@@ -182,8 +182,13 @@
         <div class="sidebar">
             <div class="user-profile">
                 <div class="display-avatar animated-avatar">
-                    <img class="profile-img img-lg rounded-circle" src="<?php echo e(asset('/images/profile/male/image_1.png')); ?>"
+                <?php if( Auth::user()->image == "null"): ?>
+                    <img class="profile-img img-lg rounded-circle" src="<?php echo e(asset('/images/person-icon-male-user-profile-avatar-vector-18833568.jpg')); ?>"
                         alt="profile image">
+                <?php else: ?>
+                <img class="profile-img img-lg rounded-circle" src="/images/<?php echo e(Auth::user()->image); ?>"
+                        alt="profile image">
+                <?php endif; ?>
                 </div>
                 <div class="info-wrapper">
                     <p class="user-name"><a href="/user/<?php echo e(Auth::user()->id); ?>"> <?php echo e(Auth::user()->name); ?> </a></p>

@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\User;
 use App\Logwork;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Illuminate\Http\UploadedFile;
 use Auth;
 use Hash;
 
@@ -62,11 +64,48 @@ class userController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    protected function validatorPassword(array $data)
+    {
+        return Validator::make($data, [
+            'current_password' => 'required|min:6|confirmed'
+        ]);
+    }
     public function store(Request $request)
     {
-        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
-        return redirect()->back() ->with('alert', 'Password change successfully.');
+        if ($this->validatorPassword($request->toArray())->fails())
+        {
+            return redirect()->back()->with(['alert' => 'failed to change.']);
+        }
+        else
+        {
+            User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
+            return redirect()->back() ->with('alert', 'Password change successfully.');
+        }
+       
     }
-
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'image'=>'required|image|mimes:png,jpg,jpeg|max:10000'
+        ]);
+    }
+    public function updateProfile(Request $request)
+    {
+        if ($this->validator($request->toArray())->fails())
+        {
+            return redirect()->back()->with(['alert' => 'failed to update.']);
+        }
+        else
+        {
+            $image = $request->file('image');
+            $filename = $image->getClientOriginalName();
+            $image->move(public_path('images'), $filename);
+            $user=new User;
+            $user->where('email', '=', Auth::user()->email)->update(['image' =>$filename]);
+    
+            return redirect()->back()->with(['alert' => 'Profile updated successfully.']);
+        }
+       
+    }
 }
 
