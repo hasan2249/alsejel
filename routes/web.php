@@ -59,6 +59,11 @@ Route::post('/editComment/{id}', 'TaskController@editComment');
 Route::get('/deleteComment/{id}', 'TaskController@deleteComment');
 //---------------------------------------
 
+// Buckup database
+Route::post('/backupDB', 'TaskController@backupDB')->name('Buckup');
+// --------------------------------------
+
+
 // Controller: LoginController -----------
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //change password

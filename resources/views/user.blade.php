@@ -19,14 +19,42 @@
                     <a href="" data-target="#Activities" data-toggle="tab" class="nav-link"
                         onclick="removeActiveClass('summery_tab')">Activities</a>
                 </li>
+
+
                 @if(Auth::user()->id == $users->id)
                 <li class="nav-item">
                     <a href="" data-target="#edit" data-toggle="tab" class="nav-link"
                         onclick="removeActiveClass('summery_tab')">Edit</a>
                 </li>
+                @if(Auth::user()->rule == "1")
+                <li class="nav-item">
+                    <a href="" data-target="#Backup" data-toggle="tab" class="nav-link"
+                        onclick="removeActiveClass('summery_tab')">Backup</a>
+                </li>
+                @endif
                 @endif
             </ul>
-
+            @if ($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif 
+            
+            @if(Session::has('errorMsg') && Session::get('errorMsg') == '1')
+                <div class="alert-fix alert alert-success" role="alert" id="auto-disapper">
+                    Database backup was token <b>successfully!</b>
+                </div>
+            @elseif(Session::has('errorMsg') && !Session::get('errorMsg') == '1') 
+                <div class="alert alert-danger" id="success-alert" role="alert">
+                    Something wrong happend! {{Session::get('errorMsg')}}
+                </div>
+            @endif
+            
+            <!-- <button id="myWish" > click yo fade in</button> -->
             <!--Summery content-->
             <div class="tab-content py-4">
                 <div class="tab-pane active" id="Summery">
@@ -132,7 +160,7 @@
                 
                 
                 @if(Auth::user()->id == $users->id)
-                <!--edit content-->
+        <!-- Start Edit content-->
                 <div class="tab-pane" id="edit" onclick="removeActiveClass('Summery')">
                 <form method="POST" action="{{ route('change.password') }}"  oninput='new_confirm_password.setCustomValidity(new_confirm_password.value != new_password.value ? "Passwords do not match." : "")'>
                     {{ csrf_field() }}
@@ -200,10 +228,48 @@
                         
                     </form>
                 </div>
-               @endif
-            </div>
+               <!--End edit content-->
+
+                <!-- Start Backup content-->
+                @if(Auth::user()->rule == "1")
+                <div class="tab-pane" id="Backup" onclick="removeActiveClass('Summery')">
+                <p class="lead" >Creates a backup of <b>Alsejel</b>, The backup is a zipfile that contains a dump of the database. The backup is stored on
+                    the path <q><b>storage\app\http---localhost<b></q> </p>
+                    <div class="alert alert-info" role="alert">
+                    Alsejel is scheduled to do the following rule everyday at 1 am (backup) :
+                    <ol>
+                        <li>Take a backup of DB</li>
+                    </ol>
+                    <br/>
+                    Alsejel is scheduled to do the following rules everyday at 2 am (cleanup):
+                    <ol>
+                        <li>Keep all backups for the amount of days specified in 7 days</li>
+                        <li>Keep daily backups for the amount of days specified in 16 days for all backups older than those that rule "1" takes care of</li>
+                        <li>It’ll only keep weekly backups for the amount of months specified in 4 month all backups older than those that rule "2" takes care of</li>
+                        <li>It will only keep yearly backups for the amount of years specified in 2 years for all backups older than those that rule "3" takes care of</li>
+                        <li>It will start deleting old backups until the used storage is lower than the number specified in 5000 Megabytes</li>
+                        <li>It will never delete the youngest backup regardless of it’s size or age</li>
+                    </ol>
+                    </div>
+                <form method="POST" action="{{ route('Buckup') }}">
+                    {{ csrf_field() }}                       
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="add-comment-btn btn-success">
+                                    Backup DataBase Now
+                                </button>
+                                {{Session::has('msg')}}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                @endif <!--   if the user is admin -->
+                @endif  <!--  if this page is his page -->
+               <!--End Backup content-->
+            </div> 
         </div>
     </div>
+    
     <script>
  
  $(document).ready(function () {

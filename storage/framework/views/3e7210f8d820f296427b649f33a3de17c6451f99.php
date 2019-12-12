@@ -21,6 +21,7 @@
     <!-- Styles -->
     
     <!-- Start excel page style -->
+   
     <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css" rel="stylesheet"/>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <!-- End excel page style -->
@@ -286,12 +287,13 @@
     <!-- Scripts for the template -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-    <script src="<?php echo e(asset('js/scase.js')); ?>"></script>
+    
     <script src="<?php echo e(asset('js/core.js')); ?>"></script>
     <script src="<?php echo e(asset('js/app.js')); ?>"></script>
     <script src="<?php echo e(asset('js/template.js')); ?>"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.js"></script> 
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <script src="<?php echo e(asset('js/scase.js')); ?>"></script>
 </body>
 
 </html>

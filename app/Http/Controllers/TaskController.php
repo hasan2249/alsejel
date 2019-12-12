@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request ;
-
+use Artisan;
 use App\Task;
 use App\Logwork;
 use App\Comment;
@@ -141,4 +141,16 @@ class TaskController extends Controller
         $logwork->save();
         return Redirect::back();
     }
+
+    // backup database
+    public function backupDB() {
+        try {
+        Artisan::call('backup:run');
+        $errorMsg = '1';
+        }catch(Exception $e){
+            $errorMsg = 'Caught exception: '.  $e->getMessage();
+        }
+        return Redirect::back()->with('errorMsg',$errorMsg);
+    }
+    
 }

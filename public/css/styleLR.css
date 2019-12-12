@@ -20,7 +20,14 @@ select.form-control:not([size]):not([multiple]){
   .navbar-default{
     background-color  :#ccc;
   }
-
+.alert-fix{
+  position: fixed;
+  width: 426px;
+  right: 28px;
+  top: 64%;
+  z-index: 99;
+  font-size: large;
+}
   .add-comment-btn{
     display: inline-block;
     font-weight: 400;

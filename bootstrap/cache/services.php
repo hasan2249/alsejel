@@ -28,6 +28,7 @@
     24 => 'App\\Providers\\AuthServiceProvider',
     25 => 'App\\Providers\\EventServiceProvider',
     26 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
+    27 => 'Spatie\\Backup\\BackupServiceProvider',
   ),
   'eager' => 
   array (
@@ -46,6 +47,7 @@
     12 => 'App\\Providers\\AuthServiceProvider',
     13 => 'App\\Providers\\EventServiceProvider',
     14 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
+    15 => 'Spatie\\Backup\\BackupServiceProvider',
   ),
   'deferred' => 
   array (

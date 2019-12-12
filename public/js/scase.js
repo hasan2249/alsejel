@@ -78,3 +78,9 @@ $(document).ready(function(){
       format: 'yyyy-mm-dd'
      });
                   });
+
+    $(document).ready(function() {
+       $("#auto-disapper").delay(2500).fadeOut();
+    });
+
+ 
