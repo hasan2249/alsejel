@@ -46,7 +46,26 @@ class TaskController extends Controller
                 break;
             }
         }
-        $task = Array("task" => $tasks, "logworks" =>$logworks ,"comments" =>$comments ,"bool" =>$bool)  ;
+        
+        $task_logs = DB::table('tasks')
+        ->join('logworks', 'logworks.task_id', '=','tasks.id')
+        ->where('tasks.id','=',$id)
+        ->select('logworks.id','logworks.description',
+                  'logworks.houre','logworks.minute',
+                 'logworks.created_at','logworks.updated_at');
+
+        $task_logs_comments = DB::table('tasks')
+        ->join('comments', 'comments.task_id', '=','tasks.id')
+        ->where('tasks.id','=',$id)
+        ->select('comments.id','comments.description',
+                 DB::raw("NULL As hour"),DB::raw("NULL As minute"),
+                'comments.created_at','comments.updated_at')
+        ->unionAll($task_logs)
+        ->get();
+
+        $task_all_activities= $task_logs_comments->sortByDesc('created_at');
+
+        $task = Array("task" => $tasks, "task_all_activities" =>$task_all_activities ,"logworks" =>$logworks ,"comments" =>$comments ,"bool" =>$bool)  ;
         return view('/task',$task);
     }
      //----------------------------------------------------

@@ -31,25 +31,24 @@ class userController extends Controller
     public function user_page($id) {
         $users = User::find($id);
 
-        $user_comments = $users->comment()->orderBy('created_at','desc')->get();
-        $user_logs = $users->logwork()->orderBy('created_at','desc')->get();
+        $user_logs = DB::table('users')
+        ->join('logworks', 'logworks.user_id', '=','users.id')
+        ->where('users.id','=',$id)
+        ->select('logworks.id','logworks.description',
+                  'logworks.houre','logworks.minute',
+                 'logworks.created_at','logworks.updated_at');
 
-        $user_all = DB::table('users')
-            ->where('users.id',$id)
-            ->join('logworks', 'users.id', '=', 'logworks.user_id')
-            ->join('comments', 'users.id', '=', 'comments.user_id')
-            ->select('users.*', 'logworks.*', 'comments.*')
-            ->distinct()
-            ->get();
+        $user_logs_comments = DB::table('users')
+        ->join('comments', 'comments.user_id', '=','users.id')
+        ->where('users.id','=',$id)
+        ->select('comments.id','comments.description',
+                 DB::raw("NULL As hour"),DB::raw("NULL As minute"),
+                'comments.created_at','comments.updated_at')
+        ->unionAll($user_logs)
+        ->get();
 
-
-//        $user_comment = DB::table("comments")->where('id',$id)->orderBy('created_at','desc');
-//        $user_log = DB::table("logworks")->where('id',$id)->orderBy('created_at','desc');
-//        $user_activities = [$user_logs , $user_comments];
-
-
-
-        return view('user', compact('users','user_comments', 'user_all'));
+        $user_all_activities= $user_logs_comments->sortByDesc('created_at');
+        return view('user', compact('users', 'user_all_activities'));
     }
     /////////////////////////////////////////////////////////
     public function index()
