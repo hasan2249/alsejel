@@ -111,7 +111,7 @@
                 @if(Auth::user()->id == $users->id)
                 <!--edit content-->
                 <div class="tab-pane" id="edit" onclick="removeActiveClass('Summery')">
-                <form method="POST" action="{{ route('change.password') }}">
+                <form method="POST" action="{{ route('change.password') }}"  oninput='new_confirm_password.setCustomValidity(new_confirm_password.value != new_password.value ? "Passwords do not match." : "")'>
                     {{ csrf_field() }}
    
                          @foreach ($errors->all() as $error)
@@ -122,7 +122,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">Current Password</label>
   
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="current_password" autocomplete="current-password">
+                                <input id="password" type="password" class="form-control" name="current_password" autocomplete="current-password" required>
                             </div>
                         </div>
   
@@ -130,7 +130,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">New Password</label>
   
                             <div class="col-md-6">
-                                <input id="new_password" type="password" class="form-control" name="new_password" autocomplete="current-password">
+                                <input id="new_password" type="password" class="form-control" name="new_password" autocomplete="current-password" required >
                             </div>
                         </div>
   
@@ -138,7 +138,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">New Confirm Password</label>
     
                             <div class="col-md-6">
-                                <input id="new_confirm_password" type="password" class="form-control" name="new_confirm_password" autocomplete="current-password">
+                                <input id="new_confirm_password" type="password" class="form-control" name="new_confirm_password" autocomplete="current-password" required >
                             </div>
                         </div>
    
@@ -151,13 +151,14 @@
                         </div>
                     </form>
                     <hr size="pixels" style="height:30px" />
+                   
                     <form method="POST" action="{{ route('change.image') }}" enctype="multipart/form-data" id="update-image">
                     {{ csrf_field() }}
                         <div class="form-group row">
                             <label for="exampleFormControlFile1" class="col-md-4 col-form-label text-md-right" >New Profile Picture</label>
     
                             <div class="col-md-6">
-                            <input type="file" class="form-control-file"  name="image">
+                            <input type="file" class="form-control-file"  name="image" required>
                             </div>
                             @if ($errors->has('image'))
                                     <span class="help-block">
@@ -173,6 +174,7 @@
                                 </button>
                             </div>
                         </div>
+                        
                     </form>
                 </div>
                @endif
@@ -181,15 +183,8 @@
     </div>
     <script>
  
-    $(document).ready(function () {
- 
-    $('#update-image').validate({ // initialize the plugin
-        rules: {
-            image: {
-                required: true
-            }
-        }
-    });
+ $(document).ready(function () {
+$("#update-image").fadeOut();
 });
 </script>
     <script>

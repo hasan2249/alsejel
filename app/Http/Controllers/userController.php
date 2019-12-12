@@ -67,14 +67,16 @@ class userController extends Controller
     protected function validatorPassword(array $data)
     {
         return Validator::make($data, [
-            'current_password' => 'required|min:6|confirmed'
+            'current_password' =>  'required|old_password:' . Auth::user()->password,
+            'new_password' => ['required'],
+            'new_confirm_password' => ['same:new_password'],
         ]);
     }
     public function store(Request $request)
     {
         if ($this->validatorPassword($request->toArray())->fails())
         {
-            return redirect()->back()->with(['alert' => 'failed to change.']);
+           return redirect()->back()->withErrors($this->validator($request->toArray()))->withInput();
         }
         else
         {
@@ -83,15 +85,15 @@ class userController extends Controller
         }
        
     }
-    protected function validator(array $data)
+    protected function validatorImage(array $data)
     {
         return Validator::make($data, [
-            'image'=>'required|image|mimes:png,jpg,jpeg|max:10000'
+            'image' => 'required|image|mimes:png,jpg,jpeg|max:10000',
         ]);
     }
     public function updateProfile(Request $request)
     {
-        if ($this->validator($request->toArray())->fails())
+        if ($this->validatorImage($request->toArray())->fails())
         {
             return redirect()->back()->with(['alert' => 'failed to update.']);
         }
