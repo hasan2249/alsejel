@@ -12,6 +12,11 @@
 			</div>
 		</div>
     </nav>
+    <div class="row align-items-start">
+    <div class="col-md-2 offset-md-0">
+            <button  onclick="window.location='{{ URL::to('allToExcel/'.serialize($a).'/xlsx') }}'" class="btn btn-save-file btn-primary" >Save as excel file</button>
+     </div>
+  </div>
             <div class="row">
        <table class="table table-hover">
             @if(sizeof($a[0])==5)
@@ -54,10 +59,6 @@
             </tbody>
     </table> 
 </div>
-<div class="row">
-    <div class="col-md-6 offset-md-4">
-                <button  onclick="window.location='{{ URL::to('allToExcel/'.serialize($a).'/xlsx') }}'" class="btn btn-primary" style="margin-top:50px; width:100x;font-family: Times New Roman">Save File</button>
-     </div>
-  </div>
+
 
     @endsection

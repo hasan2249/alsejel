@@ -20,6 +20,13 @@ select.form-control:not([size]):not([multiple]){
   .navbar-default{
     background-color  :#ccc;
   }
+
+  .btn-save-file
+  {
+    margin-top: 8px;
+    margin-bottom: 19px;
+  }
+
 .alert-fix{
   position: fixed;
   width: 426px;
