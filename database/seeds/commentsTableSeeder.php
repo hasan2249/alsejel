@@ -20,7 +20,9 @@ class commentsTableSeeder extends Seeder
                 'created_at' => $faker->date('Y-m-d H:i:s'),
                 'updated_at' => $faker->date('Y-m-d H:i:s'),
                 'task_id' => $faker->numberBetween(1,50),
-                'user_id' => $faker->numberBetween(1,10),   
+                'user_id' => $faker->numberBetween(1,10),  
+                'created_at' => $faker->date('Y-m-d H:i:s'),
+                'updated_at' => $faker->date('Y-m-d H:i:s'), 
             ]);
     }
 }

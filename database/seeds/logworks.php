@@ -21,7 +21,9 @@ class logworks extends Seeder
                 'houre' => $faker->numberBetween(1,8),
                 'minute' => $faker->numberBetween(1,60),
                 'task_id' => $faker->numberBetween(1,50),
-                'user_id' => $faker->numberBetween(1,10),   
+                'user_id' => $faker->numberBetween(1,10),  
+                'created_at' => $faker->date('Y-m-d H:i:s'),
+                'updated_at' => $faker->date('Y-m-d H:i:s'), 
             ]);
         }
     }
