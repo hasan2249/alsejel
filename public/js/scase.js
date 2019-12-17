@@ -83,4 +83,32 @@ $(document).ready(function(){
        $("#auto-disapper").delay(2500).fadeOut();
     });
 
- 
+// Show more button
+$(document).ready(function(){
+
+  var _token = $('input[name="_token"]').val();
+
+  load_data('', _token);
+
+  function load_data( date="", _token)
+  {
+    var id = window.location.href.replace('http://scase/user/', '');
+    $.ajax({
+      url:"/user/"+id+"/load_data",
+      method:"POST",
+      data:{updated_at:date, _token:_token},
+      success:function(data)
+      {
+        $('#load_more_button').remove();
+        $('#post_data').append(data);
+      }
+    })
+  }
+
+  $(document).on('click', '#load_more_button', function(){
+    var date = $(this).data("updated_at");
+    $('#load_more_button').html('<b>Loading...</b>');
+    load_data(date, _token);
+  });
+
+});

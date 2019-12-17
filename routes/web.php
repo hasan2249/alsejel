@@ -31,8 +31,9 @@ Route::get('/home', 'HomeController@index');
 
 // Controller: userController -----------
 Route::get('/user/{id}', 'userController@user_page');
-
+Route::post('/user/{id}/load_data', 'userController@load_data');
 Route::get('/users', 'userController@users_page');
+
 //---------------------------------------
 
 // Controller: TaskController -----------
