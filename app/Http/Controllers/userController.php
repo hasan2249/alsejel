@@ -30,7 +30,7 @@ class userController extends Controller
         return view('users', $user);
     }
 
-    public function user_page($id, Request $request) {
+    public function user_page($id) {
         $users = User::find($id);
         return view('user', compact('users'));
     }
