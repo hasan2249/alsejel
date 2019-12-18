@@ -23,7 +23,7 @@ class TaskController extends Controller
     ////////////////////////////////////////////////////////
     // show all tasks within DB
     public function tasks_page() {
-        $tasks = Task::all();
+        $tasks = Task::all()->sortByDesc('updated_at');
         $task = Array("tasks" => $tasks);
         return view('/tasks',$task);
     }
@@ -232,5 +232,14 @@ class TaskController extends Controller
         }
         return Redirect::back()->with('errorMsg',$errorMsg);
     }
-    
+    //Create new task
+    public function create_task(Request $req) {
+        $task = new Task();
+        $task->name = $req['title'];
+        $task->description = $req['description'];
+        $task->type = $req['type'];
+        $task->state = $req['state'];;
+        $task->save();
+        return Redirect::back();
+    }
 }

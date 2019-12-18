@@ -39,6 +39,7 @@ Route::get('/users', 'userController@users_page');
 // Controller: TaskController -----------
 
 Route::get('/tasks', 'TaskController@tasks_page');
+Route::post('/tasks', 'TaskController@create_task');
 
 Route::get('/task/{id}', 'TaskController@task_page');
 
