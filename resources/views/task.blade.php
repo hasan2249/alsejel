@@ -18,13 +18,18 @@
 </div>
                 
     <p class="text-gray">{{$task->type}} / {{$task->created_at}} </p>
+
     <p class="text-black" style ="margin-top:20px;">Description</p>
 </div>
         <div class="col-3 py-1">
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Add logwork</button>
               <br>
               <button type="button" class="add-comment-btn btn-success" data-toggle="modal" data-target="#AddComment" data-whatever="@getbootstrap">Add Comment</button>
-              <div class="pointer dropdown" style="margin-top:25px;">
+              <p class="text-gray" style="margin-top:25px;"> 
+                     <span style ="color:grey; font-size:18px;font-family: Times New Roman">Logged Time:</span>  <span style ="color:blue; font-size:18px;font-family: Times New Roman">{{$total_hours}}h  {{$total_minuts}}m </span>
+                  </p>
+             
+              <div class="pointer dropdown" style="margin-top:25px; font-size:18px;font-family: Times New Roman">
                   <i class="fa fa-caret-down" aria-hidden="true" class="btn btn-primary dropdown-toggle " data-toggle="dropdown"> People</i>
                   <div class="people_dropdown dropdown-menu">
                     @foreach($task->user as $user)
