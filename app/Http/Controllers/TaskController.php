@@ -64,8 +64,17 @@ class TaskController extends Controller
         ->get();
 
         $task_all_activities= $task_logs_comments->sortByDesc('created_at');
-
-        $task = Array("task" => $tasks, "task_all_activities" =>$task_all_activities ,"logworks" =>$logworks ,"comments" =>$comments ,"bool" =>$bool)  ;
+        //get the total number of hours
+        $hours =0;
+        $minuts =0;
+        foreach ($logworks as $logwork)
+        {
+            $hours +=$logwork->houre ;
+            $minuts += $logwork->minute ;
+        }
+        $total_hours = $hours + floor($minuts / 60);
+        $total_minuts = floor($minuts % 60);
+        $task = Array("task" => $tasks, "task_all_activities" =>$task_all_activities ,"logworks" =>$logworks ,"comments" =>$comments ,"bool" =>$bool , "total_hours" =>$total_hours , "total_minuts" =>$total_minuts)  ;
         return view('/task',$task);
     }
      //----------------------------------------------------
