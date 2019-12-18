@@ -18,17 +18,23 @@
 </div>
                 
     <p class="text-gray">{{$task->type}} / {{$task->created_at}} </p>
-
     <p class="text-black" style ="margin-top:20px;">Description</p>
+    <div class="col-md-9 col-sm-12 col-12 equel-grid">
+      <div class="grid" >
+        <div class="grid-body text-gray">
+          <p>{{$task->description}}</p>
+        </div>
+      </div>
+    </div>
 </div>
         <div class="col-3 py-1">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Add logwork</button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Log work</button>
               <br>
-              <button type="button" class="add-comment-btn btn-success" data-toggle="modal" data-target="#AddComment" data-whatever="@getbootstrap">Add Comment</button>
+              <button type="button" class="add-comment-btn btn-success" data-toggle="modal" data-target="#AddComment" data-whatever="@getbootstrap">Comment</button>
+              <br/>
               <p class="text-gray" style="margin-top:25px;"> 
-                     <span style ="color:grey; font-size:18px;font-family: Times New Roman">Logged Time:</span>  <span style ="color:blue; font-size:18px;font-family: Times New Roman">{{$total_hours}}h  {{$total_minuts}}m </span>
-                  </p>
-             
+                  <span style ="color:grey; font-size:18px;font-family: Times New Roman">Logged Time:</span>  <span style ="color:blue; font-size:18px;font-family: Times New Roman">{{$total_hours}}h  {{$total_minuts}}m </span>
+              </p>
               <div class="pointer dropdown" style="margin-top:25px; font-size:18px;font-family: Times New Roman">
                   <i class="fa fa-caret-down" aria-hidden="true" class="btn btn-primary dropdown-toggle " data-toggle="dropdown"> People</i>
                   <div class="people_dropdown dropdown-menu">
@@ -54,18 +60,13 @@
           <input name="date" class="form-control" type="date" required>
         </div>
         <div class="form-group">
-         <label for="exampleFormControlSelect1" class="col-form-label">Deuration of time:</label>
+         <label for="exampleFormControlSelect1" class="col-form-label">Duration of time:</label>
          <div class="row">  
         <div class="col-2">
-            <input name="houres" type="number"  class="form-control" id="formGroupExampleInput" required>
+            <input name="houres" type="number"  class="form-control" id="formGroupExampleInput" value="0" required>
         </div>
         <div class="col-2">
                 <label for="formGroupExampleInput" class="col-form-label" >hours </label>
-            </div>
-            <div class="col-2">
-                    <div id="delta">
-                    
-                        </div>  
             </div>
         <div class="col-2">
             <input name="minutes" type="number"  class="form-control" id="formGroupExampleInput" value="0" required>
@@ -90,15 +91,6 @@
   </div>
 </div>  
             </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 col-sm-12 col-12 equel-grid">
-                <div class="grid" style ="margin-top:-20px;">
-                  <div class="grid-body text-gray">
-                    <p>{{$task->description}}</p>
-                  </div>
-                </div>
-              </div>
             </div>
               <div class="row my-2">
                         <div class="col-lg-12 order-lg-2">

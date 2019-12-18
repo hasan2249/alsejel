@@ -41,7 +41,6 @@
                 </select>
                 </div>
                 @if ($errors->has('user'))
-
                 	<span class="text-danger">{{ $errors->first('user') }}</span>
             	@endif
              <div class="col-md-3">
@@ -57,16 +56,12 @@
                 <div class="col-md-2">
                 <label>From</label> 
                 </div>
-                <div class="col-md-10">  
-
-                 <input class="form-control" type="text"  id="StartDate" name="start">
-                 
-                 @if ($errors->has('start'))
-
-                	<span class="text-danger">{{ $errors->first('start') }}</span>
-
-                @endif
-                 </div>
+                    <div class="col-md-10">  
+                    <input class="form-control" type="text"  id="StartDate" name="start">
+                        @if ($errors->has('start'))
+                            <span class="text-danger">{{ $errors->first('start') }}</span>
+                        @endif
+                    </div>
                 </div>
             </div>
             <div class="col-md-3 ">
