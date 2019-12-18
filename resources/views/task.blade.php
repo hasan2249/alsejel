@@ -292,53 +292,14 @@
 </div>
  <!-- End Logwork content-->
 
-
 <!--Activities content-->
 <div class="tab-pane" id="Activities" onclick="removeActiveClass('Summery')">
     <div class="action-details">
-      @foreach($task_all_activities as $activity)
-        <div class = 'issue-data-block'>
-            <div class="actionContainer">
-                <div class="action-details">    
-                    @if (empty($activity->hour))
-                      <a href="#">{{$comment->user->name}}</a> -
-                    @else
-                      <a href="#">{{$logwork->user->name}}</a> -
-                    @endif
-                    <span title="Rule: 1" class="subText">
-                        <span class="date">
-                            @if ($activity->updated_at > $activity->created_at)
-                                @if (empty($activity->hour))
-                                    Updated his comment at: {{$activity->updated_at}}.
-                                @else
-                                    Updated his log  at: {{$activity->updated_at}}, to {{$activity->hour}} hours and {{$activity->minute}} minutes.
-                                @endif
-                            @else
-                                @if (empty($activity->hour))
-                                    Added a new comment at: {{$activity->updated_at}}.
-                                @else
-                                    Logged work at: {{$activity->updated_at}}, with {{$activity->hour}} hours and {{$activity->minute}} minutes.
-                                @endif
-                            @endif
-                        </span>
-                    </span>
-                </div>
-                <div class="action-body">
-                    <ul id="worklog_details_142295" class="item-details">
-                        <li>
-                            <dl>
-                                <dt>&nbsp;</dt>
-                                <dd id="wl-142295-c" class="worklog-comment">                                                        
-                                    <p>{{$activity->description}}.</p>
-                                </dd>
-                            </dl>
-                        </li>
-                    </ul>
-                </div>
+            {{ csrf_field() }}
+            <div class = 'issue-data-block' id="post_task_activities">
+
             </div>
-        </div>
-      @endforeach
-    </div> 
+    </div>
 </div>
 <!--End activities content-->
 

@@ -35,20 +35,20 @@ class userController extends Controller
         return view('user', compact('users'));
     }
 
-    public function load_data($id,Request $request)
+    public function load_user_activities_data($id,Request $request)
     {
         $users = User::find($id);
         $user_logs = DB::table('users')
             ->join('logworks', 'logworks.user_id', '=','users.id')
             ->where('users.id','=',$id)
-            ->select('logworks.id','logworks.description',
+            ->select('logworks.task_id','logworks.id','logworks.description',
                 'logworks.houre','logworks.minute',
                 'logworks.created_at','logworks.updated_at');
 
         $user_logs_comments = DB::table('users')
             ->join('comments', 'comments.user_id', '=','users.id')
             ->where('users.id','=',$id)
-            ->select('comments.id','comments.description',
+            ->select('comments.task_id','comments.id','comments.description',
                 DB::raw("NULL As hour"),DB::raw("NULL As minute"),
                 'comments.created_at','comments.updated_at')
             ->unionAll($user_logs)
@@ -74,7 +74,6 @@ class userController extends Controller
                 foreach($user_some_activities as $activity)
                 {
                     $output .= "
-        <div class = 'issue-data-block'>
                     <div class='actionContainer'>
                         <div class='action-details'>
                             <a href='#'>".$users->name."</a> -
@@ -101,7 +100,6 @@ class userController extends Controller
                                 </ul>
                             </div>
                     </div>
-                    </div>
                     ";
                     $last_date = $activity->updated_at;
                 }
@@ -110,8 +108,8 @@ class userController extends Controller
                     $output .= '
 
        <div class="col-md-8 offset-md-4">
-       <div id="load_more">
-        <button type="button" name="load_more_button" class="btn-link" data-updated_at="'.$last_date.'" id="load_more_button">Load More</button>
+       <div id="user_activities_load_more">
+        <button type="button" name="load_more_user_activities_button" class="btn-link" data-updated_at="'.$last_date.'" id="load_more_user_activities_button">Load More</button>
        </div>
        
        </div>

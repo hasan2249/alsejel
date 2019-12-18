@@ -46,27 +46,95 @@ class TaskController extends Controller
                 break;
             }
         }
-        
+
+        $task = Array("task" => $tasks ,"logworks" =>$logworks ,"comments" =>$comments ,"bool" =>$bool)  ;
+        return view('/task',$task);
+    }
+
+    public function load_task_activities_data($id,Request $request)
+    {
+        $tasks = Task::find($id);
         $task_logs = DB::table('tasks')
-        ->join('logworks', 'logworks.task_id', '=','tasks.id')
-        ->where('tasks.id','=',$id)
-        ->select('logworks.id','logworks.description',
-                  'logworks.houre','logworks.minute',
-                 'logworks.created_at','logworks.updated_at');
+            ->join('logworks', 'logworks.task_id', '=','tasks.id')
+            ->where('tasks.id','=',$id)
+            ->select('logworks.id','logworks.description',
+                'logworks.houre','logworks.minute',
+                'logworks.created_at','logworks.updated_at');
 
         $task_logs_comments = DB::table('tasks')
-        ->join('comments', 'comments.task_id', '=','tasks.id')
-        ->where('tasks.id','=',$id)
-        ->select('comments.id','comments.description',
-                 DB::raw("NULL As hour"),DB::raw("NULL As minute"),
+            ->join('comments', 'comments.task_id', '=','tasks.id')
+            ->where('tasks.id','=',$id)
+            ->select('comments.id','comments.description',
+                DB::raw("NULL As hour"),DB::raw("NULL As minute"),
                 'comments.created_at','comments.updated_at')
-        ->unionAll($task_logs)
-        ->get();
+            ->unionAll($task_logs)
+            ->get();
 
-        $task_all_activities= $task_logs_comments->sortByDesc('created_at');
+        $task_all_activities= $task_logs_comments->sortByDesc('updated_at');
 
-        $task = Array("task" => $tasks, "task_all_activities" =>$task_all_activities ,"logworks" =>$logworks ,"comments" =>$comments ,"bool" =>$bool)  ;
-        return view('/task',$task);
+        $num_of_records = 10;
+        if($request->ajax())
+        {
+            if($request->updated_at > 0)
+            {
+                $task_some_activities = $task_all_activities->where('updated_at', '<', $request->updated_at)->take($num_of_records);
+            }
+            else
+            {
+                $task_some_activities = $task_all_activities->take($num_of_records);
+            }
+            $output = '';
+            $last_date = '';
+
+            if(!$task_some_activities->isEmpty())
+            {
+                foreach($task_some_activities as $activity)
+                {
+                    $output .= "
+                    <div class='actionContainer'>
+                        <div class='action-details'>
+                            <a href='#'>".$tasks->name."</a> -
+                            <span title='Rule: 1' class='subText'><span class='date'>".
+                        ( $activity->updated_at > $activity->created_at ?
+                            (empty($activity->hour) ?
+                                "Updated his comment at: ". $activity->updated_at."." :
+                                "Updated his log  at: ". $activity->updated_at. ", to ".  $activity->hour ." hours and ". $activity->minute ." minutes.") :
+                            (empty($activity->hour)?
+                                "Added a new comment at: ". $activity->updated_at.".":
+                                "Logged work at: ". $activity->updated_at." , with ". $activity->hour ." hours and ". $activity->minute." minutes.")).
+                        "</span></span>
+                        </div>
+                            <div class='action-body'>
+                                <ul id='worklog_details_142295' class='item-details'>
+                                <li>
+                                <dl>
+                                <dt>&nbsp;</dt>
+                                <dd id='wl-142295-c' class='worklog-comment'>
+                                <p>$activity->description.</p>
+                                </dd>
+                                </dl>
+                                </li>
+                                </ul>
+                            </div>
+                    </div>
+                    ";
+                    $last_date = $activity->updated_at;
+                }
+                if (!(count($task_some_activities) < $num_of_records))
+                {
+                    $output .= '
+
+       <div class="col-md-8 offset-md-4">
+       <div id="task_activities_load_more">
+        <button type="button" name="load_more_task_activities_button" class="btn-link" data-updated_at="'.$last_date.'" id="load_more_task_activities_button">Load More</button>
+       </div>
+       
+       </div>
+       ';
+                }
+            }
+            echo $output;
+        }
     }
      //----------------------------------------------------
 

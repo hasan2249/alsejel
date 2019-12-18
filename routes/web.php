@@ -31,7 +31,7 @@ Route::get('/home', 'HomeController@index');
 
 // Controller: userController -----------
 Route::get('/user/{id}', 'userController@user_page');
-Route::post('/user/{id}/load_data', 'userController@load_data');
+Route::post('/user/{id}/load_user_activities_data', 'userController@load_user_activities_data');
 Route::get('/users', 'userController@users_page');
 
 //---------------------------------------
@@ -53,7 +53,7 @@ Route::post('/task/{id}/join', 'TaskController@join');
 
 Route::get('/task/{id}/left', 'TaskController@left');
 Route::post('/task/{id}/left', 'TaskController@left');
-
+Route::post('/task/{id}/load_task_activities_data', 'TaskController@load_task_activities_data');
 // Task -> Comment routing
 Route::post('/AddComment/{id}', 'TaskController@AddComment');
 Route::post('/editComment/{id}', 'TaskController@editComment');
