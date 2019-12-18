@@ -71,8 +71,9 @@ Route::get('change-password', 'userController@index');
 Route::post('change-password', 'userController@store')->name('change.password');
 Route::post('change-image', 'userController@updateProfile')->name('change.image');
 
+// export report as excel file ---------------
 Route::get('importExport', 'ExcelController@importExport');
-Route::get('downloadExcel/{type}', 'ExcelController@downloadExcel');
-Route::get('allToExcel/{a}/{type}', 'ExcelController@allToExcel');
+Route::get('downloadExcel', 'ExcelController@downloadExcel');
+Route::get('allToExcel/{type}', 'ExcelController@allToExcel');
 Route::get('display', 'ExcelController@display');
 

@@ -14,48 +14,35 @@
     </nav>
     <div class="row align-items-start">
     <div class="col-md-2 offset-md-0">
-            <button  onclick="window.location='{{ URL::to('allToExcel/'.serialize($a).'/xlsx') }}'" class="btn btn-save-file btn-primary" >Save as excel file</button>
+            <button  onclick="window.location='{{ URL::to('allToExcel/xlsx') }}'" class="btn btn-save-file btn-primary" >Save as excel file</button>
      </div>
   </div>
             <div class="row">
-       <table class="table table-hover">
-            @if(sizeof($a[0])==5)
+            <div class=" alert alert-success" role="alert" >
+            Total elapsed time : {{$total_hour}} hours, {{$total_minute}} minutes
+            </div>
+            <table class="table table-hover">
             <thead class="thead-light">
             <tr>
-                    <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman">Employee Name</th>
-                    <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman">Task Name</th>
-                    <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman">Duration(hours)</th>
-                    <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman">Duration(minutes)</th>
-                    <th scope="col" style="color:blue ; font-size:20px;sfont-family: Times New Roman">Description</th>
+                <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman">Employee Name</th>
+                <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman">Task Name</th>
+                <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman">Hours</th>
+                <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman">Minutes</th>
+                <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman">Date</th>
+                <th scope="col" style="color:blue ; font-size:20px;sfont-family: Times New Roman">Description</th>
             </tr>
-            @else  
-            <tr>
-                    <th scope="col">Employee Name</th>
-                    <th scope="col">Duration(hours)</th>
-                    <th scope="col">Duration(minutes)</th>
-                    <th scope="col">Description</th>
-             </tr>
-            @endif
             </thead>
             <tbody>   
-       @foreach ($a as $row)
-       @if(sizeof($row)==5)
-       <tr>
-           <td>{{ $row[0] }}</td>
-           <td>{{ $row[1]}}</td>
-           <td>{{ $row[2] }}</td>
-           <td>{{ $row[3] }}</td>
-           <td>{{ $row[4] }}</td>
-       </tr>
-       @else  
-       <tr>
-            <td>{{ $row[0] }}</td>
-            <td>{{ $row[1]}}</td>
-            <td>{{ $row[2] }}</td>
-            <td>{{ $row[3] }}</td>
-        </tr>
-       @endif   
-       @endforeach
+                @foreach ($a as $row)
+                <tr>
+                    <td>{{ $row[0] }}</td>
+                    <td>{{ $row[1] }}</td>
+                    <td>{{ $row[2] }}</td>
+                    <td>{{ $row[3] }}</td>
+                    <td>{{ $row[4] }}</td>
+                    <td>{{ $row[5] }}</td>
+                </tr> 
+                @endforeach
             </tbody>
     </table> 
 </div>

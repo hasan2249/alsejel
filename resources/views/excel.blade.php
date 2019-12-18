@@ -25,12 +25,10 @@
         <span type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
         </span>
-        
-        {!! \Session::get('alert') !!}
     </div>
 @endif
 	<div class="container">
-            <form autocomplete="off" method="GET" action="{{ URL::to('downloadExcel/xlsx') }}" >
+            <form autocomplete="off" method="GET" action="{{ URL::to('downloadExcel') }}" >
              
             <div class="input-group">
             <div class = "row">  
