@@ -119,9 +119,10 @@
                 <div class="tab-pane" id="Activities" onclick="removeActiveClass('Summery')">
                 <div class="action-details">
                         {{ csrf_field() }}
-                        <div class = 'issue-data-block' id="post_user_activities">
+                        <div id="post_user_activities">
 
-                </div> 
+                        </div>
+                </div>
                 </div>
                 </div>
                 <!--End activities content-->

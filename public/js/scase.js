@@ -100,7 +100,8 @@ $(document).ready(function(){
 // Show more user activites button
     function load_user_activities_data( date="", _token)
     {
-        var id = window.location.href.replace('http://scase/user/', '');
+        var id = window.location.href.substring(window.location.href.indexOf('user')+5);
+        console.log(id);
         $.ajax({
             url:"/user/"+id+"/load_user_activities_data",
             method:"POST",
@@ -122,7 +123,8 @@ $(document).ready(function(){
     // Show more task activites button
     function load_task_activities_data( date="", _token)
     {
-        var id = window.location.href.replace('http://scase/task/', '');
+        var id = window.location.href.substring(window.location.href.indexOf('task')+5);
+        console.log(id);
         $.ajax({
             url:"/task/"+id+"/load_task_activities_data",
             method:"POST",

@@ -74,6 +74,7 @@ class userController extends Controller
                 foreach($user_some_activities as $activity)
                 {
                     $output .= "
+                    <div class = 'issue-data-block' >
                     <div class='actionContainer'>
                         <div class='action-details'>
                             <a href='#'>".$users->name."</a> -
@@ -99,6 +100,7 @@ class userController extends Controller
                                 </li>
                                 </ul>
                             </div>
+                    </div>
                     </div>
                     ";
                     $last_date = $activity->updated_at;

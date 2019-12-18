@@ -91,6 +91,7 @@ class TaskController extends Controller
                 foreach($task_some_activities as $activity)
                 {
                     $output .= "
+                    <div class = 'issue-data-block' >
                     <div class='actionContainer'>
                         <div class='action-details'>
                             <a href='#'>".$tasks->name."</a> -
@@ -116,6 +117,7 @@ class TaskController extends Controller
                                 </li>
                                 </ul>
                             </div>
+                    </div>
                     </div>
                     ";
                     $last_date = $activity->updated_at;
