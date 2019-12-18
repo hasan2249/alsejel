@@ -198,7 +198,7 @@
                 @endif
                 </div>
                 <div class="info-wrapper">
-                    <p class="user-name"><a href="/user/{{Auth::user()->id}}"> {{ Auth::user()->name }} </a></p>
+                    <p class="user-name"><a href="{{URL::to('/user/'.Auth::user()->id)}}"> {{ Auth::user()->name }} </a></p>
                     <h6 class="display-income">{{ Auth::user()->email }}</h6>
                     <form id="logout-form" action="{{ url('/logout') }}" method="POST">
                         {{ csrf_field() }}

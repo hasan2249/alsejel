@@ -198,7 +198,7 @@
                 <?php endif; ?>
                 </div>
                 <div class="info-wrapper">
-                    <p class="user-name"><a href="/user/<?php echo e(Auth::user()->id); ?>"> <?php echo e(Auth::user()->name); ?> </a></p>
+                    <p class="user-name"><a href="<?php echo e(URL::to('/user/'.Auth::user()->id)); ?>"> <?php echo e(Auth::user()->name); ?> </a></p>
                     <h6 class="display-income"><?php echo e(Auth::user()->email); ?></h6>
                     <form id="logout-form" action="<?php echo e(url('/logout')); ?>" method="POST">
                         <?php echo e(csrf_field()); ?>
