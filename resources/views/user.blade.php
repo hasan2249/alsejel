@@ -118,43 +118,11 @@
                 <!--Activities content-->
                 <div class="tab-pane" id="Activities" onclick="removeActiveClass('Summery')">
                 <div class="action-details">
-                    @foreach($user_all_activities as $activity)
-                    <div class = 'issue-data-block'>
-                    <div class="actionContainer">
-                        <div class="action-details">    
-                            <a href="#">{{$users->name}}</a> -
-                            <span title="Rule: 1" class="subText"><span class="date">
-                            @if ($activity->updated_at > $activity->created_at)
-                                @if (empty($activity->hour))
-                                    Updated his comment at: {{$activity->updated_at}}.
-                                @else
-                                    Updated his log  at: {{$activity->updated_at}}, to {{$activity->hour}} hours and {{$activity->minute}} minutes.
-                                @endif
-                            @else
-                                @if (empty($activity->hour))
-                                    Added a new comment at: {{$activity->updated_at}}.
-                                @else
-                                    Logged work at: {{$activity->updated_at}}, with {{$activity->hour}} hours and {{$activity->minute}} minutes.
-                                @endif
-                            @endif
-                            </span></span>
+                        {{ csrf_field() }}
+                        <div id="post_user_activities">
+
                         </div>
-                            <div class="action-body">
-                                <ul id="worklog_details_142295" class="item-details">
-                                <li>
-                                <dl>
-                                <dt>&nbsp;</dt>
-                                <dd id="wl-142295-c" class="worklog-comment">                                                        
-                                <p>{{$activity->description}}.</p>
-                                </dd>
-                                </dl>
-                                </li>
-                                </ul>
-                            </div>
-                    </div>
-                    </div>
-                    @endforeach
-                </div> 
+                </div>
                 </div>
                 <!--End activities content-->
                 
@@ -282,5 +250,7 @@ $("#update-image").fadeOut();
     if(exist){
       alert(msg);
     }
-  </script>
+
+
+    </script>
     @endsection

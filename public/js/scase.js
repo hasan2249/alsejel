@@ -83,4 +83,61 @@ $(document).ready(function(){
        $("#auto-disapper").delay(2500).fadeOut();
     });
 
- 
+// Show more activites
+$(document).ready(function(){
+
+    var _token = $('input[name="_token"]').val();
+
+    if (window.location.href.indexOf('user/') !=-1)
+    {
+        load_user_activities_data('', _token);
+    }
+    else if (window.location.href.indexOf('task/') !=-1)
+    {
+        load_task_activities_data('', _token);
+    }
+
+// Show more user activites button
+    function load_user_activities_data( date="", _token)
+    {
+        var id = window.location.href.substring(window.location.href.indexOf('user/')+5);
+        $.ajax({
+            url:"/user/"+id+"/load_user_activities_data",
+            method:"POST",
+            data:{updated_at:date, _token:_token},
+            success:function(data)
+            {
+                $('#load_more_user_activities_button').remove();
+                $('#post_user_activities').append(data);
+            }
+        })
+    }
+
+    $(document).on('click', '#load_more_user_activities_button', function(){
+        var date = $(this).data("updated_at");
+        $('#load_more_user_activities_button').html('<b>Loading...</b>');
+        load_user_activities_data(date, _token);
+    });
+
+    // Show more task activites button
+    function load_task_activities_data( date="", _token)
+    {
+        var id = window.location.href.substring(window.location.href.indexOf('task/')+5);
+        $.ajax({
+            url:"/task/"+id+"/load_task_activities_data",
+            method:"POST",
+            data:{updated_at:date, _token:_token},
+            success:function(data)
+            {
+                $('#load_more_task_activities_button').remove();
+                $('#post_task_activities').append(data);
+            }
+        })
+    }
+
+    $(document).on('click', '#load_more_task_activities_button', function(){
+        var date = $(this).data("updated_at");
+        $('#load_more_task_activities_button').html('<b>Loading...</b>');
+        load_task_activities_data(date, _token);
+    });
+});
