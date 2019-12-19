@@ -242,4 +242,24 @@ class TaskController extends Controller
         $task->save();
         return Redirect::back();
     }
+
+    //edit Task
+    public function editTask(Request $req, $id) {
+        $task = Task::find($id);
+        $task->description = $req['description']; 
+        $task->name = $req['title'];
+        $task->state = $req['state'];
+        $task->type = $req['type'];
+        $task->save();
+        return Redirect::back();
+    }
+    //delete task
+    public function deleteTask(Request $req, $id) {
+        $task = Task::find($id);
+        $task->comment()->delete();;
+        $task->logwork()->delete();
+        DB::table('task_user')->where([['task_id', $id]])->delete();
+        $task->delete();
+        return Redirect::back();
+     }
 }

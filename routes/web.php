@@ -39,7 +39,7 @@ Route::get('/users', 'userController@users_page');
 // Controller: TaskController -----------
 
 Route::get('/tasks', 'TaskController@tasks_page');
-Route::post('/tasks', 'TaskController@create_task');
+
 
 Route::get('/task/{id}', 'TaskController@task_page');
 
@@ -48,6 +48,7 @@ Route::get('/delete/{id}', 'TaskController@deleteLogwork');
 Route::post('/task/{id}', 'TaskController@logwork');
 
 Route::post('/editLogwork/{id}', 'TaskController@editLogwork');
+
 
 Route::get('/task/{id}/join', 'TaskController@join');
 Route::post('/task/{id}/join', 'TaskController@join');
@@ -78,4 +79,7 @@ Route::get('importExport', 'ExcelController@importExport');
 Route::get('downloadExcel', 'ExcelController@downloadExcel');
 Route::get('allToExcel/{type}', 'ExcelController@allToExcel');
 Route::get('display', 'ExcelController@display');
-
+// edit delete task
+Route::post('/editTask/{id}', 'TaskController@editTask');
+Route::get('/deleteTask/{id}', 'TaskController@deleteTask');
+Route::post('/tasks', 'TaskController@create_task');
