@@ -1,22 +1,3 @@
-// $(document).ready(function(){
-//   $("#logwork").click(function(){
-//     $("#logwork_form").toggle(500);
-//   });
-// });
-
-// $(document).ready(function(){
-//   $("#show_logworks").click(function(){
-//     var id = $("#hidden_task_id").text();
-//     $("#logworks_shower").load("/logworks/",id);
-//   });
-// });
-
-// $(document).ready(function(){
-//     $("#q1").click(function(){
-//         $("#summery_tab").removeClass("active");
-//     });
-// });
-
 function removeActiveClass(id) {
     document.getElementById(id).classList.remove('active');
 }
@@ -88,27 +69,35 @@ $(document).ready(function(){
 
     var _token = $('input[name="_token"]').val();
 
-    if (window.location.href.indexOf('user/') !=-1)
-    {
-        load_user_activities_data('', _token);
+    // These two conditions are necessary to get the id from the path correctly
+    // at first time after load page.
+    if (window.location.href.indexOf('user/') !=-1) 
+    { // if it is user page 
+        loadUserActivitiesData('', _token);
     }
-    else if (window.location.href.indexOf('task/') !=-1)
-    {
-        load_task_activities_data('', _token);
+    else if (window.location.href.indexOf('task/') !=-1)  
+    { // if it is task page
+        loadTaskActivitiesData('', _token);
     }
 
 // Show more user activites button
-    function load_user_activities_data( date="", _token)
+    function loadUserActivitiesData( date="", _token)
     {
         var id = window.location.href.substring(window.location.href.indexOf('user/')+5);
+        
+        //////////
+        // $.ajax function:
+        // url : Specifies the URL to send the request to.
+        // data: Specifies data to be sent to the server
+        // success(result,status,xhr): A function to be run when the request succeeds
         $.ajax({
             url:"/user/"+id+"/load_user_activities_data",
             method:"POST",
             data:{updated_at:date, _token:_token},
-            success:function(data)
+            success:function(coming_data)
             {
                 $('#load_more_user_activities_button').remove();
-                $('#post_user_activities').append(data);
+                $('#post_user_activities').append(coming_data);
             }
         })
     }
@@ -116,21 +105,27 @@ $(document).ready(function(){
     $(document).on('click', '#load_more_user_activities_button', function(){
         var date = $(this).data("updated_at");
         $('#load_more_user_activities_button').html('<b>Loading...</b>');
-        load_user_activities_data(date, _token);
+        loadUserActivitiesData(date, _token);
     });
 
     // Show more task activites button
-    function load_task_activities_data( date="", _token)
+    function loadTaskActivitiesData( date="", _token)
     {
         var id = window.location.href.substring(window.location.href.indexOf('task/')+5);
+
+        //////////
+        // $.ajax function:
+        // url : Specifies the URL to send the request to.
+        // data: Specifies data to be sent to the server
+        // success(result,status,xhr): A function to be run when the request succeeds
         $.ajax({
             url:"/task/"+id+"/load_task_activities_data",
-            method:"POST",
+            method:"POST", 
             data:{updated_at:date, _token:_token},
-            success:function(data)
+            success:function(coming_data)
             {
                 $('#load_more_task_activities_button').remove();
-                $('#post_task_activities').append(data);
+                $('#post_task_activities').append(coming_data);
             }
         })
     }
@@ -138,6 +133,8 @@ $(document).ready(function(){
     $(document).on('click', '#load_more_task_activities_button', function(){
         var date = $(this).data("updated_at");
         $('#load_more_task_activities_button').html('<b>Loading...</b>');
-        load_task_activities_data(date, _token);
+        loadTaskActivitiesData(date, _token);
     });
+
+    // $('.tsk').select2();
 });

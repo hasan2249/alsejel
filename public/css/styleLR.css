@@ -27,6 +27,12 @@ select.form-control:not([size]):not([multiple]){
     margin-bottom: 19px;
   }
 
+.marg{
+  margin-top: 46px;
+}
+.form-inline .input-group>.form-control {
+  width: 83%;
+}
 .alert-fix{
   position: fixed;
   width: 426px;

@@ -78,3 +78,8 @@ Route::get('downloadExcel', 'ExcelController@downloadExcel');
 Route::get('allToExcel/{type}', 'ExcelController@allToExcel');
 Route::get('display', 'ExcelController@display');
 
+
+// charts --------------------------
+Route::post('/charts', 'WorkDurationControler@chartOfTask');
+Route::get('/charts', 'WorkDurationControler@showChartPage');
+

@@ -49,7 +49,7 @@ class userController extends Controller
             ->join('comments', 'comments.user_id', '=','users.id')
             ->where('users.id','=',$id)
             ->select('comments.task_id','comments.id','comments.description',
-                DB::raw("NULL As hour"),DB::raw("NULL As minute"),
+                DB::raw("NULL As hourer"),DB::raw("NULL As minute"),
                 'comments.created_at','comments.updated_at')
             ->unionAll($user_logs)
             ->get();
@@ -108,16 +108,14 @@ class userController extends Controller
                 if (!(count($user_some_activities) < $num_of_records))
                 {
                     $output .= '
-
-       <div class="col-md-8 offset-md-4">
-       <div id="user_activities_load_more">
-        <button type="button" name="load_more_user_activities_button" class="btn-link" data-updated_at="'.$last_date.'" id="load_more_user_activities_button">Load More</button>
-       </div>
-       
-       </div>
-       ';
+                                <div class="col-md-8 offset-md-4">
+                                <div id="user_activities_load_more">
+                                    <button type="button" name="load_more_user_activities_button" class="btn-link" data-updated_at="'.$last_date.'" id="load_more_user_activities_button">Load More</button>
+                                </div>
+                                </div>
+                                ';
                 }
-        }
+            }
             echo $output;
         }
     }

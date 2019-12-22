@@ -230,8 +230,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <span class="link-title">Dashboard</span>
+                    <a href="{{ url('/charts') }}">
+                        <span class="link-title">Charts</span>
                         <i class="fa fa-cog link-icon"></i>
                     </a>
                 </li>
@@ -285,8 +285,7 @@
     <!-- Scripts -->
     <!-- Scripts for the template -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
     <script src="{{asset('js/core.js')}}"></script>
     <script src="{{asset('js/app.js')}}"></script>
     <script src="{{asset('js/template.js')}}"></script>

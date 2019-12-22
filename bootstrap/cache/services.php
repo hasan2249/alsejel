@@ -29,6 +29,7 @@
     25 => 'App\\Providers\\EventServiceProvider',
     26 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     27 => 'Spatie\\Backup\\BackupServiceProvider',
+    28 => 'ConsoleTVs\\Charts\\ChartsServiceProvider',
   ),
   'eager' => 
   array (
@@ -48,6 +49,7 @@
     13 => 'App\\Providers\\EventServiceProvider',
     14 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     15 => 'Spatie\\Backup\\BackupServiceProvider',
+    16 => 'ConsoleTVs\\Charts\\ChartsServiceProvider',
   ),
   'deferred' => 
   array (

@@ -184,12 +184,14 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+
         //for excel
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
-
+        
+        //for charts
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
     ],
 
     /*
