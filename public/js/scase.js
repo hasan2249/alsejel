@@ -1,3 +1,6 @@
+$(document).ready(function(){
+    $(":radio[name='type'][value='1']").attr('checked', 'checked');
+});
 function removeActiveClass(id) {
     document.getElementById(id).classList.remove('active');
 }
