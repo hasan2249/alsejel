@@ -37,7 +37,7 @@ select.form-control:not([size]):not([multiple]){
   position: fixed;
   width: 426px;
   right: 28px;
-  top: 64%;
+  top: 69%;
   z-index: 99;
   font-size: large;
 }

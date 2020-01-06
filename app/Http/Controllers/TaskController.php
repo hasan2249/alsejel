@@ -262,4 +262,30 @@ class TaskController extends Controller
         $task->delete();
         return Redirect::back();
      }
+
+     public function BuckupPage(){
+        
+        return view('Buckup');
+     }
+
+     public function AddNewUser(){
+        
+        return view('newUser');
+     }
+     
+     public function CreateNewUser(Request $req){
+        try {
+            $task = new User();
+            $task->name = $req['name'];
+            $task->rule = $req['rule'];
+            $task->email = $req['email'];
+            $task->password = bcrypt($req['password']);
+            $task->image = 'null';
+            $task->save();
+            $errorMsg = '1';
+            }catch(Exception $e){
+                $errorMsg = 'Caught exception: '.  $e->getMessage();
+            }
+            return Redirect::back()->with('errorMsg',$errorMsg); 
+     }
 }

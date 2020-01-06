@@ -8,7 +8,7 @@
 <div class="row marg">
 
     <div class="col col-md-12">
-      <p class="lead"> Work log on specific task between two different date:</p>
+      <p class="lead"> Work log estimated by [minutes] on specific task between two different date:</p>
     </div>
     
     <div class="col col-md-12" >

@@ -236,15 +236,17 @@
                         <i class="fa fa-cog link-icon"></i>
                     </a>
                 </li>
+                <?php if(Auth::user()->rule == "1"): ?>
                 <li>
-                    <a href="#">
-                        <span class="link-title">Disabled</span>
+                    <a href="<?php echo e(url('/Buckup')); ?>">
+                        <span class="link-title">Buckup</span>
                         <i class="fa fa-refresh link-icon"></i>
                     </a>
+                <?php endif; ?>
                 </li>
                 <li>
-                    <a href="#">
-                        <span class="link-title">Disabled</span>
+                    <a href="">
+                        <span class="link-title">Orders</span>
                         <i class="fa fa-refresh link-icon"></i>
                     </a>
                 </li>

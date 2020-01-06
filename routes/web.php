@@ -79,9 +79,16 @@ Route::get('importExport', 'ExcelController@importExport');
 Route::get('downloadExcel', 'ExcelController@downloadExcel');
 Route::get('allToExcel/{type}', 'ExcelController@allToExcel');
 Route::get('display', 'ExcelController@display');
+
 // edit delete task
 Route::post('/editTask/{id}', 'TaskController@editTask');
 Route::get('/deleteTask/{id}', 'TaskController@deleteTask');
-Route::post('/tasks', 'TaskController@create_task');// charts --------------------------
+Route::post('/tasks', 'TaskController@create_task');
+// charts --------------------------
 Route::post('/charts', 'WorkDurationControler@chartOfTask');
 Route::get('/charts', 'WorkDurationControler@showChartPage');
+
+// Teams -----------------
+Route::get('/Buckup', 'TaskController@BuckupPage');
+Route::get('/newUser', 'TaskController@AddNewUser');
+Route::post('/CreateNewUser', 'TaskController@CreateNewUser');

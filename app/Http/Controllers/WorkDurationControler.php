@@ -75,6 +75,11 @@ class WorkDurationControler extends Controller
         $this->usersChart->dataset('work log', 'line',  $minutes)
         ->color("rgb(68, 75, 250)")
         ->backgroundcolor("rgb(68, 75, 250,20%)");
+        // ->color("rgb(255, 99, 132)")
+        //     ->backgroundcolor("rgb(255, 99, 132)")
+        //     ->fill(false)
+        //     ->linetension(0.1)
+        //     ->dashed([5]);
         //return redirect()->action('WorkDurationControler@showChartPage')->with([ 'usersChart' => $this->usersChart, 'users' => $this->users,'tasks' => $this->tasks ])->withInput();
         // return view('charts', [ 'usersChart' => $usersChart, 'users' => $this->users,'tasks' => $this->tasks ] )->withInput();
         return $this->showChartPage();
