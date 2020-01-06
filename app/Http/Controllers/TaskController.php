@@ -256,7 +256,7 @@ class TaskController extends Controller
     //delete task
     public function deleteTask(Request $req, $id) {
         $task = Task::find($id);
-        $task->comment()->delete();;
+        $task->comment()->delete();
         $task->logwork()->delete();
         DB::table('task_user')->where([['task_id', $id]])->delete();
         $task->delete();
@@ -287,5 +287,14 @@ class TaskController extends Controller
                 $errorMsg = 'Caught exception: '.  $e->getMessage();
             }
             return Redirect::back()->with('errorMsg',$errorMsg); 
+     }
+
+     public function DeleteUser($id){
+        $user = User::find($id);
+        $user->logwork()->delete();
+        $user->comment()->delete();
+        DB::table('task_user')->where([['user_id', $id]])->delete();
+        $user->delete();
+        return Redirect::back();
      }
 }

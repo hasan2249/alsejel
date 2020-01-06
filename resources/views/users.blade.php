@@ -21,15 +21,45 @@
     <tbody>
 
         @foreach ($users as $user)
-        <tr onclick="window.location='user/{{$user->id}}';">
-            <th scope="row" class="pointer">{{$user->id}}</th>
-            <td class="pointer">{{$user->name}}</td>
-            <td class="pointer"><?php if($user->rule == 1) {echo"Admin";} else {echo"User";}?></td>
-            <td class="pointer">{{$user->email}}</td>
+        <tr>
+            <th scope="row" class="pointer" onclick="window.location='user/{{$user->id}}';">{{$user->id}}</th>
+            <td class="pointer" onclick="window.location='user/{{$user->id}}';">{{$user->name}}</td>
+            <td class="pointer" onclick="window.location='user/{{$user->id}}';"><?php if($user->rule == 1) {echo"Admin";} else {echo"User";}?></td>
+            <td class="pointer" onclick="window.location='user/{{$user->id}}';">{{$user->email}}</td>
+            <td>
+            @if(Auth::user()->rule == "1")
+                <form id="Delete_User_form" action="/deleteUser/{{$user->id}}" method="GET">
+                <a href="#" id="delete_User" title="Delete" class="delete-task-trigger" style="margin:5px 5px 5px"><i data-toggle="modal" data-target="#confirmUserDelete" class="fa fa-trash" aria-hidden="true"></i></a>
+              </form>  
+              @endif
+            </td>
         </tr>
         @endforeach
 
     </tbody>
 </table>
+
+
+<!--Start confirm the delete logwork form-->
+<div class="modal fade" id="confirmUserDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLab" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLab">Delete User</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          You are going to delete the User with his/her activites, Work logs and Comments related to, Are you sure?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Close</button>
+          <input type="submit" form="Delete_User_form" value="Yes, Delete" class="btn btn-primary" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End confirm the delete form-->
 
 @endsection
