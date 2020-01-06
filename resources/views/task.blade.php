@@ -156,8 +156,8 @@
               {{--End edit Comments--}}
 
               @if(Auth::user()->id == $comment->user->id)
-              <form id="Delete_comment_form" action="/deleteComment/{{$comment->id}}" method="GET">
-                <a href="#" id="delete_worklog_142295" title="Delete" class="delete-worklog-trigger" style="margin:5px 5px 5px"><i data-toggle="modal" data-target="#confirmCommentDelete" class="fa fa-trash" aria-hidden="true"></i></a>
+              <form id="Delete_comment_form{{$comment->id}}" action="/deleteComment/{{$comment->id}}" method="GET">
+                <a href="#" id="delete_worklog_142295" title="Delete" class="delete-worklog-trigger" style="margin:5px 5px 5px"><i data-toggle="modal" data-target="#confirmCommentDelete{{$comment->id}}" class="fa fa-trash" aria-hidden="true"></i></a>
               </form>
               @endif
 
@@ -180,6 +180,29 @@
             </div>
           </div>
         </div>
+
+          <!--Start confirm the delete comment form-->
+  <div class="modal fade" id="confirmCommentDelete{{$comment->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLab" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLab">Delete Comment</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          You are going to delete the comment, Are you sure?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Close</button>
+          <input type="submit" form="Delete_comment_form{{$comment->id}}" value="Yes, Delete" class="btn btn-primary" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End confirm the delete form-->
+
         @endforeach
       </div>
     </div>
@@ -256,8 +279,8 @@
               </div>
               {{--End edit logwork--}}
               @if(Auth::user()->id == $logwork->user->id)
-              <form id="Delete_logwork_form" action="/delete/{{$logwork->id}}" method="GET">
-                <a href="#" id="delete_worklog_142295" title="Delete" class="delete-worklog-trigger" style="margin:5px 5px 5px"><i data-toggle="modal" data-target="#confirmLogworkDelete" class="fa fa-trash" aria-hidden="true"></i></a>
+              <form id="Delete_logwork_form{{$logwork->id}}" action="/delete/{{$logwork->id}}" method="GET">
+                <a href="#" id="delete_worklog_142295" title="Delete" class="delete-worklog-trigger" style="margin:5px 5px 5px"><i data-toggle="modal" data-target="#confirmLogworkDelete{{$logwork->id}}" class="fa fa-trash" aria-hidden="true"></i></a>
               </form>
               @endif
             </div>
@@ -282,6 +305,29 @@
             </div>
           </div>
         </div>
+
+          <!--Start confirm the delete logwork form-->
+  <div class="modal fade" id="confirmLogworkDelete{{$logwork->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLab" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLab">Delete Logwork</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          You are going to delete the log work, Are you sure?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Close</button>
+          <input type="submit" form="Delete_logwork_form{{$logwork->id}}" value="Yes, Delete" class="btn btn-primary" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End confirm the delete form-->
+
         @endforeach
       </div>
     </div>
@@ -298,51 +344,6 @@
     </div>
   </div>
   <!--End activities content-->
-
-
-  <!--Start confirm the delete logwork form-->
-  <div class="modal fade" id="confirmLogworkDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLab" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLab">Delete Logwork</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          You are going to delete the log work, Are you sure?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Close</button>
-          <input type="submit" form="Delete_logwork_form" value="Yes, Delete" class="btn btn-primary" />
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--End confirm the delete form-->
-
-  <!--Start confirm the delete comment form-->
-  <div class="modal fade" id="confirmCommentDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLab" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLab">Delete Comment</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          You are going to delete the comment, Are you sure?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Close</button>
-          <input type="submit" form="Delete_comment_form" value="Yes, Delete" class="btn btn-primary" />
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--End confirm the delete form-->
 
   <!--Start add comment form-->
   <div class="modal fade" id="AddComment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

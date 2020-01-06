@@ -256,8 +256,8 @@ class TaskController extends Controller
     //delete task
     public function deleteTask(Request $req, $id) {
         $task = Task::find($id);
-        $task->comment()->delete();
-        $task->logwork()->delete();
+        DB::table('comments')->where([['task_id', $id]])->delete();
+        DB::table('logworks')->where([['task_id', $id]])->delete();
         DB::table('task_user')->where([['task_id', $id]])->delete();
         $task->delete();
         return Redirect::back();
@@ -289,12 +289,13 @@ class TaskController extends Controller
             return Redirect::back()->with('errorMsg',$errorMsg); 
      }
 
-     public function DeleteUser($id){
+     public function DeleteUser(Request $req ,$id){
+        print($id);
         $user = User::find($id);
-        $user->logwork()->delete();
-        $user->comment()->delete();
+        DB::table('comments')->where([['user_id', $id]])->delete();
+        DB::table('logworks')->where([['user_id', $id]])->delete();
         DB::table('task_user')->where([['user_id', $id]])->delete();
         $user->delete();
-        return Redirect::back();
+        // return Redirect::back();
      }
 }

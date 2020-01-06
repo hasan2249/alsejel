@@ -96,7 +96,7 @@
             <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman">Type</th>
             <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman">Title</th>
             <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman">State</th>
-            <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman">Created at</th>
+            <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman">Updated at</th>
             {{-- <th scope="col">Description</th> --}}
         </tr>
     </thead>
@@ -106,14 +106,14 @@
         @foreach ($tasks as $task)
         <tr >
             <th scope="row" class="pointer" onclick="window.location='task/{{$task->id}}';">{{$task->type}}</th>
-            <td class="pointer" onclick="window.location='task/{{$task->id}}';" >  {{$task->state}}</td>
-            <td class="pointer" onclick="window.location='task/{{$task->id}}';"> {{$task->name}}</td>
-            <td class="pointer" onclick="window.location='task/{{$task->id}}';">{{$task->created_at}}</td>
+            <td class="pointer" onclick="window.location='task/{{$task->id}}';" >  {{$task->name}}</td>
+            <td class="pointer" onclick="window.location='task/{{$task->id}}';"> {{$task->state}}</td>
+            <td class="pointer" onclick="window.location='task/{{$task->id}}';">{{$task->updated_at}}</td>
             <td>
             @if(Auth::user()->rule == "1")
             <a href="#" data-toggle="modal" data-target="#EditModalTasks{{$task->id}}" data-whatever="@getbootstrap" title="Edit" class="edit-worklog-trigger" style="margin:5px 5px 5px"><i class="fa fa-edit" aria-hidden="true"></i></a> 
-                <form id="Delete_Task_form" action="/deleteTask/{{$task->id}}" method="GET">
-                <a href="#" id="delete_task_142295" title="Delete" class="delete-task-trigger" style="margin:5px 5px 5px"><i data-toggle="modal" data-target="#confirmTaskDelete" class="fa fa-trash" aria-hidden="true"></i></a>
+                <form id="Delete_Task_form{{$task->id}}" action="/deleteTask/{{$task->id}}" method="GET">
+                <a href="#" id="delete_task_142295" title="Delete" class="delete-task-trigger" style="margin:5px 5px 5px"><i data-toggle="modal" data-target="#confirmTaskDelete{{$task->id}}" class="fa fa-trash" aria-hidden="true"></i></a>
               </form>  
               @endif
             </td>
@@ -231,7 +231,7 @@
     {{-- end Edit Task--}}
 
      <!--Start confirm the delete logwork form-->
-  <div class="modal fade" id="confirmTaskDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLab" aria-hidden="true">
+  <div class="modal fade" id="confirmTaskDelete{{$task->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLab" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -245,7 +245,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Close</button>
-          <input type="submit" form="Delete_Task_form" value="Yes, Delete" class="btn btn-primary" />
+          <input type="submit" form="Delete_Task_form{{$task->id}}" value="Yes, Delete" class="btn btn-primary" />
         </div>
       </div>
     </div>
