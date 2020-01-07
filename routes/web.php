@@ -91,6 +91,6 @@ Route::get('/charts', 'WorkDurationControler@showChartPage');
 // Teams -----------------
 Route::get('/Buckup', 'TaskController@BuckupPage');
 Route::get('/newUser', 'TaskController@AddNewUser');
-
+Route::post('/CreateNewUser', 'TaskController@CreateNewUser');
 // User --------------------
 Route::get('/deleteUser/{id}', 'TaskController@DeleteUser');
