@@ -143,9 +143,9 @@ class userController extends Controller
 
     public function store(Request $request)
     {
-        if ($this->validatorPassword($request->toArray())->fails())
-        {
-           return redirect()->back()->withErrors($this->validator($request->toArray()))->withInput();
+        if (!(Hash::check($request->get('current_password'), Auth::user()->password))) {
+            // The passwords matches
+            return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
         }
         else
         {

@@ -1,10 +1,15 @@
 @extends('home')
 
 @section('content2')
+        
 <div class="container">
     <div class="row">
         <div class="col-lg-12 order-lg-2">
-
+        @if (session('error'))
+               <div class="alert alert-danger">
+                {{ session('error') }}
+                </div>
+		@endif
             <!--Navigation bar-->
             <ul class="nav nav-tabs">
                 <li class="nav-item">
@@ -28,26 +33,26 @@
                 </li>
                 @endif
             </ul>
-            @if ($errors->any())
-                <div class="alert alert-danger" role="alert">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif 
+        
             
             <!-- <button id="myWish" > click yo fade in</button> -->
             <!--Summery content-->
             <div class="tab-content py-4">
                 <div class="tab-pane active" id="Summery">
                     <h5 class="mb-3">User Profile</h5>
+                    <div class="display-avatar animated-avatar">
+                @if ( $users->image == "null")
+                    <img class="profile-img img-lg rounded-circle" src="{{asset('/images/person-icon-male-user-profile-avatar-vector-18833568.jpg')}}"
+                        alt="profile image">
+                @else
+                <img class="profile-img img-lg rounded-circle" src="/images/{{$users->image}}"
+                        alt="profile image">
+                @endif
+                </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <h6>About</h6>
-                            <p> Software Engineer </p>
-                            <br/>
+                            <h6 class="display-income">About TBD</h6>
+                            <p style ="margin-top:20px ; margin-bottom:20px "> Web Designer, UI/UX Engineer TBD </p>
                         </div>
                         <div class="col-md-12">
                             <table class="table table-sm table-hover table-striped">
@@ -115,21 +120,17 @@
                 @if(Auth::user()->id == $users->id)
         <!-- Start Edit content-->
                 <div class="tab-pane" id="edit" onclick="removeActiveClass('Summery')">
-                <form method="POST" action="{{ route('change.password') }}"  oninput='new_confirm_password.setCustomValidity(new_confirm_password.value != new_password.value ? "Passwords do not match." : "")'>
-                    {{ csrf_field() }}
-   
-                         @foreach ($errors->all() as $error)
-                            <p class="text-danger">{{ $error }}</p>
-                         @endforeach 
-  
-                        <div class="form-group row">
+                <form method="POST" action="{{ route('change.password') }}"   oninput='new_confirm_password.setCustomValidity(new_confirm_password.value != new_password.value ? "Passwords do not match." : "")'>
+                   
+                {{ csrf_field() }}
+                    <div  class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">Current Password</label>
   
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="current_password" autocomplete="current-password" required>
+                                <input id="current_password" type="password" class="form-control" name="current_password" autocomplete="current-password" required>
                             </div>
                         </div>
-  
+
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">New Password</label>
   
@@ -198,7 +199,5 @@ $("#update-image").fadeOut();
     if(exist){
       alert(msg);
     }
-
-
     </script>
     @endsection
