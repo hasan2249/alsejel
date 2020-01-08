@@ -104,7 +104,7 @@ class TaskController extends Controller
                     <div class = 'issue-data-block' >
                     <div class='actionContainer'>
                         <div class='action-details'>
-                            <a href='#'>".User::find($activity->user_id)->name."</a> -
+                            <a href="."/user/".User::find($activity->user_id)->id.">".User::find($activity->user_id)->name."</a> -
                             <span title='Rule: 1' class='subText'><span class='date'>".
                         ( $activity->updated_at > $activity->created_at ?
                             (empty($activity->hour)  && empty($activity->minute)?

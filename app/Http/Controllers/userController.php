@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\User;
@@ -77,15 +78,15 @@ class userController extends Controller
                     <div class = 'issue-data-block' >
                     <div class='actionContainer'>
                         <div class='action-details'>
-                            <a href='#'>".$users->name."</a> -
+                            <a href="."/user/".$users->id.">".$users->name."</a> -
                             <span title='Rule: 1' class='subText'><span class='date'>".
                         ( $activity->updated_at > $activity->created_at ?
                             (empty($activity->hour)  && empty($activity->minute)?
-                            "Updated his comment at: ". $activity->updated_at."." :
-                            "Updated his log  at: ". $activity->updated_at. ", to ".  $activity->hour ." hours and ". $activity->minute ." minutes.") :
+                            "Updated his comment on <a href="."/task/".User::find($activity->task_id)->id.">". Task::find($activity->task_id)->name ."</a> at: ". $activity->updated_at."." :
+                            "Updated his log on <a href="."/task/".User::find($activity->task_id)->id.">". Task::find($activity->task_id)->name ."</a> at: ". $activity->updated_at. ", to ".  $activity->hour ." hours and ". $activity->minute ." minutes.") :
                             (empty($activity->hour)  && empty($activity->minute)?
-                                    "Added a new comment at: ". $activity->updated_at.".":
-                                    "Logged work at: ". $activity->updated_at." , with ". $activity->hour ." hours and ". $activity->minute." minutes.")).
+                                    "Added a new comment on <a href="."/task/".User::find($activity->task_id)->id.">". Task::find($activity->task_id)->name ."</a> at: ". $activity->updated_at.".":
+                                    "Logged work on <a href="."/task/".User::find($activity->task_id)->id.">". Task::find($activity->task_id)->name ."</a> at: ". $activity->updated_at." , with ". $activity->hour ." hours and ". $activity->minute." minutes.")).
                             "</span></span>
                         </div>
                             <div class='action-body'>
