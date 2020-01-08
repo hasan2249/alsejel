@@ -51,8 +51,8 @@
                 </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <h6 class="display-income">About TBD</h6>
-                            <p style ="margin-top:20px ; margin-bottom:20px "> Web Designer, UI/UX Engineer TBD </p>
+                            <h6 class="display-income">About</h6>
+                            <p style ="margin-top:20px ; margin-bottom:20px "> Software Engineer</p>
                         </div>
                         <div class="col-md-12">
                             <table class="table table-sm table-hover table-striped">
