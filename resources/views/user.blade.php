@@ -9,7 +9,7 @@
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a href="" data-target="#Summery" data-toggle="tab" class="nav-link active"
-                        id="summery_tab">Summery</a>
+                        id="summery_tab">Summary</a>
                 </li>
                 <li class="nav-item">
                     <a href="" data-target="#Tasks" data-toggle="tab" class="nav-link"
@@ -45,8 +45,9 @@
                     <h5 class="mb-3">User Profile</h5>
                     <div class="row">
                         <div class="col-md-6">
-                            <h6>About TBD</h6>
-                            <p> Web Designer, UI/UX Engineer TBD </p>
+                            <h6>About</h6>
+                            <p> Software Engineer </p>
+                            <br/>
                         </div>
                         <div class="col-md-12">
                             <table class="table table-sm table-hover table-striped">

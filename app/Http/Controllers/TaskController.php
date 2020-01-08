@@ -69,14 +69,14 @@ class TaskController extends Controller
             ->where('tasks.id','=',$id)
             ->select('logworks.id','logworks.description',
                 'logworks.houre','logworks.minute',
-                'logworks.created_at','logworks.updated_at');
+                'logworks.created_at','logworks.updated_at','logworks.user_id');
 
         $task_logs_comments = DB::table('tasks')
             ->join('comments', 'comments.task_id', '=','tasks.id')
             ->where('tasks.id','=',$id)
             ->select('comments.id','comments.description',
                 DB::raw("NULL As hour"),DB::raw("NULL As minute"),
-                'comments.created_at','comments.updated_at')
+                'comments.created_at','comments.updated_at','comments.user_id')
             ->unionAll($task_logs)
             ->get();
 
@@ -104,13 +104,13 @@ class TaskController extends Controller
                     <div class = 'issue-data-block' >
                     <div class='actionContainer'>
                         <div class='action-details'>
-                            <a href='#'>".$tasks->name."</a> -
+                            <a href='#'>".User::find($activity->user_id)->name."</a> -
                             <span title='Rule: 1' class='subText'><span class='date'>".
                         ( $activity->updated_at > $activity->created_at ?
-                            (empty($activity->hour) ?
+                            (empty($activity->hour)  && empty($activity->minute)?
                                 "Updated his comment at: ". $activity->updated_at."." :
                                 "Updated his log  at: ". $activity->updated_at. ", to ".  $activity->hour ." hours and ". $activity->minute ." minutes.") :
-                            (empty($activity->hour)?
+                            (empty($activity->hour) && empty($activity->minute)?
                                 "Added a new comment at: ". $activity->updated_at.".":
                                 "Logged work at: ". $activity->updated_at." , with ". $activity->hour ." hours and ". $activity->minute." minutes.")).
                         "</span></span>
@@ -290,12 +290,11 @@ class TaskController extends Controller
      }
 
      public function DeleteUser(Request $req ,$id){
-        print($id);
         $user = User::find($id);
         DB::table('comments')->where([['user_id', $id]])->delete();
         DB::table('logworks')->where([['user_id', $id]])->delete();
         DB::table('task_user')->where([['user_id', $id]])->delete();
         $user->delete();
-        // return Redirect::back();
+        return Redirect::back();
      }
 }

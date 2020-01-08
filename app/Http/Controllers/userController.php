@@ -49,7 +49,7 @@ class userController extends Controller
             ->join('comments', 'comments.user_id', '=','users.id')
             ->where('users.id','=',$id)
             ->select('comments.task_id','comments.id','comments.description',
-                DB::raw("NULL As hourer"),DB::raw("NULL As minute"),
+                DB::raw("NULL As hour"),DB::raw("NULL As minute"),
                 'comments.created_at','comments.updated_at')
             ->unionAll($user_logs)
             ->get();
@@ -80,10 +80,10 @@ class userController extends Controller
                             <a href='#'>".$users->name."</a> -
                             <span title='Rule: 1' class='subText'><span class='date'>".
                         ( $activity->updated_at > $activity->created_at ?
-                        (empty($activity->hour) ?
+                            (empty($activity->hour)  && empty($activity->minute)?
                             "Updated his comment at: ". $activity->updated_at."." :
                             "Updated his log  at: ". $activity->updated_at. ", to ".  $activity->hour ." hours and ". $activity->minute ." minutes.") :
-                                (empty($activity->hour)?
+                            (empty($activity->hour)  && empty($activity->minute)?
                                     "Added a new comment at: ". $activity->updated_at.".":
                                     "Logged work at: ". $activity->updated_at." , with ". $activity->hour ." hours and ". $activity->minute." minutes.")).
                             "</span></span>
@@ -134,11 +134,12 @@ class userController extends Controller
     protected function validatorPassword(array $data)
     {
         return Validator::make($data, [
-            'current_password' =>  'required|old_password:' . Auth::user()->password,
+//            'current_password' =>  'required|old_password:' . Auth::user()->password,
             'new_password' => ['required'],
             'new_confirm_password' => ['same:new_password'],
         ]);
     }
+
     public function store(Request $request)
     {
         if ($this->validatorPassword($request->toArray())->fails())

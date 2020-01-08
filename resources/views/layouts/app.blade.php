@@ -57,7 +57,7 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                         <li><a href="{{ url('/login') }}" class="navbar-brand" style="color:blue ">Login</a></li>
-                        <li><a href="{{ url('/register') }}" class="navbar-brand" style="color:blue">Register</a></li>
+{{--                        <li><a href="{{ url('/register') }}" class="navbar-brand" style="color:blue">Register</a></li>--}}
                         @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

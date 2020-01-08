@@ -62,13 +62,13 @@
                 <label for="exampleFormControlSelect1" class="col-form-label">Duration of time:</label>
                 <div class="row">
                   <div class="col-2">
-                    <input name="houres" type="number" class="form-control" id="formGroupExampleInput" value="0" required>
+                    <input name="houres" type="number" class="form-control" min="0" id="formGroupExampleInput" value="0" required>
                   </div>
                   <div class="col-2">
                     <label for="formGroupExampleInput" class="col-form-label">hours </label>
                   </div>
                   <div class="col-2">
-                    <input name="minutes" type="number" class="form-control" id="formGroupExampleInput" value="0" required>
+                    <input name="minutes" type="number" class="form-control" id="formGroupExampleInput" min="0" value="0" required>
                   </div>
                   <div class="col-2">
                     <label for="formGroupExampleInput" class="col-form-label">minutes</label>
@@ -246,7 +246,7 @@
                           <label for="exampleFormControlSelect1" class="col-form-label">Deuration of time:</label>
                           <div class="row">
                             <div class="col-2">
-                              <input name="houres" type="number" value="{{$logwork->houre}}" class="form-control" id="formGroupExampleInput" required>
+                              <input name="houres" type="number" min="1" value="{{$logwork->houre}}" class="form-control" id="formGroupExampleInput" required>
                             </div>
                             <div class="col-2">
                               <label for="formGroupExampleInput" class="col-form-label">hours </label>
@@ -256,7 +256,7 @@
                               </div>
                             </div>
                             <div class="col-2">
-                              <input name="minutes" type="number" value="{{$logwork->minute}}" class="form-control" id="formGroupExampleInput" value="0" required>
+                              <input name="minutes" type="number" min="1" value="{{$logwork->minute}}" class="form-control" id="formGroupExampleInput" value="0" required>
                             </div>
                             <div class="col-2">
                               <label for="formGroupExampleInput" class="col-form-label">minutes</label>
@@ -292,7 +292,7 @@
                 <li>
                   <dl>
                     <dt>Time Spent:</dt>
-                    <dd id="wl-142295-d" class="worklog-duration">{{$logwork->houre}} houres, {{$logwork->minute}} minutes</dd>
+                    <dd id="wl-142295-d" class="worklog-duration">{{$logwork->houre}} hours, {{$logwork->minute}} minutes</dd>
                   </dl>
                   <dl>
                     <dt>&nbsp;</dt>

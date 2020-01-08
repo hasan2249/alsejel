@@ -32,7 +32,7 @@
                         <div class="form-check-inline">
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="type" value="Intenta project">Intenta project
+                                <input type="radio" class="form-check-input" name="type" value="External project">External project
                             </label>
                         </div>
                         </div>
@@ -143,10 +143,10 @@
                         <div class="form-check-inline">
                         <div class="form-check">
                             <label class="form-check-label">
-                            @if ( $task->type == "Intenta project")
-                                <input type="radio" class="form-check-input" name="type" value="Intenta project"checked>Intenta project
+                            @if ( $task->type == "External project")
+                                <input type="radio" class="form-check-input" name="type" value="External project"checked>External project
                                 @else
-                                <input type="radio" class="form-check-input" name="type" value="Intenta project" >Intenta project
+                                <input type="radio" class="form-check-input" name="type" value="External project" >External project
                             @endif
                             </label>
                         </div>

@@ -57,10 +57,12 @@ class WorkDurationControler extends Controller
         if($id != 0)
         {
             $task = Task::find($id);
-            foreach($task->logwork as $logworks)
+            global $req_task;
+            $req_task = $task->logwork()->orderBy('date', 'DESC')->get();
+            foreach($req_task as $logworks)
             {
-                if($logworks->created_at > $start_date && $logworks->created_at < $end_date){
-                    $updated_at[] = $logworks->created_at;
+                if($logworks->date >= $start_date && $logworks->date <= $end_date){
+                    $updated_at[] = $logworks->date;
                     $minutes[] = $logworks->houre * 60 + $logworks->minute;
                 }    
             }

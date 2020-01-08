@@ -2,11 +2,11 @@
 
 @section('content2')
 
-<p style="text-align:center"> <span style="color:blue ; font-size: 50px ; letter-spacing: 5px;font-family: Times New Roman">SCACE</span> <small
+<p style="text-align:center"> <span style="color:blue ; font-size: 50px ; letter-spacing: 5px;font-family: Times New Roman">SCASE</span> <small
         style="font-size: 25px ;letter-spacing: 3px">team</small></p>
 
     @if(Auth::user()->rule == "1")
-     <a href="{{ url('/newUser') }}" class="btn btn-primary" >Create new user</a>
+     <a href="{{ url('/newUser') }}" class="btn btn-primary" >Create New User</a>
     @endif
 
 <table class="table table-hover">
