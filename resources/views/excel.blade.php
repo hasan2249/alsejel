@@ -44,14 +44,12 @@
                         <span class="text-danger">{{ $errors->first('user') }}</span>
                     @endif
                     <div class="col-md-3">
-                        <div class="col-md-3">
-                            <select class="btn btn-primary usr" name="user" id="seltask">
-                                <option value="" selected="selected">Select employee name..</option>
-                                @foreach($tasks as $task)
-                                    <option value="{{ $task->id}}">{{ $task->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                        <select class="btn btn-primary tsk" name="task" >
+                            <option value="" selected= "disabled hidden"><span class="grey_color">Select task name..</span></option>
+                            @foreach($tasks as $task)
+                                <option value="{{ $task->id}}" >{{ $task->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="col-md-3 ">
                         <div class="row">
@@ -84,14 +82,13 @@
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
+
     <div class="row">
         <div class="col-md-6 offset-md-4">
             <button class=" add-comment-btn btn-success" style="margin-top:100px;">Show & Download Excel xlsx</button>
         </div>
     </div>
-    </div>
+
     </form>
     </div>
 @endsection
