@@ -252,7 +252,7 @@
                 </li>
                 <li class="nav-category-divider">DOCS</li>
                 <li>
-                    <a href="../docs/docs.html">
+                    <a href="">
                         <span class="link-title">Documentation - Disabled</span>
                         <i class="fa fa-file-o link-icon"></i>
                     </a>

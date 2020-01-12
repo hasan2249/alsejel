@@ -32,11 +32,12 @@
 
             <div class="input-group">
                 <div class = "row">
+                    
                     <div class="col-md-3">
-                        <select class="btn btn-primary usr" name="user" id="selUser">
-                            <option value="" selected="selected">Select employee name..</option>
-                            @foreach($users as $user)
-                                <option value="{{ $user->id}}">{{ $user->name}}</option>
+                        <select class="btn btn-primary tsk" name="task" >
+                            <option value="" selected= "disabled hidden"><span class="grey_color">Select task name..</span></option>
+                            @foreach($tasks as $task)
+                                <option value="{{ $task->id}}" >{{ $task->name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -44,10 +45,10 @@
                         <span class="text-danger">{{ $errors->first('user') }}</span>
                     @endif
                     <div class="col-md-3">
-                        <select class="btn btn-primary tsk" name="task" >
-                            <option value="" selected= "disabled hidden"><span class="grey_color">Select task name..</span></option>
-                            @foreach($tasks as $task)
-                                <option value="{{ $task->id}}" >{{ $task->name}}</option>
+                        <select class="btn btn-primary usr" name="user" id="selUser">
+                            <option value="" selected="selected">Select employee name..</option>
+                            @foreach($users as $user)
+                                <option value="{{ $user->id}}">{{ $user->name}}</option>
                             @endforeach
                         </select>
                     </div>
