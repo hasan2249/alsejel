@@ -58,7 +58,7 @@
                         <!-- Authentication Links -->
                         <?php if(Auth::guest()): ?>
                         <li><a href="<?php echo e(url('/login')); ?>" class="navbar-brand" style="color:blue ">Login</a></li>
-
+                        <li><a href="<?php echo e(url('/register')); ?>" class="navbar-brand" style="color:blue">Register</a></li>
                         <?php else: ?>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

@@ -32,7 +32,7 @@
 
             <div class="input-group">
                 <div class = "row">
-                    
+
                     <div class="col-md-3">
                         <select class="btn btn-primary tsk" name="task" >
                             <option value="" selected= "disabled hidden"><span class="grey_color">Select task name..</span></option>
@@ -84,12 +84,12 @@
                 </div>
             </div>
 
-    <div class="row">
-        <div class="col-md-6 offset-md-4">
-            <button class=" add-comment-btn btn-success" style="margin-top:100px;">Show & Download Excel xlsx</button>
-        </div>
-    </div>
+            <div class="row">
+                <div class="col-md-6 offset-md-4">
+                    <button class=" add-comment-btn btn-success" style="margin-top:100px;">Show & Download Excel xlsx</button>
+                </div>
+            </div>
 
-    </form>
+        </form>
     </div>
 @endsection

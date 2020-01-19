@@ -101,7 +101,7 @@ class ExcelController extends Controller
             $minutes_duration = $log->minute;
             $total_minute = $total_minute + $minutes_duration;
 
-            $updated_at= $log->updated_at;
+            $date= $log->date;
             $description= $log->description;
             
 
@@ -110,7 +110,7 @@ class ExcelController extends Controller
             array_push($d,$task_name);
             array_push($d,$hours_duration);
             array_push($d,$minutes_duration);
-            array_push($d,$updated_at);
+            array_push($d,$date);
             array_push($d,$description);
             $data[]=$d;
             unset($d);

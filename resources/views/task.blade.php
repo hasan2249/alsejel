@@ -246,17 +246,15 @@
                           <label for="exampleFormControlSelect1" class="col-form-label">Deuration of time:</label>
                           <div class="row">
                             <div class="col-2">
-                              <input name="houres" type="number" min="1" value="{{$logwork->houre}}" class="form-control" id="formGroupExampleInput" required>
+                              <input name="houres" type="number" min="0" value="{{$logwork->houre}}" class="form-control" id="formGroupExampleInput" required>
                             </div>
                             <div class="col-2">
                               <label for="formGroupExampleInput" class="col-form-label">hours </label>
                             </div>
                             <div class="col-2">
-                              <div id="delta">
-                              </div>
                             </div>
                             <div class="col-2">
-                              <input name="minutes" type="number" min="1" value="{{$logwork->minute}}" class="form-control" id="formGroupExampleInput" value="0" required>
+                              <input name="minutes" type="number" min="0" value="{{$logwork->minute}}" class="form-control" id="formGroupExampleInput" value="0" required>
                             </div>
                             <div class="col-2">
                               <label for="formGroupExampleInput" class="col-form-label">minutes</label>
