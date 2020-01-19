@@ -82,11 +82,11 @@ class userController extends Controller
                             <span title='Rule: 1' class='subText'><span class='date'>".
                         ( $activity->updated_at > $activity->created_at ?
                             (empty($activity->hour)  && empty($activity->minute)?
-                            "Updated his comment on <a href="."/task/".User::find($activity->task_id)->id.">". Task::find($activity->task_id)->name ."</a> at: ". $activity->updated_at."." :
-                            "Updated his log on <a href="."/task/".User::find($activity->task_id)->id.">". Task::find($activity->task_id)->name ."</a> at: ". $activity->updated_at. ", to ".  $activity->hour ." hours and ". $activity->minute ." minutes.") :
+                            "Updated his comment on <a href="."/task/".Task::find($activity->task_id)->id.">". Task::find($activity->task_id)->name ."</a> at: ". $activity->updated_at."." :
+                            "Updated his log on <a href="."/task/".Task::find($activity->task_id)->id.">". Task::find($activity->task_id)->name ."</a> at: ". $activity->updated_at. ", to ".  $activity->hour ." hours and ". $activity->minute ." minutes.") :
                             (empty($activity->hour)  && empty($activity->minute)?
-                                    "Added a new comment on <a href="."/task/".User::find($activity->task_id)->id.">". Task::find($activity->task_id)->name ."</a> at: ". $activity->updated_at.".":
-                                    "Logged work on <a href="."/task/".User::find($activity->task_id)->id.">". Task::find($activity->task_id)->name ."</a> at: ". $activity->updated_at." , with ". $activity->hour ." hours and ". $activity->minute." minutes.")).
+                                    "Added a new comment on <a href="."/task/".Task::find($activity->task_id)->id.">". Task::find($activity->task_id)->name ."</a> at: ". $activity->updated_at.".":
+                                    "Logged work on <a href="."/task/".Task::find($activity->task_id)->id.">". Task::find($activity->task_id)->name ."</a> at: ". $activity->updated_at." , with ". $activity->hour ." hours and ". $activity->minute." minutes.")).
                             "</span></span>
                         </div>
                             <div class='action-body'>
