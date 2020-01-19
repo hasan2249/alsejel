@@ -283,7 +283,7 @@
               @endif
             </div>
             <div class="action-details">
-              <a href="#">{{$logwork->user->name}}</a>
+            <a href="/user/{{$logwork->user->id}}">{{$logwork->user->name}}</a>
               logged work - <span title="Created: {{$logwork->user->created_at}}" class="subText"><span class="date">{{$logwork->date}}</span></span> </div>
             <div class="action-body">
               <ul id="worklog_details_142295" class="item-details">

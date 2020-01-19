@@ -85,10 +85,10 @@ class ExcelController extends Controller
         $total_minute = 0;
         if(!$request->get('task'))
         {
-            $user_logs = Logwork::where('user_id', $selected_id)->whereBetween('date', [$start_date, $end_date])->get();
+            $user_logs = Logwork::where('user_id', $selected_id)->whereBetween('date', [$start_date, $end_date])->orderBy('date')->get();
         }
         else{
-            $user_logs = Logwork::where('user_id', $selected_id)->where('task_id',$request->get('task'))->whereBetween('date', [$start_date, $end_date])->get();
+            $user_logs = Logwork::where('user_id', $selected_id)->where('task_id',$request->get('task'))->orderBy('date')->whereBetween('date', [$start_date, $end_date])->get();
         }
 
         foreach ($user_logs as $log)
