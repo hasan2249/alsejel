@@ -81,6 +81,7 @@ $(document).ready(function(){
     else if (window.location.href.indexOf('task/') !=-1)  
     { // if it is task page
         loadTaskActivitiesData('', _token);
+        loadTaskLogworksData('', _token);
     }
 
 // Show more user activites button
@@ -139,5 +140,33 @@ $(document).ready(function(){
         loadTaskActivitiesData(date, _token);
     });
 
+    // Show more task logworks button
+    function loadTaskLogworksData( date="", _token)
+    {
+        var id = window.location.href.substring(window.location.href.indexOf('task/')+5);
+
+        //////////
+        // $.ajax function:
+        // url : Specifies the URL to send the request to.
+        // data: Specifies data to be sent to the server
+        // success(result,status,xhr): A function to be run when the request succeeds
+        $.ajax({
+            url:"/task/"+id+"/load_task_logworks_data",
+            method:"POST", 
+            data:{date:date, _token:_token},
+            success:function(coming_data)
+            {
+                $('#load_more_task_logworks_button').remove();
+                $('#post_task_logwork').append(coming_data);
+            }
+        })
+    }
+
+    $(document).on('click', '#load_more_task_logworks_button', function(){
+        var date = $(this).data("date");
+        $('#load_more_task_logworks_button').html('<b>Loading...</b>');
+        console.log(date);
+        loadTaskLogworksData(date, _token);
+    });
     // $('.tsk').select2();
 });

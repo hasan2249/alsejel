@@ -21,7 +21,7 @@
             <div class=" alert alert-success" role="alert" >
             Total elapsed time : {{$total_hour}} hours, {{$total_minute}} minutes
             </div>
-            <table class="table table-hover">
+            <table class="table table-hover"  style="overflow: hidden;">
             <thead class="thead-light">
             <tr>
                 <th scope="col" style="color:blue ; font-size:20px;font-family: Times New Roman">Employee Name</th>

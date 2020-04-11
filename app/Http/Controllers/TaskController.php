@@ -57,7 +57,7 @@ class TaskController extends Controller
         }
         $total_hours = $hours + floor($minuts / 60);
         $total_minuts = floor($minuts % 60);
-        $task = Array("task" => $tasks,"logworks" =>$logworks ,"comments" =>$comments ,"bool" =>$bool , "total_hours" =>$total_hours , "total_minuts" =>$total_minuts)  ;
+        $task = Array("task" => $tasks ,"comments" =>$comments ,"bool" =>$bool , "total_hours" =>$total_hours , "total_minuts" =>$total_minuts)  ;
         return view('/task',$task);
     }
 
@@ -150,6 +150,160 @@ class TaskController extends Controller
     }
      //----------------------------------------------------
 
+
+
+     public function load_task_logworks_data($id,Request $request)
+    {
+        $logworks = Logwork::where('task_id', $id)->orderBy('date','desc')->get();
+        
+        // $logworks = DB::table('logwork')
+        // ->where('logwork.id','=',$id)->get()->sortByDesc('updated_at');
+
+        $num_of_records = 10;
+        if($request->ajax())
+        {
+            if($request->date > 0)
+            {
+                $task_some_logwork = $logworks->where('date', '<', $request->date)->take($num_of_records);
+            }
+            else
+            {
+                $task_some_logwork = $logworks->take($num_of_records);
+            }
+            $output = '';
+            $last_date = '';
+
+            if(!$task_some_logwork->isEmpty())
+            {
+                foreach($task_some_logwork as $logwork)
+                {
+                    $output .= "
+                    <div id='worklog-142295' class='issue-data-block'>
+                    <div class='actionContainer'>
+                        <div class='action-links'>";
+
+              if(Auth::user()->id == $logwork->user->id){
+              $output .="<a href='#' data-toggle='modal' data-target='#EditModal{$logwork->id}' data-whatever='@getbootstrap' title='Edit' class='edit-worklog-trigger' style='margin:5px 5px 5px'><i class='fa fa-edit' aria-hidden='true'></i></a>";
+              }
+              $output .="<div class='modal fade' id='EditModal{$logwork->id}' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                <div class='modal-dialog' role='document'>
+                  <div class='modal-content'>
+                    <div class='modal-header'>
+                      <h5 class='modal-title' id='exampleModalLabel'>Edit work log</h5>
+                      <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                      </button>
+                    </div>
+                    <div class='modal-body'>
+                      <form action='/editLogwork/{$logwork->id}' method='POST'>
+                        ". csrf_field() ."
+                        <div class='form-group'>
+                          <label for='exampleFormControlSelect1' class='col-form-label'>Date:</label>
+                          <input name='date' class='form-control' value='{$logwork->date}' type='date' required>
+                        </div>
+                        <div class='form-group'>
+                          <label for='exampleFormControlSelect1' class='col-form-label'>Deuration of time:</label>
+                          <div class='row'>
+                            <div class='col-2'>
+                              <input name='houres' type='number' min='0' value='{$logwork->houre}' class='form-control' id='formGroupExampleInput' required>
+                            </div>
+                            <div class='col-2'>
+                              <label for='formGroupExampleInput' class='col-form-label'>hours </label>
+                            </div>
+                            <div class='col-2'>
+                            </div>
+                            <div class='col-2'>
+                              <input name='minutes' type='number' min='0' value='{$logwork->minute}' class='form-control' id='formGroupExampleInput' value='0' required>
+                            </div>
+                            <div class='col-2'>
+                              <label for='formGroupExampleInput' class='col-form-label'>minutes</label>
+                            </div>
+                          </div>
+                        </div>
+                        <label for='exampleFormControlTextarea1' class='col-form-label'>Description:</label>
+                        <div class='form-group'>
+
+                          <textarea name='description' class='form-control' id='exampleFormControlTextarea1' rows='3' required>{$logwork->description}</textarea>
+                        </div>
+                        <div class='modal-footer'>
+                          <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+                          <button id='save' type='submit' class='btn btn-primary'>Save</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>";
+  
+              if(Auth::user()->id == $logwork->user->id)
+              {
+                $output .="<form id='Delete_logwork_form{$logwork->id}' action='/delete/{$logwork->id}' method='GET'>
+                <a href='#' id='delete_worklog_142295' title='Delete' class='delete-worklog-trigger' style='margin:5px 5px 5px'><i data-toggle='modal' data-target='#confirmLogworkDelete{$logwork->id}' class='fa fa-trash' aria-hidden='true'></i></a>
+                  </form>";
+                 }
+   
+            $output .="</div>
+            <div class='action-details'>
+            <a href='/user/{$logwork->user->id}'>{$logwork->user->name}</a>
+              logged work - <span title='Created: {$logwork->user->created_at}' class='subText'><span class='date'>{$logwork->date}</span></span> </div>
+            <div class='action-body'>
+              <ul id='worklog_details_142295' class='item-details'>
+                <li>
+                  <dl>
+                    <dt>Time Spent:</dt>
+                    <dd id='wl-142295-d' class='worklog-duration'>{$logwork->houre} hours, {$logwork->minute} minutes</dd>
+                  </dl>
+                  <dl>
+                    <dt>&nbsp;</dt>
+                    <dd id='wl-142295-c' class='worklog-comment'>
+                      <p>{$logwork->description} </p>
+                    </dd>
+                  </dl>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+  <div class='modal fade' id='confirmLogworkDelete{$logwork->id}' tabindex='-1' role='dialog' aria-labelledby='exampleModalLab' aria-hidden='true'>
+    <div class='modal-dialog' role='document'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <h5 class='modal-title' id='exampleModalLab'>Delete Logwork</h5>
+          <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+          </button>
+        </div>
+        <div class='modal-body'>
+          You are going to delete the log work, Are you sure?
+        </div>
+        <div class='modal-footer'>
+          <button type='button' class='btn btn-secondary' data-dismiss='modal'>No, Close</button>
+          <input type='submit' form='Delete_logwork_form{$logwork->id}' value='Yes, Delete' class='btn btn-primary' />
+        </div>
+      </div>
+    </div>
+  </div>
+                    ";
+                    $last_date = $logwork->date;
+                }
+                if (!(count($task_some_logwork) < $num_of_records))
+                {
+                    $output .= '
+
+       <div class="col-md-8 offset-md-4">
+       <div id="task_logworks_load_more">
+        <button type="button" name="load_more_task_logworks_button" class="btn-link" data-date="'.$last_date.'" id="load_more_task_logworks_button">Load More</button>
+       </div>
+       
+       </div>
+       ';
+                }
+            }
+            echo $output;
+        }
+    }
+     //----------------------------------------------------
 
 
     ////////////////////////////////////////////////////////

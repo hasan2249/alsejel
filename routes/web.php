@@ -56,6 +56,7 @@ Route::post('/task/{id}/join', 'TaskController@join');
 Route::get('/task/{id}/left', 'TaskController@left');
 Route::post('/task/{id}/left', 'TaskController@left');
 Route::post('/task/{id}/load_task_activities_data', 'TaskController@load_task_activities_data');
+Route::post('/task/{id}/load_task_logworks_data', 'TaskController@load_task_logworks_data');
 // Task -> Comment routing
 Route::post('/AddComment/{id}', 'TaskController@AddComment');
 Route::post('/editComment/{id}', 'TaskController@editComment');
