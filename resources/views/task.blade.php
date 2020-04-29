@@ -21,7 +21,8 @@
     <div class="col-md-9 col-sm-12 col-12 equel-grid">
       <div class="grid">
         <div class="grid-body text-gray">
-          <p>{{$task->description}}</p>
+{{--          <p>{{$task->description}}</p>--}}
+            <textarea class="form-control"  rows="6"  >{{$task->description}}</textarea>
         </div>
       </div>
     </div>
